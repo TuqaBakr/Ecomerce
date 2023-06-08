@@ -73,7 +73,8 @@ class HomePage extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
+
+            /*Container(
               margin: EdgeInsets.symmetric(horizontal: 15,vertical: 15),
               child: Stack(
                 children: [
@@ -86,7 +87,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ],
               ),
-            ),
+            ),*/
             Container(
              // child: ListView.builder(itemBuilder: itemBuilder),
             ),
