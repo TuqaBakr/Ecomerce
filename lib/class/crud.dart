@@ -4,7 +4,6 @@ import 'package:weam/class/statusrequest.dart';
 import 'package:http/http.dart' as http;
 import 'package:weam/function/check_internet.dart';
 
-
 class Crud {
   Future<Either<StatusReqest, Map>> postData(String linkurl, Map data) async {
     try {
