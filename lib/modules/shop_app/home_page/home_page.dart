@@ -60,12 +60,12 @@ class HomePage extends StatelessWidget {
                     width: 50,
                   decoration: BoxDecoration(
                     color: Colors.grey[200],
-                    borderRadius: const BorderRadius.all(
+                    borderRadius: BorderRadius.all(
                     Radius.circular(17.0),),
                     ),
                   child: IconButton(
                       onPressed: (){},
-                      icon:const Icon(Icons.notifications_active_outlined),
+                      icon:Icon(Icons.notifications_active_outlined),
                       color: Colors.grey,
                     ),
                   ),
@@ -74,8 +74,8 @@ class HomePage extends StatelessWidget {
               ),
             ),
 
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 15,vertical: 15),
+            /*Container(
+              margin: EdgeInsets.symmetric(horizontal: 15,vertical: 15),
               child: Stack(
                 children: [
                   Container(
@@ -87,7 +87,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ],
               ),
-            ),
+            ),*/
             Container(
              // child: ListView.builder(itemBuilder: itemBuilder),
             ),
