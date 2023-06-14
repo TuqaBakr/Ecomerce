@@ -13,8 +13,17 @@ import 'constant.dart';
 import 'lucatization/changelocal.dart';
 import 'lucatization/translatioin.dart';
 import 'modules/shop_app/changeLang/changeLang.dart';
+import 'modules/shop_app/forgetpassword/forgetpassword.dart';
+import 'modules/shop_app/login_shop/login_shop.dart';
 import 'modules/shop_app/on_boarding/on_boarding_screen.dart';
 import 'dart:io';
+
+import 'modules/shop_app/register/register_shop.dart';
+import 'modules/shop_app/register/successRegister.dart';
+import 'modules/shop_app/register/verfiycoderegister.dart';
+import 'modules/shop_app/resetPassword/resetPassword.dart';
+import 'modules/shop_app/resetPassword/successReset.dart';
+import 'modules/shop_app/verfiycode/verfiycode.dart';
 
 void main() async {
 
@@ -42,8 +51,7 @@ class MyApp extends StatelessWidget
       translations: MyTranslation() ,
       debugShowCheckedModeBanner: false,
       locale: controller.language,
-      home:  HomePage(),
-      routes: routes,
+      initialRoute:'/onBordingScreen' ,
     );
   }
 

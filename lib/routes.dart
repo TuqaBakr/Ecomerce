@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:weam/modules/shop_app/forgetpassword/forgetpassword.dart';
 import 'package:weam/modules/shop_app/home_page/home_page.dart';
 import 'package:weam/modules/shop_app/login_shop/login_shop.dart';
@@ -10,8 +11,27 @@ import 'modules/shop_app/register/verfiycoderegister.dart';
 import 'modules/shop_app/resetPassword/resetPassword.dart';
 import 'modules/shop_app/verfiycode/verfiycode.dart';
 
-Map<String, Widget Function(BuildContext)> routes = {
-  AppRoute.onBoardingScreen : (context) => OnBoardingScreen(),
+List<GetPage<dynamic>>? routes = [
+  GetPage(name: "/", page: ()=> OnBoardingScreen()),
+
+  GetPage(name: AppRoute.onBoardingScreen, page: ()=> OnBoardingScreen()),
+  GetPage(name: AppRoute.loginShop, page: ()=>const loginShop()),
+  GetPage(name: AppRoute.registerShop, page: ()=>const registerShop()),
+  GetPage(name: AppRoute.forgetPassword, page: ()=> const forgetPassword()),
+  GetPage(name: AppRoute.verfiycode, page: ()=>const verfiycode()),
+  GetPage(name: AppRoute.resetPassword, page: ()=>  const resetPassword()),
+  GetPage(name: AppRoute.successReset, page: ()=>const successReset()),
+  GetPage(name: AppRoute.successRegister, page: ()=>  const successRgister()),
+  GetPage(name: AppRoute.verficoderegister, page: ()=>const verfiycoderegister()),
+  GetPage(name: AppRoute.homePage, page: ()=>const HomePage()),
+
+];
+
+
+
+
+/*Map<String, Widget Function(BuildContext)> routes = {
+    AppRoute.onBoardingScreen : (context) => OnBoardingScreen(),
   AppRoute.loginShop : (context) => const loginShop(),
   AppRoute.registerShop : (context) => const registerShop(),
   AppRoute.forgetPassword : (context) => const forgetPassword(),
@@ -23,7 +43,7 @@ Map<String, Widget Function(BuildContext)> routes = {
   AppRoute.homePage : (context) =>const HomePage(),
 
 };
-
+*/
 class AppRoute {
   static const String onBoardingScreen = "/onBordingScreen";
   static const String loginShop = "/loginShop";
