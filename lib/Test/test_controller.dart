@@ -18,8 +18,10 @@ class TestController extends GetxController{
     if(StatusReqest.successs == statusReqest){
       data.addAll(response['data']) ;
     }
-    update() ;
-  }
+    else {
+       statusReqest = StatusReqest.failure;
+    }
+   }
 
   @override
   void onInit() {
