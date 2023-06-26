@@ -52,6 +52,19 @@ class MyApp extends StatelessWidget
       debugShowCheckedModeBanner: false,
       locale: controller.language,
       initialRoute:'/onBordingScreen' ,
+      getPages: [
+        GetPage(name: "/", page: ()=> OnBoardingScreen()),
+        GetPage(name: AppRoute.onBoardingScreen, page: ()=> OnBoardingScreen()),
+        GetPage(name: AppRoute.loginShop, page: ()=>const loginShop()),
+        GetPage(name: AppRoute.registerShop, page: ()=>const registerShop()),
+        GetPage(name: AppRoute.forgetPassword, page: ()=> const forgetPassword()),
+        GetPage(name: AppRoute.verfiycode, page: ()=>const verfiycode()),
+        GetPage(name: AppRoute.resetPassword, page: ()=>  const resetPassword()),
+        GetPage(name: AppRoute.successReset, page: ()=>const successReset()),
+        GetPage(name: AppRoute.successRegister, page: ()=>  const successRgister()),
+        GetPage(name: AppRoute.verficoderegister, page: ()=>const verfiycoderegister()),
+        GetPage(name: AppRoute.homePage, page: ()=>const HomePage()),
+      ],
     );
   }
 

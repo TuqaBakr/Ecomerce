@@ -13,7 +13,6 @@ import 'modules/shop_app/verfiycode/verfiycode.dart';
 
 List<GetPage<dynamic>>? routes = [
   GetPage(name: "/", page: ()=> OnBoardingScreen()),
-
   GetPage(name: AppRoute.onBoardingScreen, page: ()=> OnBoardingScreen()),
   GetPage(name: AppRoute.loginShop, page: ()=>const loginShop()),
   GetPage(name: AppRoute.registerShop, page: ()=>const registerShop()),
