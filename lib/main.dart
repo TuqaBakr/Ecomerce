@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:weam/bindings/initialbindings.dart';
 //import 'package:weam/lucalization/changelocal.dart';
 import 'package:weam/modules/profile/profile.dart';
 import 'package:image_picker/image_picker.dart';
@@ -52,19 +53,9 @@ class MyApp extends StatelessWidget
       debugShowCheckedModeBanner: false,
       locale: controller.language,
       initialRoute:'/onBordingScreen' ,
-      getPages: [
-        GetPage(name: "/", page: ()=> OnBoardingScreen()),
-        GetPage(name: AppRoute.onBoardingScreen, page: ()=> OnBoardingScreen()),
-        GetPage(name: AppRoute.loginShop, page: ()=>const loginShop()),
-        GetPage(name: AppRoute.registerShop, page: ()=>const registerShop()),
-        GetPage(name: AppRoute.forgetPassword, page: ()=> const forgetPassword()),
-        GetPage(name: AppRoute.verfiycode, page: ()=>const verfiycode()),
-        GetPage(name: AppRoute.resetPassword, page: ()=>  const resetPassword()),
-        GetPage(name: AppRoute.successReset, page: ()=>const successReset()),
-        GetPage(name: AppRoute.successRegister, page: ()=>  const successRgister()),
-        GetPage(name: AppRoute.verficoderegister, page: ()=>const verfiycoderegister()),
-        GetPage(name: AppRoute.homePage, page: ()=>const HomePage()),
-      ],
+      initialBinding: InitialBindings(),
+      getPages: routes,
+
     );
   }
 

@@ -1,7 +1,8 @@
 import 'package:get/get.dart';
 import 'package:weam/Test/test.dart';
 import 'package:weam/class/statusrequest.dart';
-import 'package:weam/handingdatacontroller.dart';
+import 'package:weam/function/handingdatacontroller.dart';
+
 
 class TestController extends GetxController{
   TestData testData = TestData(Get.find()) ;

@@ -6,4 +6,4 @@ handlingData(response){
   }else{
     return StatusReqest.successs ;
   }
-  }
+}
