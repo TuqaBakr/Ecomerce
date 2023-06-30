@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget
       locale: controller.language,
       initialRoute:'/onBordingScreen' ,
       initialBinding: InitialBindings(),
-      getPages: routes,
+       getPages: routes,
 
     );
   }

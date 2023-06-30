@@ -1,4 +1,4 @@
-import 'package:weam/class/Crud.dart';
+import 'package:weam/class/crud.dart';
 import 'package:weam/routes.dart';
 
 //import '../../../test.dart';

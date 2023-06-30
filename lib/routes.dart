@@ -12,7 +12,7 @@ import 'modules/shop_app/resetPassword/resetPassword.dart';
 import 'modules/shop_app/verfiycode/verfiycode.dart';
 
 List<GetPage<dynamic>>? routes = [
-  GetPage(name: "/", page: ()=> OnBoardingScreen()),
+  GetPage(name: "/", page: ()=> const  HomePage()),
   GetPage(name: AppRoute.onBoardingScreen, page: ()=> OnBoardingScreen()),
   GetPage(name: AppRoute.loginShop, page: ()=>const loginShop()),
   GetPage(name: AppRoute.registerShop, page: ()=>const registerShop()),
@@ -22,7 +22,7 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppRoute.successReset, page: ()=>const successReset()),
   GetPage(name: AppRoute.successRegister, page: ()=>  const successRgister()),
   GetPage(name: AppRoute.verficoderegister, page: ()=>const verfiycoderegister()),
-  GetPage(name: AppRoute.homePage, page: ()=>const HomePage()),
+  GetPage(name: AppRoute.homePage, page: ()=> HomePage()),
 
 ];
 
@@ -58,6 +58,10 @@ class AppRoute {
 }
 
 class AppLink{
+  //=======================server===================
   static const String server = "https://wael.com/ecomerce" ;
   static const String test = "$server/test.php" ;
+
+  //=========================== home page ============
+  static const String homepage = "$server/test.php" ;
 }

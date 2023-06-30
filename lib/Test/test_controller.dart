@@ -8,6 +8,7 @@ class TestController extends GetxController{
   TestData testData = TestData(Get.find()) ;
 
   List data = [] ;
+  List categories= [] ;
 
   late StatusReqest statusReqest ;
 
@@ -16,11 +17,14 @@ class TestController extends GetxController{
     var response = await testData.getData() ;
     statusReqest = handlingData(response) ;
     if(StatusReqest.successs == statusReqest){
-      data.addAll(response['data']) ;
+      if(response['status'] == statusReqest){
+        data.addAll(response['categories']) ;
+      }
+      else {
+        statusReqest = StatusReqest.failure;
+      }
     }
-    else {
-       statusReqest = StatusReqest.failure;
-    }
+    update();
    }
 
   @override
