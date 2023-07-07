@@ -16,13 +16,13 @@ class HomePage extends StatelessWidget {
     Get.put(HomeControllerImp()) ;
     return Scaffold(
       body: GetBuilder<HomeControllerImp>(
-          builder: (controller) => HandlingDataView(statusReqest: controller.statusReqest, widget:  Container(
-            padding: EdgeInsets.symmetric(horizontal: 1),
+          builder: (controller) => HandlingDataView(statusRequest: controller.statusRequest, widget:  Container(
+            padding: const EdgeInsets.symmetric(horizontal: 1),
             child:ListView(
               children: [
                 Container(
-                  margin: EdgeInsets.only(top: 10),
-                  padding: EdgeInsets.symmetric(horizontal: 15),
+                  margin: const EdgeInsets.only(top: 10),
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: Row(
                     children: [
                       Expanded(child:
@@ -70,9 +70,9 @@ class HomePage extends StatelessWidget {
                     children: [
                       Container(
                         alignment: Alignment.center,
-                        child: ListTile(
-                          title: Text("A summer surprice", style: TextStyle(color: Colors.white, fontSize:20)),
-                          subtitle: Text("Cast back 20%", style: TextStyle(color: Colors.white, fontSize:20)),
+                        child: const ListTile(
+                          title: Text("A summer surprice", style: TextStyle(color: fifthBackColor, fontSize:25, fontFamily: 'DeliciousHandrawn',)),
+                          subtitle: Text("Cast back 20%", style: TextStyle(color: fifthBackColor, fontSize:20, fontFamily: 'DeliciousHandrawn',)),
                         ),
                         height: 150,
                         decoration: BoxDecoration(
@@ -87,7 +87,7 @@ class HomePage extends StatelessWidget {
                           height: 160,
                           width: 160,
                           decoration: BoxDecoration(
-                            color: firstBackColor,
+                            color: sevenBackColor,
                             borderRadius:BorderRadius.circular(160),
                           ),
 
@@ -96,15 +96,31 @@ class HomePage extends StatelessWidget {
                     ],
                   ),
                 ),
-/*
-          Container(
-              child: ListView.builder(itemBuilder: itemBuilder(
 
-              )),
+          Container(
+            height: 60,
+              child: ListView.separated(
+                separatorBuilder: (context , index) => SizedBox(width: 10,),
+                itemCount: 10, //controller.categories.length,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context , index){
+                    return Container(
+                      padding: EdgeInsets.symmetric(horizontal: 10) ,
+                      height: 30 ,
+                      width: 60,
+                      decoration: BoxDecoration(
+                        color: Colors.black,
+                        borderRadius:BorderRadius.circular(15),
+                      ),
+                    );
+                  }
+              ),
             ),
-          */],
+
+              ],
             ),
-          ),)
+          ),
+          ),
       ),
     );
   }

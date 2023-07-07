@@ -4,6 +4,6 @@ handlingData(response){
   if(response is StatusReqest) {
     return response ;
   }else{
-    return StatusReqest.successs ;
+    return StatusReqest.success ;
   }
 }

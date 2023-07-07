@@ -21,8 +21,9 @@ class HomeControllerImp extends HomeController{
  HomeData homeData = HomeData(Get.find()) ;
 
  List data = [] ;
+ List categories = [] ;
 
- late StatusReqest statusReqest ;
+ late StatusReqest statusRequest ;
 
 
  @override
@@ -35,17 +36,21 @@ class HomeControllerImp extends HomeController{
 
   @override
   getdata() async{
-    statusReqest = StatusReqest.loading;
+    statusRequest = StatusReqest.loading;
     var response = await homeData.getData() ;
-    statusReqest = handlingData(response) ;
-    if(StatusReqest.successs == statusReqest){
-      if(response['status'] == statusReqest){
-        data.addAll(response['data']) ;
-      }
-      else {
-        statusReqest = StatusReqest.failure;
+    print("================================ Controller $response");
+    statusRequest = handlingData(response) ;
+    //print(statusRequest);
+    //print(response);
+    /*
+    if(StatusReqest.success == statusRequest) {
+      if(response['status'] == "success") {
+        categories.addAll(response['categories']) ;
+      } else {
+        statusRequest = StatusReqest.failure;
       }
     }
+    */
     update();
   }
 

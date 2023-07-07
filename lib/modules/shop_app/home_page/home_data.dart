@@ -9,7 +9,7 @@ class HomeData{
 
   HomeData(this.crud) ;
   getData() async {
-    var response = await crud.postData(AppLink.test ,{});
+    var response = await crud.getData(AppLink.getCategory);
     response.fold((l) => l, (r) => r) ;
 
   }

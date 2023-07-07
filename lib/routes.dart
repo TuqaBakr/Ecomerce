@@ -5,6 +5,7 @@ import 'package:weam/modules/shop_app/home_page/home_page.dart';
 import 'package:weam/modules/shop_app/login_shop/login_shop.dart';
 import 'package:weam/modules/shop_app/register/successRegister.dart';
 import 'package:weam/modules/shop_app/resetPassword/successReset.dart';
+import 'Test/test_view.dart';
 import 'modules/shop_app/on_boarding/on_boarding_screen.dart';
 import 'modules/shop_app/register/register_shop.dart';
 import 'modules/shop_app/register/verfiycoderegister.dart';
@@ -12,7 +13,8 @@ import 'modules/shop_app/resetPassword/resetPassword.dart';
 import 'modules/shop_app/verfiycode/verfiycode.dart';
 
 List<GetPage<dynamic>>? routes = [
-  GetPage(name: "/", page: ()=> const  HomePage()),
+  GetPage(name: "/", page: ()=>   TestView()),
+  GetPage(name: AppRoute.testView, page: ()=> TestView()),
   GetPage(name: AppRoute.onBoardingScreen, page: ()=> OnBoardingScreen()),
   GetPage(name: AppRoute.loginShop, page: ()=>const loginShop()),
   GetPage(name: AppRoute.registerShop, page: ()=>const registerShop()),
@@ -44,6 +46,7 @@ List<GetPage<dynamic>>? routes = [
 };
 */
 class AppRoute {
+  static  String testView = "/testView";
   static const String onBoardingScreen = "/onBordingScreen";
   static const String loginShop = "/loginShop";
   static const String registerShop = "/registerShop";
@@ -59,9 +62,13 @@ class AppRoute {
 
 class AppLink{
   //=======================server===================
-  static const String server = "https://wael.com/ecomerce" ;
-  static const String test = "$server/test.php" ;
+  static const String server = "http://192.168.1.112:8000/api" ;
+  static const String test = "https://jsonplaceholder.typicode.com/posts" ;
 
   //=========================== home page ============
-  static const String homepage = "$server/test.php" ;
+  // ignore: constant_identifier_names
+  static String getCategory = "$server/viewcatigory" ;
+  static String getCat = "$server/viewcatigory" ;
+  static String homepage = "$server/homepage" ;
+
 }

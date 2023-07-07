@@ -52,10 +52,9 @@ class MyApp extends StatelessWidget
       translations: MyTranslation() ,
       debugShowCheckedModeBanner: false,
       locale: controller.language,
-      initialRoute:'/onBordingScreen' ,
+      initialRoute:'/testView',
       initialBinding: InitialBindings(),
        getPages: routes,
-
     );
   }
 

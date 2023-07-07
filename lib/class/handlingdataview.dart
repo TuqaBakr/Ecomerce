@@ -2,22 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:weam/class/statusrequest.dart';
 
  class HandlingDataView extends StatelessWidget{
-  final StatusReqest  statusReqest;
+  final StatusReqest  statusRequest;
   final Widget widget;
   const HandlingDataView (
-      {Key? key ,required this.statusReqest, required this.widget})
+      {Key? key ,required this.statusRequest, required this.widget})
       :super(key: key);
 
   @override
   Widget build(BuildContext context){
     return
-      statusReqest == StatusReqest.loading ?
+      statusRequest == StatusReqest.loading ?
       const Center(child: Text("Loading")) :
-      statusReqest == StatusReqest.offlinefailure ?
+      statusRequest == StatusReqest.offlinefailure ?
       const Center(child: Text("Off Line failure ")) :
-      statusReqest == StatusReqest.serverfailure ?
+      statusRequest == StatusReqest.serverfailure ?
       const Center(child: Text("server failure")) :
-      statusReqest == StatusReqest.failure ?
+      statusRequest == StatusReqest.failure ?
       const Center(child: Text("No Data")) : widget;
   }
 }

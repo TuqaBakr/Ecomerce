@@ -1,15 +1,17 @@
-import 'package:weam/class/Crud.dart';
+import 'package:weam/class/crud.dart';
 import 'package:weam/routes.dart';
 
 
-class TestData{
+class TestData {
 
   Crud crud;
 
-  TestData(this.crud) ;
-  getData() async {
-    var response = await crud.postData(AppLink.test ,{});
-    return response.fold((l) => l, (r) => r) ;
+  TestData(this.crud);
 
+  getData() async {
+    print("hfhfhfh");
+    var response = await crud.getData(AppLink.getCategory);
+    print("===========${response}");
+    return response.fold((l) => l, (r) => r);
   }
 }

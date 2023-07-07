@@ -1,6 +1,6 @@
 enum StatusReqest{
   loading,
-  successs,
+  success,
   failure,
   serverfailure,
   offlinefailure,

@@ -8,24 +8,30 @@ class TestController extends GetxController{
   TestData testData = TestData(Get.find()) ;
 
   List data = [] ;
-  List categories= [] ;
+  //List categories= [] ;
 
-  late StatusReqest statusReqest ;
+  late StatusReqest statusRequest ;
 
   getData()async{
-    statusReqest = StatusReqest.loading;
+    statusRequest = StatusReqest.loading;
     var response = await testData.getData() ;
-    statusReqest = handlingData(response) ;
-    if(StatusReqest.successs == statusReqest){
-      if(response['status'] == statusReqest){
-        data.addAll(response['categories']) ;
+    print("rererere========================== $response");
+
+    statusRequest = handlingData(response) ;
+     if(StatusReqest.success == statusRequest){
+      if(response['status'] == "success"){
+        data.addAll(response['Catigoryes']) ;
+        print(response);
+        print("${data}=-=-=--=-==") ;
       }
       else {
-        statusReqest = StatusReqest.failure;
+        statusRequest = StatusReqest.failure;
       }
     }
+     print("${statusRequest}ffffffffffffff") ;
     update();
    }
+
 
   @override
   void onInit() {
