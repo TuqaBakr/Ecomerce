@@ -72,3 +72,10 @@ class AppLink{
   static String homepage = "$server/homepage" ;
 
 }
+
+class AppImageAsset{
+  static  String loading4 = "assets/lottie/loading4.json";
+  static const String offline="assets/lottie/offline.json";
+  static const String serverFailure="assets/lottie/server_failure.json";
+  static const String noData="assets/lottie/nodata.json";
+}

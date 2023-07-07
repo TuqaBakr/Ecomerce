@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:weam/Test/test.dart';
 import 'package:weam/class/statusrequest.dart';
+import 'package:weam/function/check_internet.dart';
 import 'package:weam/function/handingdatacontroller.dart';
 
 
@@ -16,7 +17,6 @@ class TestController extends GetxController{
     statusRequest = StatusReqest.loading;
     var response = await testData.getData() ;
     print("rererere========================== $response");
-
     statusRequest = handlingData(response) ;
      if(StatusReqest.success == statusRequest){
       if(response['status'] == "success"){

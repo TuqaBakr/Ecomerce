@@ -15,6 +15,36 @@ class Crud {
   ////////////////////////////// http.get ((((((((((((((( GET Request )))))))))))))))))) ////////////////////////////////
   Future <Either<StatusReqest, Map>> getData(String linkurl) async {
     print('hhh');
+    if(await checkinternet()){
+      var response = await http.get(
+        Uri.parse(linkurl),
+      );
+
+      print("tttttttttttttt");
+      print(response);
+      if(response.statusCode==200 || response.statusCode==201)
+      {
+        var responsebody = jsonDecode(response.body) ;
+        print(responsebody);
+        return  Right(responsebody) ; //responsebody ;
+
+      }
+      else if (response.statusCode==400 || response.statusCode==404 || response.statusCode==500 )
+      {
+        print("mohmsad");
+        return  const Left(StatusReqest.serverfailure) ; //response.statusCode;
+      }
+      else{
+        print("asmaa");
+        return Left(StatusReqest.offlinefailure) ;
+      }
+
+
+    }
+    else{
+      return const Left(StatusReqest.offlinefailure);
+    }
+    /*
    var response = await http.get(
       Uri.parse(linkurl),
     );
@@ -23,7 +53,6 @@ class Crud {
     print(response);
     if(response.statusCode==200 || response.statusCode==201)
     {
-    //  EasyLoading.showSuccess("welcome....");
       var responsebody = jsonDecode(response.body) ;
       print(responsebody);
       return  Right(responsebody) ; //responsebody ;
@@ -31,19 +60,14 @@ class Crud {
     }
      else if (response.statusCode==400 || response.statusCode==404 || response.statusCode==500 )
     {
-     // EasyLoading.showError('ERORR ,password not match');
-     // message = responsebody['message'];
       print("mohmsad");
       return  const Left(StatusReqest.serverfailure) ; //response.statusCode;
     }
     else{
-    //  EasyLoading.showError('ERORR, TRY again');
-    //  var js= jsonDecode(response.body);
-      //message = js['message'];
-     // print(message);
       print("asmaa");
       return Left(StatusReqest.offlinefailure) ;
     }
+    */
 
 
   }

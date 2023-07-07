@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:weam/class/statusrequest.dart';
+import 'package:weam/routes.dart';
 
  class HandlingDataView extends StatelessWidget{
   final StatusReqest  statusRequest;
@@ -12,13 +14,13 @@ import 'package:weam/class/statusrequest.dart';
   Widget build(BuildContext context){
     return
       statusRequest == StatusReqest.loading ?
-      const Center(child: Text("Loading")) :
+      Center(child: Lottie.asset(AppImageAsset.loading4, width: 200, height: 200)):
       statusRequest == StatusReqest.offlinefailure ?
-      const Center(child: Text("Off Line failure ")) :
+       Center(child: Lottie.asset(AppImageAsset.offline, width: 200, height: 200)) :
       statusRequest == StatusReqest.serverfailure ?
-      const Center(child: Text("server failure")) :
+       Center(child: Lottie.asset(AppImageAsset.serverFailure, width: 200, height: 200)) :
       statusRequest == StatusReqest.failure ?
-      const Center(child: Text("No Data")) : widget;
+       Center(child: Lottie.asset(AppImageAsset.noData, width: 200, height: 200)) : widget;
   }
 }
 
