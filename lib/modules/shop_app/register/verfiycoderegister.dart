@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
+import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
+import 'package:weam/class/statusrequest.dart';
 import 'package:weam/components/components.dart';
 import 'package:weam/modules/shop_app/forgetpassword/forgetpassword_controller.dart';
 import 'package:weam/modules/shop_app/login_shop/login_shop.dart';
@@ -21,11 +23,16 @@ class verfiycoderegister extends StatefulWidget {
 class _verfiycoderegisterState extends State<verfiycoderegister> {
   @override
   Widget build(BuildContext context) {
-    verfiycoderegisterControllerImp controller = Get.put(verfiycoderegisterControllerImp());
+    Get.put(verfiycoderegisterControllerImp());
     return Scaffold(
-      backgroundColor: thirdBackColor
-      ,
-      body: Padding(
+      backgroundColor: thirdBackColor,
+      body: GetBuilder<verfiycoderegisterControllerImp>(
+        builder: (controller) =>
+        controller.statusReqest == StatusReqest.loading?
+            Center(
+              child: Text("loading..."),
+            ):
+        Padding(
         padding: const EdgeInsets.all(20.0),
         child: Center(
           child: SingleChildScrollView(
@@ -58,14 +65,14 @@ class _verfiycoderegisterState extends State<verfiycoderegister> {
                   enabledBorderColor: forthBackColor,
                   fieldWidth: 50.0,
                   borderRadius: BorderRadius.circular(20),
-                  numberOfFields: 5,
+                  numberOfFields: 6,
                   borderColor: forthBackColor,
                   showFieldAsBox: true,
                   onCodeChanged: (String code ){
 
                   },
                   onSubmit: (String verificationCode){
-                    controller.goTosuccessRegister();
+                    controller.goTosuccessRegister(verificationCode);
                   },
                 ),
               ],
@@ -73,6 +80,8 @@ class _verfiycoderegisterState extends State<verfiycoderegister> {
           ),
         ),
       ),
+      )
+
     );
   }
 }

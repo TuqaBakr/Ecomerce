@@ -1,5 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:weam/auth/register.dart';
+import 'package:weam/class/crud.dart';
+import 'package:weam/class/statusrequest.dart';
+import 'package:weam/function/handingdatacontroller.dart';
 import 'package:weam/modules/shop_app/login_shop/login_shop.dart';
 import 'package:weam/routes.dart';
 
@@ -14,9 +18,13 @@ class registerShopControllerImp extends registerController {
   late TextEditingController password;
   late TextEditingController phone;
   late TextEditingController username;
-
-
   bool isshowpassword = true;
+
+   StatusReqest? statusReqest;
+
+ registerData RegisterData = registerData(Get.find()) ;
+
+  List data = [] ;
 
   showPassword(){
     isshowpassword = isshowpassword == true ? false : true;
@@ -26,15 +34,31 @@ class registerShopControllerImp extends registerController {
   GlobalKey<FormState>fromstate = GlobalKey<FormState>();
 
   @override
-  registerShop() {
+  registerShop() async {
     if(fromstate.currentState!.validate()) {
-      Get.offNamed(AppRoute.verficoderegister);
-      Get.delete<registerShopControllerImp>();
-    }
-    else
-      {
-        print("Not Valid");
+      statusReqest = StatusReqest.loading;
+      update();
+     var response = await RegisterData.postdata(
+         username.text,password.text,email.text,phone.text) ;
+      statusReqest = handlingData(response) ;
+      if(StatusReqest.success == statusReqest){
+        if(response['status'] == 'success'){
+          //data.addAll(response['data']) ;
+          Get.offNamed(AppRoute.verficoderegister , arguments: {
+            "email": email.text,
+          });
+        } else {
+          Get.defaultDialog(
+              title: "warning" ,
+              middleText: "phone or email already exists",
+          );
+          statusReqest = StatusReqest.failure;
+        }
       }
+     update();
+     // Get.delete<registerShopControllerImp>();
+    }
+    else {}
   }
 
   @override

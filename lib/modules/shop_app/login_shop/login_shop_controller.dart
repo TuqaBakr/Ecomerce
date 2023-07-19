@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:weam/auth/login.dart';
+import 'package:weam/class/statusrequest.dart';
+import 'package:weam/function/handingdatacontroller.dart';
 import 'package:weam/modules/shop_app/login_shop/login_shop.dart';
 import 'package:weam/routes.dart';
 
@@ -11,6 +14,8 @@ abstract class loginController extends GetxController{
 
 class loginShopControllerImp extends loginController {
 
+  loginData logindata =loginData(Get.find());
+
   GlobalKey<FormState>fromstate = GlobalKey<FormState>();
 
   late TextEditingController email;
@@ -18,20 +23,33 @@ class loginShopControllerImp extends loginController {
 
   bool isshowpassword = true;
 
+  StatusReqest? statusReqest;
+
   showPassword(){
     isshowpassword = isshowpassword == true ? false : true;
     update();
   }
 
   @override
-  loginShop() {
-    var formdata = fromstate.currentState;
-    if(formdata!.validate()){
-      print("Valid");
-    }
-    else{
-      print("Not Valid");
-    }
+  loginShop() async {
+    if(fromstate.currentState!.validate()) {
+      statusReqest = StatusReqest.loading;
+      update();
+      var response = await logindata.postdata(email.text,password.text) ;
+      statusReqest = handlingData(response) ;
+      if(StatusReqest.success == statusReqest){
+        if(response['status'] == 'success'){
+          Get.offNamed(AppRoute.homePage);
+        } else {
+          Get.defaultDialog(
+            title: "warning" ,
+            middleText: "email or password not correct",
+          );
+          statusReqest = StatusReqest.failure;
+        }
+      }
+      update();
+    }else{}
   }
 
   @override
