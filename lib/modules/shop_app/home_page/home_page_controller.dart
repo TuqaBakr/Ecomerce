@@ -10,20 +10,23 @@ import 'home_data.dart';
 abstract class HomeController extends GetxController{
 initialData();
 getdata();
-goToItems(List categories, int selectedCat);
+goToSubCategory(List categories, int selectedCat);
+goToProductDetails(int productId);
 }
 
 class HomeControllerImp extends HomeController{
  MyServices myServices = Get.find() ;
-
  late TextEditingController search;
  String? username ;
  String? id ;
+ String? lang;
 
  HomeData homeData = HomeData(Get.find()) ;
 
  List data = [] ;
  List categories = [] ;
+ List highestProducts = [];
+ List discountProducts = [] ;
 
  late StatusReqest statusRequest ;
 
@@ -39,20 +42,28 @@ class HomeControllerImp extends HomeController{
   @override
   initialData() {
   username = myServices.sharedPreferances.getString("username") ;
-  id = myServices.sharedPreferances.getString("id") ;
+  id       = myServices.sharedPreferances.getString("id") ;
+  lang     = myServices.sharedPreferances.getString("lang") ;
   }
 
   @override
   getdata() async {
     statusRequest = StatusReqest.loading;
     var response = await homeData.getData() ;
-    print("rererere========================== $response");
+   // print("rererere========================== $response");
     statusRequest = handlingData(response) ;
     if(StatusReqest.success == statusRequest){
       if(response['status'] == "success"){
-        categories.addAll(response['data']) ;
-        print(response);
-        print(categories) ;
+        categories.addAll(response['catigores']) ;
+        highestProducts.addAll(response['highestproducts']) ;
+        discountProducts.addAll(response['discounts']) ;
+
+
+        // product.addAll(response['items']) ;
+        print("9999999588989898989898") ;
+        print(response['highestproducts']) ;
+        //print(response);
+       // print(categories) ;
       }
       else {
         statusRequest = StatusReqest.failure;
@@ -63,11 +74,18 @@ class HomeControllerImp extends HomeController{
   }
 
   @override
-  goToItems( categories, selectedCat) {
+  goToSubCategory( categories, selectedCat  ) {
    Get.toNamed(AppRoute.items, arguments: {
      "categories"  : categories,
-     "selectedcat" : selectedCat
+     "selectedCat" : selectedCat
    }) ;
+  }
+
+  @override
+  goToProductDetails( productId, ) {
+   Get.toNamed(AppRoute.productDetails, arguments: {
+     "ProductID" : productId,
+   });
   }
 
 

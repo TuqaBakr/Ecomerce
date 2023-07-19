@@ -13,7 +13,7 @@ class CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var controller = TextEditingController();
-    return  Container(
+    return Container(
       margin: const EdgeInsets.only(top: 10),
       //padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Row(
@@ -21,7 +21,6 @@ class CustomAppBar extends StatelessWidget {
           Expanded(child:
           Container(
             height: 50,
-            //margin: const EdgeInsets.all(15.0),
             padding: const EdgeInsets.all(3.0),
             decoration:  BoxDecoration(
             color: Colors.grey[200],

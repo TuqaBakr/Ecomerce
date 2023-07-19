@@ -6,6 +6,8 @@ import 'package:weam/constant.dart';
 import 'package:weam/models/categoreismodel.dart';
 import 'package:weam/modules/shop_app/home_page/home_page_controller.dart';
 
+import '../../routes.dart';
+
 class ListCategoriesHome extends GetView<HomeControllerImp> {
 
   const ListCategoriesHome({Key? key}) : super(key: key);
@@ -37,12 +39,14 @@ class Categories extends GetView<HomeControllerImp> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: (){
-        controller.goToItems(controller.categories, i! ) ;
+        controller.goToSubCategory(controller.categories, i! ) ;
       },
       child: Column(
         children: [
           Container(
-            child: SvgPicture.network("http://192.168.1.103:8000/""${categoriesModel.image}", color: sevenBackColor,),
+            child: SvgPicture.network(
+              AppLink.imageStatic + "${categoriesModel.image}",
+              color: fifthBackColor),
             padding:const EdgeInsets.symmetric(horizontal: 10) ,
             height: 60 ,
             width: 100,

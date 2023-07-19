@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:weam/modules/shop_app/changeLang/changeLang.dart';
 import 'package:weam/modules/shop_app/forgetpassword/forgetpassword.dart';
 import 'package:weam/modules/shop_app/home_page/home_page.dart';
+import 'package:weam/modules/shop_app/home_screen/home_screen.dart';
 import 'package:weam/modules/shop_app/login_shop/login_shop.dart';
+import 'package:weam/modules/shop_app/product_details/product_details.dart';
 import 'package:weam/modules/shop_app/register/successRegister.dart';
 import 'package:weam/modules/shop_app/resetPassword/successReset.dart';
 import 'Test/test_view.dart';
+import 'modules/shop_app/items/items.dart';
 import 'modules/shop_app/on_boarding/on_boarding_screen.dart';
 import 'modules/shop_app/register/register_shop.dart';
 import 'modules/shop_app/register/verfiycoderegister.dart';
@@ -13,8 +17,9 @@ import 'modules/shop_app/resetPassword/resetPassword.dart';
 import 'modules/shop_app/verfiycode/verfiycode.dart';
 
 List<GetPage<dynamic>>? routes = [
-  GetPage(name: "/", page: ()=>   OnBoardingScreen()),
+  GetPage(name: "/", page: ()=> HomeScreen()),
   GetPage(name: AppRoute.testView, page: ()=> TestView()),
+  GetPage(name: AppRoute.language, page: ()=> Language()),
   GetPage(name: AppRoute.onBoardingScreen, page: ()=> OnBoardingScreen()),
   GetPage(name: AppRoute.loginShop, page: ()=>const loginShop()),
   GetPage(name: AppRoute.registerShop, page: ()=>const registerShop()),
@@ -24,7 +29,9 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppRoute.successReset, page: ()=>const successReset()),
   GetPage(name: AppRoute.successRegister, page: ()=>  const successRgister()),
   GetPage(name: AppRoute.verficoderegister, page: ()=>const verfiycoderegister()),
-  GetPage(name: AppRoute.homePage, page: ()=> HomePage()),
+  GetPage(name: AppRoute.homePage, page: ()=> HomeScreen()),
+  GetPage(name: AppRoute.items, page: ()=> Items()),
+  GetPage(name: AppRoute.productDetails, page: ()=>const ProductDetails()),
 
 ];
 
@@ -47,6 +54,7 @@ List<GetPage<dynamic>>? routes = [
 */
 class AppRoute {
   static  String testView = "/testView";
+  static const String language = "/language";
   static const String onBoardingScreen = "/onBordingScreen";
   static const String loginShop = "/loginShop";
   static const String registerShop = "/registerShop";
@@ -57,12 +65,13 @@ class AppRoute {
   static const String successRegister = "/successregister";
   static const String verficoderegister = "/verficoderegister";
   static const String homePage = "/homePage";
-
+  static const String items = "/items";
+  static const String productDetails = "/productDetails";
 }
 
 class AppLink{
   //=======================server===================
-  static const String server = "http://192.168.167.203:8000/api" ;
+  static const String server = "http://192.168.1.109:8000/api" ;
   static const String test = "https://jsonplaceholder.typicode.com/posts" ;
 
   //=========================== home page ============
@@ -70,6 +79,14 @@ class AppLink{
   static String getCategory = "$server/viewcatigory" ;
   static String getCat = "http://192.168.1.117:8000/api/viewcatigory" ;
   static String homepage = "$server/homepage" ;
+
+  //====================images============================
+
+  static const String imageStatic = "http://192.168.1.109:8000/" ;
+  static const String categoryImage = "C:/xampp/htdocs/shopping/public/photos" ;
+  static const String subcategoryImage = "C:/xampp/htdocs/shopping/public/subcatigory" ;
+  static const String productImage = "C:/xampp/htdocs/shopping/public/products " ;
+
 
   //=========================== Auth =================
   static String register = "$server/regiser" ;
@@ -81,6 +98,19 @@ class AppLink{
   static String forgetpassword = "$server/user/password/email" ;
   static String checkcode = "$server/user/password/code/check" ;
   static String resetpassword = "$server/user/password/reset" ;
+
+
+//=========================== subcategories ============
+static String subcategories = "$server/viewsubcatigory/" ;
+
+
+//=========================== items ============
+  static String products = "$server/viewproducts/" ;
+  static String productsDetails = "$server/productinfo/" ;
+
+
+
+
 
 }
 

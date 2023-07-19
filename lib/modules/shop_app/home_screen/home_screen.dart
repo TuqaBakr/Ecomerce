@@ -10,8 +10,6 @@ late bool active0=false , active1=false , active2=false , active3=false  ;
 class HomeScreen extends StatelessWidget {
    HomeScreen({Key? key}) : super(key: key);
 
-   bool active0 = false , active1 = false , active2 = false , active3 = false  ;
-
   @override
   Widget build(BuildContext context) {
     Get.put(HomeScreenControllerImp()) ;
@@ -26,7 +24,6 @@ class HomeScreen extends StatelessWidget {
             notchMargin: 10,
             child: Row(
               children: [
-
                 ...List.generate(
                     controller.listPage.length + 1,
                         (index) {

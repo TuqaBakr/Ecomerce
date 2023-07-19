@@ -1,3 +1,6 @@
+// ignore: file_names
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:weam/routes.dart';
@@ -17,7 +20,7 @@ class successResetControllerImp extends successResetController {
       Get.offNamed(AppRoute.loginShop);
     }
     else{
-      print("Not Valid");
+       print("Not Valid");
     }
   }
 }

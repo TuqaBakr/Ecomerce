@@ -29,7 +29,7 @@ class _loginShopState extends State<loginShop> {
       body:GetBuilder<loginShopControllerImp>(
           builder: (controller) =>
           controller.statusReqest == StatusReqest.loading ?
-              Center(child: Text("loading.."),):
+          const Center(child: Text("loading.."),):
               Padding(
             padding: const EdgeInsets.all(20.0),
             child: WillPopScope(
@@ -42,10 +42,10 @@ class _loginShopState extends State<loginShop> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         logo(),
-                        SizedBox(
+                        const SizedBox(
                           height: 40.0,
                         ),
-                        Text(
+                        const Text(
                           'Login',
                           style: TextStyle(
                             fontFamily: 'DeliciousHandrawn',
@@ -54,7 +54,7 @@ class _loginShopState extends State<loginShop> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 50.0,
                         ),
                         FormFeild(
@@ -67,7 +67,7 @@ class _loginShopState extends State<loginShop> {
                           hinttext: "Enter your Email",
                           isNumber: false,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 30.0,
                         ),
                         GetBuilder<loginShopControllerImp>(
@@ -85,14 +85,14 @@ class _loginShopState extends State<loginShop> {
                             hinttext: "Enter your password",
                             isNumber: false,
                           ),),
-                        SizedBox(
+                        const SizedBox(
                           height: 100.0,
                         ),
                         InkWell(
-                          child: Row(
+                          child:Row(
                             mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Text(
+                            children:const [
+                            Text(
                                 'Forget Password ?',
                                 textAlign: TextAlign.end,
                               ),
@@ -104,7 +104,7 @@ class _loginShopState extends State<loginShop> {
                           },
 
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 15.0,
                         ),
                         defaultButtom(
@@ -114,7 +114,7 @@ class _loginShopState extends State<loginShop> {
                             controller.loginShop();
                           },
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20.0,
                         ),
                         defaultButtom(

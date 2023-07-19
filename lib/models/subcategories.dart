@@ -1,17 +1,24 @@
-  class CategoriesModel {
+class SubCategoriesModel {
   int? id;
   String? name;
   String? image;
-  String? createdAt;
-  String? updatedAt;
+  int? catigoryId;
+  Null? createdAt;
+  Null? updatedAt;
 
-  CategoriesModel(
-      {this.id, this.name, this.image, this.createdAt, this.updatedAt});
+  SubCategoriesModel(
+      {this.id,
+        this.name,
+        this.image,
+        this.catigoryId,
+        this.createdAt,
+        this.updatedAt});
 
-  CategoriesModel.fromJson(Map<String, dynamic> json) {
+  SubCategoriesModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
     image = json['image'];
+    catigoryId = json['catigory_id'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
   }
@@ -21,6 +28,7 @@
     data['id'] = this.id;
     data['name'] = this.name;
     data['image'] = this.image;
+    data['catigory_id'] = this.catigoryId;
     data['created_at'] = this.createdAt;
     data['updated_at'] = this.updatedAt;
     return data;
