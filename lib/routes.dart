@@ -6,6 +6,7 @@ import 'package:weam/modules/shop_app/login_shop/login_shop.dart';
 import 'package:weam/modules/shop_app/register/successRegister.dart';
 import 'package:weam/modules/shop_app/resetPassword/successReset.dart';
 import 'Test/test_view.dart';
+import 'modules/shop_app/items/items.dart';
 import 'modules/shop_app/on_boarding/on_boarding_screen.dart';
 import 'modules/shop_app/register/register_shop.dart';
 import 'modules/shop_app/register/verfiycoderegister.dart';
@@ -25,6 +26,7 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppRoute.successRegister, page: ()=>  const successRgister()),
   GetPage(name: AppRoute.verficoderegister, page: ()=>const verfiycoderegister()),
   GetPage(name: AppRoute.homePage, page: ()=> HomePage()),
+  GetPage(name: AppRoute.items, page: ()=> Items()),
 
 ];
 
@@ -70,6 +72,16 @@ class AppLink{
   static String getCategory = "$server/viewcatigory" ;
   static String getCat = "$server/viewcatigory" ;
   static String homepage = "$server/homepage" ;
+
+
+
+  //====================images============================
+
+  static const String imageStatic = "http://192.168.1.103:8000/" ;
+  static const String categoryImage = "C:/xampp/htdocs/shopping/public/photos" ;
+  static const String subcategoryImage = "C:/xampp/htdocs/shopping/public/subcatigory" ;
+  static const String productImage = "C:/xampp/htdocs/shopping/public/products " ;
+
 
 }
 

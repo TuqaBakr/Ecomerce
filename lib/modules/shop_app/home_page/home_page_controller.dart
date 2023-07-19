@@ -4,19 +4,21 @@ import 'package:weam/class/statusrequest.dart';
 import 'package:weam/function/handingdatacontroller.dart';
 import 'package:weam/services/services.dart';
 
+import '../../../routes.dart';
 import 'home_data.dart';
 
 abstract class HomeController extends GetxController{
 initialData();
 getdata();
+goToItems(List categories, int selectedCat);
 }
 
 class HomeControllerImp extends HomeController{
  MyServices myServices = Get.find() ;
-  late TextEditingController search;
 
-  String? username;
-  String? id ;
+ late TextEditingController search;
+ String? username ;
+ String? id ;
 
  HomeData homeData = HomeData(Get.find()) ;
 
@@ -35,29 +37,37 @@ class HomeControllerImp extends HomeController{
   }
 
   @override
-  getdata() async{
+  initialData() {
+  username = myServices.sharedPreferances.getString("username") ;
+  id = myServices.sharedPreferances.getString("id") ;
+  }
+
+  @override
+  getdata() async {
     statusRequest = StatusReqest.loading;
     var response = await homeData.getData() ;
-    print("================================ Controller $response");
+    print("rererere========================== $response");
     statusRequest = handlingData(response) ;
-    //print(statusRequest);
-    //print(response);
-    /*
-    if(StatusReqest.success == statusRequest) {
-      if(response['status'] == "success") {
-        categories.addAll(response['categories']) ;
-      } else {
+    if(StatusReqest.success == statusRequest){
+      if(response['status'] == "success"){
+        categories.addAll(response['data']) ;
+        print(response);
+        print(categories) ;
+      }
+      else {
         statusRequest = StatusReqest.failure;
       }
     }
-    */
+    print("${statusRequest}ffffffffffffff") ;
     update();
   }
 
   @override
-  initialData() {
-  username = myServices.sharedPreferances.getString("username") ;
-  id = myServices.sharedPreferances.getString("id") ;
+  goToItems( categories, selectedCat) {
+   Get.toNamed(AppRoute.items, arguments: {
+     "categories"  : categories,
+     "selectedcat" : selectedCat
+   }) ;
   }
 
 
