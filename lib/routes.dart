@@ -13,7 +13,7 @@ import 'modules/shop_app/resetPassword/resetPassword.dart';
 import 'modules/shop_app/verfiycode/verfiycode.dart';
 
 List<GetPage<dynamic>>? routes = [
-  GetPage(name: "/", page: ()=>   TestView()),
+  GetPage(name: "/", page: ()=>   OnBoardingScreen()),
   GetPage(name: AppRoute.testView, page: ()=> TestView()),
   GetPage(name: AppRoute.onBoardingScreen, page: ()=> OnBoardingScreen()),
   GetPage(name: AppRoute.loginShop, page: ()=>const loginShop()),
@@ -62,14 +62,25 @@ class AppRoute {
 
 class AppLink{
   //=======================server===================
-  static const String server = "http://192.168.1.112:8000/api" ;
+  static const String server = "http://192.168.167.203:8000/api" ;
   static const String test = "https://jsonplaceholder.typicode.com/posts" ;
 
   //=========================== home page ============
   // ignore: constant_identifier_names
   static String getCategory = "$server/viewcatigory" ;
-  static String getCat = "$server/viewcatigory" ;
+  static String getCat = "http://192.168.1.117:8000/api/viewcatigory" ;
   static String homepage = "$server/homepage" ;
+
+  //=========================== Auth =================
+  static String register = "$server/regiser" ;
+  static String verfiycoderegister = "$server/checkcode" ;
+  static String login = "$server/login" ;
+
+//=========================== ForgetPassword ============
+
+  static String forgetpassword = "$server/user/password/email" ;
+  static String checkcode = "$server/user/password/code/check" ;
+  static String resetpassword = "$server/user/password/reset" ;
 
 }
 

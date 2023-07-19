@@ -56,14 +56,14 @@ class _verfiycodeState extends State<verfiycode> {
                   enabledBorderColor: forthBackColor,
                   fieldWidth: 50.0,
                   borderRadius: BorderRadius.circular(20),
-                  numberOfFields: 5,
+                  numberOfFields:6,
                   borderColor: forthBackColor,
                   showFieldAsBox: true,
                   onCodeChanged: (String code ){
 
                   },
                   onSubmit: (String verificationCode){
-                        controller.goToresetPassword();
+                        controller.goToresetPassword(verificationCode);
                   },
                 ),
               ],

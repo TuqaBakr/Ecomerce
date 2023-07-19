@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
+import 'package:weam/class/statusrequest.dart';
 import 'package:weam/components/components.dart';
 import 'package:weam/function/validinput.dart';
 import 'package:weam/modules/shop_app/login_shop/login_shop.dart';
@@ -17,11 +19,15 @@ class forgetPassword extends StatefulWidget {
 }
 class _forgetPasswordState extends State<forgetPassword> {
   @override
-  ForgetPasswordControllerImp controller = Get.put(ForgetPasswordControllerImp());
   Widget build(BuildContext context) {
+    Get.put(ForgetPasswordControllerImp());
     return Scaffold(
       backgroundColor: thirdBackColor,
-      body: Padding(
+      body: GetBuilder<ForgetPasswordControllerImp>(
+        builder: (controller)=>
+        controller.statusReqest == StatusReqest.loading ?
+            Center(child: Text("loading..."),) :
+          Padding(
         padding: const EdgeInsets.all(20.0),
         child: Center(
           child: Form(
@@ -60,7 +66,7 @@ class _forgetPasswordState extends State<forgetPassword> {
                     text: 'Check',
                     color: forthBackColor,
                     onPressed: () {
-                      controller.goToVerfiyCode();
+                      controller.checkemail();
                     },
                   ),
                 ],
@@ -69,6 +75,8 @@ class _forgetPasswordState extends State<forgetPassword> {
           ),
         ),
       ),
+      ),
+
     );
   }
 }
