@@ -45,7 +45,7 @@ class Crud {
   ////////////////////////////// http.get ((((((((((((((( GET Request )))))))))))))))))) ////////////////////////////////
   Future <Either<StatusReqest, Map>> getData(String linkurl) async {
     print('hhh');
-    if(await checkinternet()){
+    //if(await checkinternet()){
       var response = await http.get(
         Uri.parse(linkurl),
       );
@@ -72,10 +72,10 @@ class Crud {
         print("asmaa");
         return const Left(StatusReqest.offlinefailure) ;
       }
-    }
-    else{
-      return const Left(StatusReqest.offlinefailure);
-    }
+   // }
+   // else{
+     // return const Left(StatusReqest.offlinefailure);
+   // }
     /*
    var response = await http.get(
       Uri.parse(linkurl),

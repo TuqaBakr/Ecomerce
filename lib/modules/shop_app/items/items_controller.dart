@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:weam/class/statusrequest.dart';
 import 'package:weam/function/handingdatacontroller.dart';
@@ -24,11 +25,40 @@ class ItemsControllerImp extends ItemsController{
   int selectedCat = Get.arguments["selectedCat"] + 1  ;
   int selectedSub = 0;
   late int? subId ;
+  late TextEditingController search;
+  TextEditingController? Search ;
+  bool isSearch = false ;
+  List<ItemsModel> listdata = [];
 
   ItemData itemData = ItemData(Get.find()) ;
 
   late StatusReqest statusRequest ;
   late StatusReqest statusRequestItems ;
+
+
+  checkSearch(val){
+    if(val == ""){
+      isSearch = false;
+    }
+    update();
+  }
+
+
+  onSearchItems(){
+    isSearch = true ;
+    searchData() ;
+    update();
+  }
+
+
+
+
+
+
+
+
+
+
 
   @override
   intialData() {
@@ -38,8 +68,10 @@ class ItemsControllerImp extends ItemsController{
   }
   @override
   void onInit() {
+    Search = TextEditingController() ;
     getData();
     intialData() ;
+    search = TextEditingController();
     getItems();
     super.onInit() ;
   }
@@ -101,6 +133,24 @@ class ItemsControllerImp extends ItemsController{
     print("${statusRequest}ffffffffffffff") ;
     update();
 
+  }
+
+  searchData() async {
+    statusRequest = StatusReqest.loading;
+    var response = await itemData.searchData(Search!.text) ;
+    statusRequest = handlingData(response) ;
+    if(StatusReqest.success == statusRequest){
+      if(response['status'] == "success"){
+        listdata.clear();
+        List responsedata = response['products'] ;
+        listdata.addAll(responsedata.map((e) => ItemsModel.fromJson(e)));
+      }
+      else {
+        statusRequest = StatusReqest.failure;
+      }
+    }
+    print("${statusRequest}ffffffffffffff") ;
+    update();
   }
 
   @override
