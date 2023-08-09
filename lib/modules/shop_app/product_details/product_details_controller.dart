@@ -20,6 +20,7 @@ class ProductDetailsControllerImp extends ProductDetailsController{
   late StatusReqest statusRequest ;
   late List product  = [] ;
   late List attribute  = [] ;
+ // late List color  = [] ;
 
   initialData(){
     productId  = Get.arguments['ProductID']  ;
@@ -36,6 +37,8 @@ class ProductDetailsControllerImp extends ProductDetailsController{
 
   @override
   getData() async {
+    product.clear();
+    attribute.clear();
      statusRequest = StatusReqest.loading;
     //var response = await itemData.getData(selectedCat) ;
     var response = await productData.getData("${AppLink.productsDetails}""${productId}") ;

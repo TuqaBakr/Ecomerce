@@ -1,10 +1,12 @@
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:weam/class/handlingdataview.dart';
 import 'package:weam/components/components.dart';
 import 'package:weam/function/validinput.dart';
+import 'package:weam/models/itemmodel.dart';
 import 'package:weam/modules/shop_app/home_page/home_page_controller.dart';
 import 'package:weam/routes.dart';
 import 'package:weam/widget/home/customappbar.dart';
@@ -22,18 +24,29 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.put(HomeControllerImp()) ;
     return GetBuilder<HomeControllerImp>(
-        builder: (controller) => HandlingDataView(
-          statusRequest: controller.statusRequest,
-          widget:Container(
+        builder: (controller) =>Container(
             padding: const EdgeInsets.all(15.0),
             child:ListView(
               children: [
                 CustomAppBar(
-                    titleappbar: "Find Product", onPressedIcon: (){}, onPressedIconSearch: (){}),
+                  titleappbar: "Find Product",
+                  //onPressedIcon: (){},
+                  onPressedIconSearch: (){
+                    controller.onSearchItems();
+                  },
+                  mycontroller: controller.Search!,
+                  onChanged: (val){
+                    controller.checkSearch(val) ;
+                  },
+                ),
 
+          HandlingDataView(
+            statusRequest: controller.statusRequest,
+            widget: !controller.isSearch
+                ? Column(
+              crossAxisAlignment:CrossAxisAlignment.start ,
+              children: [
                 const SizedBox(height: 10,),
-
-                //new offer
                 Stack(
                   children: [
                     Container(
@@ -71,7 +84,6 @@ class HomePage extends StatelessWidget {
                     ),
                   ],
                 ),
-
                 Container(
                   margin:const EdgeInsets.symmetric(vertical: 20),
                   child: const Text(
@@ -83,9 +95,7 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                 ),
-
                 const ListCategoriesHome() ,
-
                 Container(
                   margin:const EdgeInsets.symmetric(vertical: 15),
                   child: const Text(
@@ -98,52 +108,6 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 const ListDiscountItemsHome(),
-                /*
-                SizedBox(
-                  height: 200,
-                  width: 100,
-                  child: ListView.builder(
-                      itemCount: controller.discountProducts.length,
-                      scrollDirection: Axis.horizontal ,
-                      itemBuilder: (context, i){
-                        return Stack(
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.symmetric(horizontal:10 , vertical: 10),
-                              margin: const EdgeInsets.symmetric(horizontal:10 ,vertical: 15),
-                              child: Image.network(
-                                AppLink.imageStatic + "${controller.discountProducts[i]['image']}" ,
-                                height: 150,
-                                width: 150,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-
-                            Container(
-                              decoration: BoxDecoration(
-                                color:fifthBackColor.withOpacity(0.3),
-                                  borderRadius: BorderRadius.circular(20)
-                              ),
-                              height: 170,
-                              width: 170,
-                            ),
-                             Positioned(
-                                 top: 2,
-                                left:10,
-                                child: Text(
-                                  "${controller.discountProducts[i]['name']}",
-                                  style:const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold)
-                                  ,)),
-                          ],
-                        );
-                      }
-                  ),
-                ),
-                */
-
                 Container(
                   margin:const EdgeInsets.symmetric(vertical: 15),
                   child: const Text(
@@ -157,9 +121,62 @@ class HomePage extends StatelessWidget {
                 ),
                 const ListHighRatingItemsHome(),
               ],
+            )
+                : ListItemsSearch(listdataModel: controller.listdata)
+          ),
+
+              ],
             ),
           ),
-        ),
+
       );
   }
 }
+
+class ListItemsSearch extends GetView<HomeControllerImp> {
+  final List<ItemsModel> listdataModel ;
+  const ListItemsSearch({Key? key,required this.listdataModel}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+        itemCount: listdataModel.length,
+        shrinkWrap: true,
+        physics:const NeverScrollableScrollPhysics(),
+        itemBuilder: (context, index){
+          return InkWell(
+            onTap: (){
+              controller.goToProductDetails(listdataModel[index].id!, listdataModel[index]) ;
+            },
+            child: Container(
+              margin:const  EdgeInsets.symmetric(vertical: 10),
+              child: Card(
+                child: Container(
+                  padding:const EdgeInsets.all(10),
+                  child: Row(
+                    children: [
+                      Expanded(
+                          child: CachedNetworkImage(
+                            imageUrl: AppLink.imageStatic + "${listdataModel[index].image}",
+                            height: 90,
+                            width: 90,
+                            fit: BoxFit.cover,
+                          )
+                      ),
+                      Expanded(
+                          flex: 2,
+                          child: ListTile(
+                            title: Text(listdataModel[index].name!),
+                            subtitle: Text(listdataModel[index].description!),
+                          )
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          );
+    });
+  }
+}
+

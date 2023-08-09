@@ -1,4 +1,5 @@
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -40,18 +41,22 @@ class Products extends GetView<HomeControllerImp> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: (){
-        controller.goToProductDetails(itemsModel.id!) ;
+        controller.goToProductDetails(itemsModel.id!, itemsModel) ;
+        //controller.goToBrodactDetails(itemsModel.id!, itemsModel) ;
       },
       child:Stack(
         children: [
           Container(
             padding: const EdgeInsets.symmetric(horizontal:10 , vertical: 10),
             margin: const EdgeInsets.symmetric(horizontal:10 ,vertical: 15),
-            child: Image.network(
-              AppLink.imageStatic + "${itemsModel.image}" ,
-              height: 150,
-              width: 150,
-              fit: BoxFit.cover,
+            child: Hero(
+              tag: "${itemsModel.id!}",
+              child: CachedNetworkImage(
+                imageUrl: AppLink.imageStatic + itemsModel.image!,
+                height: 90,
+                width: 90,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
 
@@ -73,7 +78,12 @@ class Products extends GetView<HomeControllerImp> {
                     fontSize: 18,
                     fontWeight: FontWeight.bold)
                 ,)),
+          Positioned(
+              right:3,
+              top: 3,
+              child: Image.asset("assets/images/sallle.png", width: 45,)),
         ],
+
       ),
     );
   }

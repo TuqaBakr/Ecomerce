@@ -10,7 +10,7 @@ import 'package:weam/modules/shop_app/items/items_controller.dart';
 
 class ListSubCategoriesItems extends GetView<ItemsControllerImp> {
 
-  const ListSubCategoriesItems({Key? key}) : super(key: key);
+  const  ListSubCategoriesItems({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

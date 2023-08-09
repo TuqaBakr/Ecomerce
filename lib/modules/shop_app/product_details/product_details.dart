@@ -6,6 +6,9 @@ import 'package:get/get_state_manager/src/rx_flutter/rx_notifier.dart';
 import 'package:weam/class/handlingdataview.dart';
 import 'package:weam/constant.dart';
 import 'package:weam/models/productmodel.dart';
+import 'package:weam/widget/productdetails/priceandcount.dart';
+import 'package:weam/widget/productdetails/subproductlist.dart';
+import 'package:weam/widget/productdetails/toppageproductdetails.dart';
 
 import '../../../routes.dart';
 import 'product_details_controller.dart';
@@ -22,8 +25,15 @@ class ProductDetails extends StatelessWidget {
         height: 50,
         child: MaterialButton(
           onPressed: (){},
-          child:const Text('Add to cart', style: TextStyle(fontWeight: FontWeight.bold, color: whiteBackColor),),
-          color: OrangeColor,
+          child:Padding(
+            padding: const EdgeInsets.only(left: 90),
+            child: Row(children: const[
+              Text('Add to cart', style: TextStyle(fontWeight: FontWeight.bold, color: whiteBackColor),),
+              Icon(Icons.add_shopping_cart_outlined, color: whiteBackColor),
+            ],),
+          ),
+
+          color: secondBackColor,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         ),
       ),
@@ -31,6 +41,8 @@ class ProductDetails extends StatelessWidget {
         child:ListView(
           children:
           [
+            const TopPageProductDetails(),
+            /*
             Stack(
                     clipBehavior: Clip.none,
                     children: [
@@ -59,78 +71,51 @@ class ProductDetails extends StatelessWidget {
                     ],
 
                 ),
+            */
             const SizedBox(
               height: 120,
             ),
+
             Container(
               padding: const EdgeInsets.only(left: 20, right: 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    "${controller.itemsModel.name}",
-                    style:Theme.of(context).textTheme.headline3!.copyWith(color: firstBackColor),
+                  Center(
+                    child: Text(
+                      "${controller.itemsModel.name}",
+                      style:Theme.of(context).textTheme.headline3!.copyWith(color: firstBackColor),
+                    ),
                   ),
                   const SizedBox(height: 20,),
+
+                  PriceAndCount(onAdd: (){},onRemove: (){},count: "10",price: "200",),
+
+                  const SizedBox(height: 20,),
+                  Text(
+                    "About Product:",
+                    style:Theme.of(context).textTheme.headline6!.copyWith(color: firstBackColor),
+                  ),
+                  const SizedBox(height: 10,),
                   Text(
                     "${controller.itemsModel.description}""${controller.itemsModel.description}""${controller.itemsModel.description}""${controller.itemsModel.description}""${controller.itemsModel.description}",
                     style:Theme.of(context).textTheme.bodyText2!.copyWith(color: firstBackColor),
                   ),
                   const SizedBox(height: 20,),
                   Text(
-                    "Color :",
+                    "Details :",
                     style:Theme.of(context).textTheme.headline6!.copyWith(color: firstBackColor),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Row(
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.all(20),
-                          height: 20,
-                          width: 20,
-                          decoration: const BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(30)),
-                              color: secondBackColor,
-                          ),
-                        ),
-                        const SizedBox(width: 20,),
-                        Container(
-                          padding: const EdgeInsets.all(20),
-                          height: 20,
-                          width: 20,
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(30)),
-                            color: secondBackColor,
-                          ),
-                        ),
-                        const SizedBox(width: 20,),
-                        Container(
-                          padding: const EdgeInsets.all(20),
-                          height: 20,
-                          width: 20,
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(30)),
-                            color: secondBackColor,
-                          ),
-                        ),
-
-                      ],
-                    ),
-                  )
-
+                  const SizedBox(width: 10,),
+                  const SubProduct(),
                 ],
+
+                        ),
+                      ),
+        ],
+                  ),
               ),
-            ),
-
-
-          ],
-
-        ),
-
-
-      ),
-    );
+            );
   }
 }
 

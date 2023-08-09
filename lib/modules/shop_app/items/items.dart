@@ -9,6 +9,7 @@ import 'package:weam/widget/items/customlistitems.dart';
 import 'package:weam/widget/items/listsubcategoriesitems.dart';
 
 import '../../../constant.dart';
+import '../../../routes.dart';
 import 'items_controller.dart';
 
 class Items extends StatelessWidget {
@@ -26,81 +27,33 @@ class Items extends StatelessWidget {
           child: ListView(
             children: [
               CustomAppBar(
-                  titleappbar: "Find Product", onPressedIcon: (){}, onPressedIconSearch: (){}),
-              const SizedBox(height: 20,) ,
-              const ListSubCategoriesItems() ,
-              HandlingDataView(
-                statusRequest: controller.statusRequestItems,
-                widget:GridView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: controller.products.length,
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, childAspectRatio:0.7, ),
-                    itemBuilder: (BuildContext context, index) {
-                      return CustomListItems(itemsModel: ItemsModel.fromJson(controller.products[index]),);
-                     }),
+                titleappbar: "Find Product",
+                //onPressedIcon: (){},
+                onPressedIconSearch: (){
+                  controller.onSearchItems();
+                },
+                mycontroller: controller.Search!,
+                onChanged: (val){
+                  controller.checkSearch(val) ;
+                },
               ),
-
-
-
-              /*
-              GridView.builder(
-               shrinkWrap: true,
-               physics: const NeverScrollableScrollPhysics(),
-               itemCount: controller.products.length,
-               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, childAspectRatio:0.7, ),
-               itemBuilder: (BuildContext context, index){
-                 return InkWell(
-                   onTap: (){},
-                   child: Card(
-                     child: Padding(
-                       padding: const EdgeInsets.all(10.0),
-                       child: Column(
-                         mainAxisAlignment: MainAxisAlignment.center,
-                         crossAxisAlignment: CrossAxisAlignment.center,
-                         children: [
-                           //CachedNetworkImage(imageUrl: imageUrl),
-                           Image.asset(
-                               'assets/images/onboarding1.jpg'
-                           ),
-                           const Text(
-                             "product title",
-                             style: TextStyle(
-                                 color: firstBackColor,
-                                 fontSize: 15,
-                                 fontWeight: FontWeight.bold),
-                           ),
-                           const Text(
-                             "description about my product pla pla",
-                             textAlign: TextAlign.center,
-                             style: TextStyle(color: secondBackColor),
-                           ),
-                           Row(
-                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                             children: [
-                               const Text(
-                                  "200.0 \$",
-                                  style: TextStyle(
-                                    color: forthBackColor,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold
-                                ),),
-                               IconButton(
-                                   onPressed:(){},
-                                   icon: const Icon(Icons.favorite_border_outlined, color: secondBackColor,)
-                               ),
-                             ],
-                           ),
-
-                         ],
-                       ),
-                     ),
-                   ),
-
-                 );
-               }
-              ),
-              */
+              !controller.isSearch
+                  ? Column(children: [
+                const SizedBox(height: 20,) ,
+                const ListSubCategoriesItems() ,
+                HandlingDataView(
+                  statusRequest: controller.statusRequestItems,
+                  widget:GridView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: controller.products.length,
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, childAspectRatio:0.7, ),
+                      itemBuilder: (BuildContext context, index) {
+                        return CustomListItems(itemsModel: ItemsModel.fromJson(controller.products[index]),);
+                      }),
+                ),
+              ],)
+                  : ListItemsSearch(listdataModel: controller.listdata)
             ],
 
           ),
@@ -108,5 +61,53 @@ class Items extends StatelessWidget {
       ),
       ),
     );
+  }
+}
+
+
+class ListItemsSearch extends GetView<ItemsControllerImp> {
+  final List<ItemsModel> listdataModel ;
+  const ListItemsSearch({Key? key,required this.listdataModel}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+        itemCount: listdataModel.length,
+        shrinkWrap: true,
+        physics:const NeverScrollableScrollPhysics(),
+        itemBuilder: (context, index){
+          return InkWell(
+            onTap: (){
+              controller.goToBrodactDetails(listdataModel[index].id!, listdataModel[index]) ;
+            },
+            child: Container(
+              margin:const  EdgeInsets.symmetric(vertical: 10),
+              child: Card(
+                child: Container(
+                  padding:const EdgeInsets.all(10),
+                  child: Row(
+                    children: [
+                      Expanded(
+                          child: CachedNetworkImage(
+                            imageUrl: AppLink.imageStatic + "${listdataModel[index].image}",
+                            height: 90,
+                            width: 90,
+                            fit: BoxFit.cover,
+                          )
+                      ),
+                      Expanded(
+                          flex: 2,
+                          child: ListTile(
+                            title: Text(listdataModel[index].name!),
+                            subtitle: Text(listdataModel[index].description!),
+                          )
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          );
+        });
   }
 }

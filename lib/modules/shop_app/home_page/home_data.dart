@@ -14,6 +14,14 @@ class HomeData{
     var response = await crud.getData(AppLink.homepage);
     print("===========${response}");
     return response.fold((l) => l, (r) => r) ;
+  }
+  searchData(String search) async {
+    print("hfhfhfh");
+    String link = "${AppLink.searchItems}""${search}";
+    // print(link) ;
+    var response = await crud.getData(link);
+    print(link +"=========== ${response}");
+    return response.fold((l) => l, (r) => r) ;
 
   }
 }

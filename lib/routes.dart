@@ -71,18 +71,18 @@ class AppRoute {
 
 class AppLink{
   //=======================server===================
-  static const String server = "http://192.168.1.109:8000/api" ;
+  static const String server = "http://192.168.172.163:8000/api" ;
   static const String test = "https://jsonplaceholder.typicode.com/posts" ;
 
   //=========================== home page ============
-  // ignore: constant_identifier_names
+  // ignore: constant_identifier_names0
   static String getCategory = "$server/viewcatigory" ;
-  static String getCat = "http://192.168.1.117:8000/api/viewcatigory" ;
+  static String getCat = "http://192.168.172.163:8000/api/viewcatigory" ;
   static String homepage = "$server/homepage" ;
 
   //====================images============================
 
-  static const String imageStatic = "http://192.168.1.109:8000/" ;
+  static const String imageStatic = "http://192.168.172.163:8000/" ;
   static const String categoryImage = "C:/xampp/htdocs/shopping/public/photos" ;
   static const String subcategoryImage = "C:/xampp/htdocs/shopping/public/subcatigory" ;
   static const String productImage = "C:/xampp/htdocs/shopping/public/products " ;
@@ -107,6 +107,11 @@ static String subcategories = "$server/viewsubcatigory/" ;
 //=========================== items ============
   static String products = "$server/viewproducts/" ;
   static String productsDetails = "$server/productinfo/" ;
+  static String searchItems = "$server/searchbyname/" ;
+
+
+
+//=================== Search =======================
 
 
 

@@ -2,6 +2,7 @@
 import 'package:get/get.dart';
 import 'package:weam/class/statusrequest.dart';
 import 'package:weam/function/handingdatacontroller.dart';
+import 'package:weam/models/itemmodel.dart';
 import 'package:weam/services/services.dart';
 
 import '../../../routes.dart';
@@ -11,7 +12,7 @@ abstract class HomeController extends GetxController{
 initialData();
 getdata();
 goToSubCategory(List categories, int selectedCat);
-goToProductDetails(int productId);
+goToProductDetails(int productId, ItemsModel itemsModel);
 }
 
 class HomeControllerImp extends HomeController{
@@ -20,8 +21,27 @@ class HomeControllerImp extends HomeController{
  String? username ;
  String? id ;
  String? lang;
+ TextEditingController? Search ;
+ bool isSearch = false ;
+ List<ItemsModel> listdata = [];
+
 
  HomeData homeData = HomeData(Get.find()) ;
+
+ checkSearch(val){
+   if(val == ""){
+     isSearch = false;
+   }
+   update();
+ }
+
+
+ onSearchItems(){
+   isSearch = true ;
+   searchData() ;
+   update();
+ }
+
 
  List data = [] ;
  List categories = [] ;
@@ -33,6 +53,7 @@ class HomeControllerImp extends HomeController{
 
  @override
   void onInit() {
+    Search = TextEditingController() ;
     getdata();
     initialData();
     search = TextEditingController();
@@ -62,6 +83,8 @@ class HomeControllerImp extends HomeController{
         // product.addAll(response['items']) ;
         print("9999999588989898989898") ;
         print(response['highestproducts']) ;
+        print("99999995889898989898888888888888888888888888898") ;
+        print(response['discounts']) ;
         //print(response);
        // print(categories) ;
       }
@@ -73,6 +96,25 @@ class HomeControllerImp extends HomeController{
     update();
   }
 
+  
+ searchData() async {
+   statusRequest = StatusReqest.loading;
+   var response = await homeData.searchData(Search!.text) ;
+   statusRequest = handlingData(response) ;
+   if(StatusReqest.success == statusRequest){
+     if(response['status'] == "success"){
+       listdata.clear();
+       List responsedata = response['products'] ;
+       listdata.addAll(responsedata.map((e) => ItemsModel.fromJson(e)));
+     }
+     else {
+       statusRequest = StatusReqest.failure;
+     }
+   }
+   print("${statusRequest}ffffffffffffff") ;
+   update();
+ }
+
   @override
   goToSubCategory( categories, selectedCat  ) {
    Get.toNamed(AppRoute.items, arguments: {
@@ -82,9 +124,10 @@ class HomeControllerImp extends HomeController{
   }
 
   @override
-  goToProductDetails( productId, ) {
+  goToProductDetails( productId, itemsModel) {
    Get.toNamed(AppRoute.productDetails, arguments: {
      "ProductID" : productId,
+     "ProductModel": itemsModel ,
    });
   }
 
