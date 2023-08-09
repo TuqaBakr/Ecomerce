@@ -31,8 +31,8 @@ class HomeScreen extends StatelessWidget {
                           return index == 2
                               ? const Spacer()
                               : CustomButtonAppBar(
-                              textbutton: controller.titlebottomappbar[i],
-                              iconData: controller.Iconbottomappbar[i],
+                              textbutton: controller.bottomappbar[i]['title'],
+                              iconData: controller.bottomappbar[i]['icon'],
                               onPressed: () {
                                 controller.changePage(i);
                               },

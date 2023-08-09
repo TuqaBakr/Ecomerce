@@ -15,7 +15,7 @@ class  verfiycoderegisterControllerImp extends verfiycoderegisterController {
   verfiycoderegisterData Verfiycoderegisterdata= verfiycoderegisterData(Get.find());
 
 
-  StatusReqest? statusReqest;
+  StatusReqest statusReqest = StatusReqest.none;
 
   String ? email;
 

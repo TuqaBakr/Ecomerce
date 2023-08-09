@@ -3,6 +3,7 @@ import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
+import 'package:weam/class/handlingdataview.dart';
 import 'package:weam/class/statusrequest.dart';
 import 'package:weam/components/components.dart';
 import 'package:weam/modules/shop_app/forgetpassword/forgetpassword_controller.dart';
@@ -28,11 +29,8 @@ class _verfiycoderegisterState extends State<verfiycoderegister> {
       backgroundColor: thirdBackColor,
       body: GetBuilder<verfiycoderegisterControllerImp>(
         builder: (controller) =>
-        controller.statusReqest == StatusReqest.loading?
-            Center(
-              child: Text("loading..."),
-            ):
-        Padding(
+        HandlingDataRequest( statusRequest:controller.statusReqest,
+          widget: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Center(
           child: SingleChildScrollView(
@@ -79,7 +77,7 @@ class _verfiycoderegisterState extends State<verfiycoderegister> {
             ),
           ),
         ),
-      ),
+      ),)
       )
 
     );

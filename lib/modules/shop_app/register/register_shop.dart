@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
+import 'package:weam/class/handlingdataview.dart';
 import 'package:weam/class/statusrequest.dart';
 import 'package:weam/components/components.dart';
 import 'package:weam/function/alertexit.dart';
@@ -27,9 +28,8 @@ class _registerShopState extends State<registerShop> {
         onWillPop: alertExitApp,
         child: GetBuilder<registerShopControllerImp>(
           builder: (controller) =>
-          controller.statusReqest ==StatusReqest.loading
-              ? Center(child: Text("Loading...."),)
-           : Padding(
+          HandlingDataRequest( statusRequest:controller.statusReqest,
+            widget: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Center(
             child: Form(
@@ -144,7 +144,7 @@ class _registerShopState extends State<registerShop> {
               ),
             ),
           ),
-        ),
+        ),)
         ),
       ),
      );

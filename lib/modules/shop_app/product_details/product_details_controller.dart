@@ -3,6 +3,7 @@ import 'package:weam/class/statusrequest.dart';
 import 'package:weam/function/handingdatacontroller.dart';
 import 'package:weam/models/itemmodel.dart';
 import 'package:weam/models/productmodel.dart';
+import 'package:weam/modules/shop_app/cart/cart_controller.dart';
 import 'package:weam/modules/shop_app/product_details/product_details_data.dart';
 import 'package:weam/routes.dart';
 
@@ -12,7 +13,7 @@ getData();
 }
 class ProductDetailsControllerImp extends ProductDetailsController{
 
-
+ CartController cartController = Get.put(CartController());
   ProductData productData = ProductData(Get.find()) ;
 
   late ItemsModel itemsModel ;

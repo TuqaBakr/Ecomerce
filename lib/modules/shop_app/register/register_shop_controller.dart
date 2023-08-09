@@ -20,7 +20,7 @@ class registerShopControllerImp extends registerController {
   late TextEditingController username;
   bool isshowpassword = true;
 
-   StatusReqest? statusReqest;
+   StatusReqest statusReqest =StatusReqest.none;
 
  registerData RegisterData = registerData(Get.find()) ;
 

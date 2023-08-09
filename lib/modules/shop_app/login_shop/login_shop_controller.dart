@@ -23,7 +23,7 @@ class loginShopControllerImp extends loginController {
 
   bool isshowpassword = true;
 
-  StatusReqest? statusReqest;
+  StatusReqest statusReqest = StatusReqest.none;
 
   showPassword(){
     isshowpassword = isshowpassword == true ? false : true;

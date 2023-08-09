@@ -64,7 +64,10 @@ class CustomListItems extends StatelessWidget {
                          ),
                         IconButton(
                             onPressed:(){},
-                            icon: const Icon(Icons.favorite_border_outlined, color: secondBackColor,)
+                            icon: const Icon(
+                              Icons.favorite_border_outlined,
+                              color: secondBackColor,
+                            )
                         ),
                       ],
                     ),
