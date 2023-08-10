@@ -16,21 +16,41 @@ class ProductDetailsControllerImp extends ProductDetailsController{
  CartController cartController = Get.put(CartController());
   ProductData productData = ProductData(Get.find()) ;
 
+ late StatusReqest statusReqest ;
+  late int countitems = 0;
   late ItemsModel itemsModel ;
   late int productId ;
   late StatusReqest statusRequest ;
   late List product  = [] ;
   late List attribute  = [] ;
+  late String color = "blue" ;
  // late List color  = [] ;
 
-  initialData(){
-    productId  = Get.arguments['ProductID']  ;
-    itemsModel = Get.arguments['ProductModel'] ;
-
+  initialData()async{
+    statusReqest =StatusReqest.loading;
+    productId    = Get.arguments['ProductID']  ;
+    itemsModel   = Get.arguments['ProductModel'] ;
+    countitems   = await cartController.getCountItems(itemsModel.id!.toString());
+    statusReqest = StatusReqest.success;
+     update();
   }
+
+  add(){
+    cartController.add(itemsModel.id!.toString(), countitems.toString(), color );
+    countitems++;
+    update();
+  }
+
+  remove(){
+    if(countitems > 0){
+    cartController.delete(itemsModel.id!.toString());
+    countitems--;
+    update();
+  }}
 
   @override
   void onInit() {
+
     initialData();
     getData();
     super.onInit();
@@ -48,7 +68,7 @@ class ProductDetailsControllerImp extends ProductDetailsController{
     if(StatusReqest.success == statusRequest){
       if(response['status'] == "success"){
         product.addAll(response['product']) ;
-        attribute.addAll(response['attribute']) ;
+        attribute.addAll(response['attribute']);
         print(response);
         print("22222222222222222222$product") ;
       }

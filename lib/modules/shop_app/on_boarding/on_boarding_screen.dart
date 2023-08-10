@@ -35,19 +35,19 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   List<BoardingModel> boarding = [
     BoardingModel(
-      title: '4'.tr,
+      title: 'Welcome to [STUPIFY]!',
       image: 'assets/images/onboarding1.jpg',
-      body: 'On Board 1 Body',
+      body: 'We\'re thrilled to have you join our online Stupify shop.',
     ),
     BoardingModel(
-      title: 'On Board 2 Title',
+      title: 'Explore Our Product Categories',
       image: 'assets/images/onboarding2.jpg',
-      body: 'On Board 2 Body',
+      body: 'Browse through our intuitive product categories and find the perfect tech companion for your lifestyle, Discover a vast range of electronics tailored to your needs',
     ),
     BoardingModel(
-      title: 'On Board 3 Title',
+      title: 'Let\'s Get Started!',
       image: 'assets/images/onboarding3.jpg',
-      body: 'On Board 3 Body',
+      body: 'Now that you know what to expect, it\'s time to embark on your shopping adventure. Dive into a world of innovation, convenience, and unbeatable prices. Enjoy a seamless online shopping experience at [Shop Name]. Happy shopping!',
     ),
   ];
 
@@ -58,7 +58,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0.1,
-        backgroundColor: Colors.white,
+        backgroundColor: sevenBackColor,
         actions: [
           TextButton(onPressed: ()
           {
@@ -67,7 +67,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             child: Text(
               'SKIP',
               style: TextStyle(
-                color: firstBackColor,
+                color: whiteBackColor,
                 fontSize: 15,
 
               ),

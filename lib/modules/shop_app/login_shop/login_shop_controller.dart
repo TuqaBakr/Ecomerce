@@ -5,6 +5,7 @@ import 'package:weam/class/statusrequest.dart';
 import 'package:weam/function/handingdatacontroller.dart';
 import 'package:weam/modules/shop_app/login_shop/login_shop.dart';
 import 'package:weam/routes.dart';
+import 'package:weam/services/services.dart';
 
 abstract class loginController extends GetxController{
   loginShop();
@@ -15,6 +16,8 @@ abstract class loginController extends GetxController{
 class loginShopControllerImp extends loginController {
 
   loginData logindata =loginData(Get.find());
+
+  MyServices myServices =Get.find();
 
   GlobalKey<FormState>fromstate = GlobalKey<FormState>();
 
@@ -39,6 +42,7 @@ class loginShopControllerImp extends loginController {
       statusReqest = handlingData(response) ;
       if(StatusReqest.success == statusReqest){
         if(response['status'] == 'success'){
+          myServices.sharedPreferances.setString("token", response["token"]);
           Get.offNamed(AppRoute.homePage);
         } else {
           Get.defaultDialog(

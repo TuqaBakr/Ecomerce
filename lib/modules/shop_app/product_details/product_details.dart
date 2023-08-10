@@ -24,11 +24,13 @@ class ProductDetails extends StatelessWidget {
         margin:const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
         height: 50,
         child: MaterialButton(
-          onPressed: (){},
+          onPressed: (){
+            Get.toNamed(AppRoute.cart);
+          },
           child:Padding(
             padding: const EdgeInsets.only(left: 90),
             child: Row(children: const[
-              Text('Add to cart', style: TextStyle(fontWeight: FontWeight.bold, color: whiteBackColor),),
+              Text('Go to cart', style: TextStyle(fontWeight: FontWeight.bold, color: whiteBackColor),),
               Icon(Icons.add_shopping_cart_outlined, color: whiteBackColor),
             ],),
           ),
@@ -37,12 +39,14 @@ class ProductDetails extends StatelessWidget {
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         ),
       ),
-      body:Container(
-        child:ListView(
-          children:
-          [
-            const TopPageProductDetails(),
-            /*
+      body:GetBuilder<ProductDetailsControllerImp>(builder: (controller)=> HandlingDataView(
+        statusRequest: controller.statusReqest,
+          widget: Container(
+            child:ListView(
+              children:
+              [
+                const TopPageProductDetails(),
+                /*
             Stack(
                     clipBehavior: Clip.none,
                     children: [
@@ -72,49 +76,57 @@ class ProductDetails extends StatelessWidget {
 
                 ),
             */
-            const SizedBox(
-              height: 120,
-            ),
+                const SizedBox(
+                  height: 120,
+                ),
 
-            Container(
-              padding: const EdgeInsets.only(left: 20, right: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Center(
-                    child: Text(
-                      "${controller.itemsModel.name}",
-                      style:Theme.of(context).textTheme.headline3!.copyWith(color: firstBackColor),
-                    ),
-                  ),
-                  const SizedBox(height: 20,),
-
-                  PriceAndCount(onAdd: (){},onRemove: (){},count: "10",price: "200",),
-
-                  const SizedBox(height: 20,),
-                  Text(
-                    "About Product:",
-                    style:Theme.of(context).textTheme.headline6!.copyWith(color: firstBackColor),
-                  ),
-                  const SizedBox(height: 10,),
-                  Text(
-                    "${controller.itemsModel.description}""${controller.itemsModel.description}""${controller.itemsModel.description}""${controller.itemsModel.description}""${controller.itemsModel.description}",
-                    style:Theme.of(context).textTheme.bodyText2!.copyWith(color: firstBackColor),
-                  ),
-                  const SizedBox(height: 20,),
-                  Text(
-                    "Details :",
-                    style:Theme.of(context).textTheme.headline6!.copyWith(color: firstBackColor),
-                  ),
-                  const SizedBox(width: 10,),
-                  const SubProduct(),
-                ],
-
+                Container(
+                  padding: const EdgeInsets.only(left: 20, right: 20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Center(
+                        child: Text(
+                          "${controller.itemsModel.name}",
+                          style:Theme.of(context).textTheme.headline3!.copyWith(color: firstBackColor),
                         ),
                       ),
-        ],
+                      const SizedBox(height: 20,),
+
+                      PriceAndCount(
+                        onAdd: (){
+                          controller.add();
+                        },
+                        onRemove: (){
+                          controller.remove();
+                        },
+                        count: "${controller.countitems}",
+                        price: "200",),
+                      const SizedBox(height: 20,),
+                      Text(
+                        "About Product:",
+                        style:Theme.of(context).textTheme.headline6!.copyWith(color: firstBackColor),
+                      ),
+                      const SizedBox(height: 10,),
+                      Text(
+                        "${controller.itemsModel.description}""${controller.itemsModel.description}""${controller.itemsModel.description}""${controller.itemsModel.description}""${controller.itemsModel.description}",
+                        style:Theme.of(context).textTheme.bodyText2!.copyWith(color: firstBackColor),
+                      ),
+                      const SizedBox(height: 20,),
+                      Text(
+                        "Details :",
+                        style:Theme.of(context).textTheme.headline6!.copyWith(color: firstBackColor),
+                      ),
+                      const SizedBox(width: 10,),
+                       SubProduct(mycolor: controller.color,),
+                    ],
+
                   ),
-              ),
+                ),
+              ],
+            ),
+          ),),)
+
             );
   }
 }

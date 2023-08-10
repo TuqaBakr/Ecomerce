@@ -4,6 +4,7 @@ import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:weam/modules/shop_app/logo/logo.dart';
 import 'package:weam/modules/shop_app/setting/setting_controller.dart';
+import 'package:weam/routes.dart';
 
 import '../../../constant.dart';
 
@@ -48,7 +49,7 @@ class Setting extends StatelessWidget {
               Divider(),
               ListTile(
                 onTap: (){
-
+                        Get.offNamed(AppRoute.aboutas);
                 },
                 title: Text("About us"),
                 trailing: Icon(Icons.help_center_outlined),
@@ -56,7 +57,7 @@ class Setting extends StatelessWidget {
               Divider(),
               ListTile(
                 onTap: (){
-
+                  Get.offNamed(AppRoute.contactas);
                 },
                 title: Text("Contact us"),
                 trailing: Icon(Icons.phone),

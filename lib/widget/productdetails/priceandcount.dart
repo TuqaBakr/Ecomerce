@@ -16,7 +16,7 @@ class PriceAndCount extends StatelessWidget {
       children:[
         Row(
           children: [
-            IconButton(onPressed: onAdd, icon: const Icon(Icons.add)),
+            IconButton(onPressed:onAdd, icon: const Icon(Icons.add)),
             Container(
                 padding:const EdgeInsets.only(left: 8, top: 4),
                 height: 37,

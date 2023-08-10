@@ -7,7 +7,13 @@ import 'package:weam/modules/shop_app/product_details/product_details_controller
 import '../../constant.dart';
 
 class SubProduct extends GetView<ProductDetailsControllerImp>{
-  const SubProduct({Key? key}) : super(key: key);
+
+  late String? mycolor  ;
+  late Color color ;
+
+   SubProduct( {Key? key ,required this.mycolor,}) : super(key: key);
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -17,10 +23,17 @@ class SubProduct extends GetView<ProductDetailsControllerImp>{
           widget: Row(
             children: [
               ...List.generate(controller.attribute.length, (index) => Row(
-                children: const [
+                children:[
                   //const Icon(Icons.color_lens_outlined,),
-                  SizedBox(width: 15,),
-                  Icon(Icons.color_lens, color: secondBackColor,size: 30,),
+                  const SizedBox(width: 15,),
+                  IconButton(
+                    onPressed: (){
+                      mycolor = "${controller.attribute[index]['color']}" ;
+                      color = Color(int.parse(mycolor!.replaceAll("#", ""), radix: 16));
+
+                    },
+                    icon: Icon(Icons.color_lens, color: color ,size: 30,),),
+
                   //Text("${controller.attribute[index]['color']}" + "   " + "${controller.attribute[index]['size']}" + "   " + "${controller.attribute[index]['price']}" )
                 ],
               ),),

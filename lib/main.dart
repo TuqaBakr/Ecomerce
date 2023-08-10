@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget
       translations: MyTranslation() ,
       debugShowCheckedModeBanner: false,
       locale: controller.language,
-      initialRoute:'/cart',
+      initialRoute:'/homePage',
       initialBinding: InitialBindings(),
        getPages: routes,
     );

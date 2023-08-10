@@ -101,7 +101,76 @@ class Crud {
     }
     */
 
-  }}
+  }
+  Future <Either<StatusReqest, Map>> gettData(String linkurl, String token) async {
+    print('hhh');
+    //if(await checkinternet()){
+    var response = await http.get(
+        Uri.parse(linkurl),
+        headers: {
+          "token" : token ,
+        }
+    );
+
+    //
+    var responsebody = jsonDecode(response.body) ;
+    print(responsebody);
+
+    //
+    print("tttttttttttttt");
+    print(response);
+    if(response.statusCode==200 || response.statusCode==201)
+    {
+
+      return  Right(responsebody) ; //responsebody ;
+
+    }
+    else if (response.statusCode==400 || response.statusCode==404)
+    {
+      print("mohmsad");
+      return  const Left(StatusReqest.failure) ; //response.statusCode;
+    }
+    else{
+      print("asmaa");
+      return const Left(StatusReqest.offlinefailure) ;
+    }
+    // }
+    // else{
+    // return const Left(StatusReqest.offlinefailure);
+    // }
+    /*
+   var response = await http.get(
+      Uri.parse(linkurl),
+    );
+
+    print("tttttttttttttt");
+    print(response);
+    if(response.statusCode==200 || response.statusCode==201)
+    {
+      var responsebody = jsonDecode(response.body) ;
+      print(responsebody);
+      return  Right(responsebody) ; //responsebody ;
+
+    }
+     else if (response.statusCode==400 || response.statusCode==404 || response.statusCode==500 )
+    {
+      print("mohmsad");
+      return  const Left(StatusReqest.serverfailure) ; //response.statusCode;
+    }
+    else{
+      print("asmaa");
+      return Left(StatusReqest.offlinefailure) ;
+    }
+    */
+
+  }
+
+
+
+}
+
+
+
 
 ////////////////////////////// http.post ((((((((((((((( post Request )))))))))))))))))) ////////////////////////////////
 /*class Curd1{
