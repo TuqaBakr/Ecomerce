@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
 
 import '../../constant.dart';
+import '../../routes.dart';
 
 class About_as extends StatelessWidget {
   @override
@@ -9,6 +12,10 @@ class About_as extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: firstBackColor,
         title: Text('About Us'),
+        leading:   IconButton(onPressed: (){
+          Get.offNamed(AppRoute.setting);
+        },
+            icon: Icon(Icons.arrow_back)) ,
       ),
       body: ListView(
         children:[ Padding(

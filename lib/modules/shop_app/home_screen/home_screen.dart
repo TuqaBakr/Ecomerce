@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:weam/modules/shop_app/home_screen/home_screen_controller.dart';
 import 'package:weam/widget/custombuttomappbar.dart';
 import '../../../constant.dart';
+import '../../../routes.dart';
 
 late bool active0=false , active1=false , active2=false , active3=false  ;
 
@@ -17,7 +18,11 @@ class HomeScreen extends StatelessWidget {
     return GetBuilder<HomeScreenControllerImp>(builder: (controller) =>
         Scaffold(
           backgroundColor: whiteBackColor,
-          floatingActionButton: FloatingActionButton(backgroundColor: secondBackColor ,onPressed: (){}, child:const Icon(Icons.shopping_basket_outlined),),
+          floatingActionButton: FloatingActionButton(backgroundColor: secondBackColor ,
+            onPressed: (){
+             Get.toNamed(AppRoute.cart);
+            },
+             child:const Icon(Icons.shopping_basket_outlined),),
           floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
           bottomNavigationBar: BottomAppBar(
             shape:const CircularNotchedRectangle(),

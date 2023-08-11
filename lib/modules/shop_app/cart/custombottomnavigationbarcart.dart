@@ -4,17 +4,15 @@ import '../../../constant.dart';
 import 'bouttomcart.dart';
 
 class CustomBottomNavigationBarCart extends StatelessWidget {
-  final String price;
-  final String shipping;
   final String totalprice ;
-  const CustomBottomNavigationBarCart({Key? key, required this.price, required this.shipping, required this.totalprice}) : super(key: key);
+  const CustomBottomNavigationBarCart({Key? key,  required this.totalprice}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(child: Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Row(
+       /* Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
@@ -25,8 +23,8 @@ class CustomBottomNavigationBarCart extends StatelessWidget {
                 child: Text("$price\$",style: TextStyle(fontSize: 18),)),
           ],
         ),
-        Divider(),
-        Row(
+        Divider(),*/
+        /*Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
@@ -40,7 +38,7 @@ class CustomBottomNavigationBarCart extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Divider(color: firstBackColor,),
-        ),
+        ),*/
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

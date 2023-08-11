@@ -17,6 +17,7 @@ import 'modules/shop_app/on_boarding/on_boarding_screen.dart';
 import 'modules/shop_app/register/register_shop.dart';
 import 'modules/shop_app/register/verfiycoderegister.dart';
 import 'modules/shop_app/resetPassword/resetPassword.dart';
+import 'modules/shop_app/setting/setting.dart';
 import 'modules/shop_app/verfiycode/verfiycode.dart';
 
 List<GetPage<dynamic>>? routes = [
@@ -38,6 +39,7 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppRoute.productDetails, page: ()=>const ProductDetails()),
   GetPage(name: AppRoute.aboutas, page: ()=>About_as()),
   GetPage(name: AppRoute.contactas, page: ()=>ContactUs()),
+  GetPage(name: AppRoute.setting, page: ()=>Setting()),
 
 ];
 
@@ -76,6 +78,7 @@ class AppRoute {
   static const String cart = "/cart";
   static const String aboutas = "/aboutas";
   static const String contactas = "/contactas";
+  static const String setting = "/setting";
 }
 
 class AppLink{

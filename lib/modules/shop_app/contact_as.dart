@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
 
 import '../../constant.dart';
+import '../../routes.dart';
 
 class ContactUs extends StatelessWidget {
   @override
@@ -9,6 +12,10 @@ class ContactUs extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: firstBackColor,
         title: Text('Contact Us'),
+        leading:   IconButton(onPressed: (){
+          Get.offNamed(AppRoute.setting);
+        },
+            icon: Icon(Icons.arrow_back)) ,
       ),
       body: Padding(
         padding: EdgeInsets.all(16.0),

@@ -35,9 +35,9 @@ class CartData{
     return response.fold((l) => l, (r) => r);
   }
 
-  viewCart(String token )async{
+  viewCart(String token)async{
   var response = await crud.gettData(
-      AppLink.cartview, token
+      AppLink.cartview,token
       );
   return response.fold((l) => l, (r) => r);
 }
