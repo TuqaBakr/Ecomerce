@@ -37,7 +37,7 @@ class _verfiycoderegisterState extends State<verfiycoderegister> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(
+                const Text(
                   'Verification Code ',
                   textAlign: TextAlign.center,
                   style: TextStyle(
@@ -47,32 +47,40 @@ class _verfiycoderegisterState extends State<verfiycoderegister> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 50.0,
                 ),
-                Text(
+               const  Text(
                   'Please enter the Verification code of your email !',
                   style: TextStyle(color: secondBackColor,
                   ),
                 ),
-                SizedBox(
+               const  SizedBox(
                   height: 80.0,
                 ),
-                OtpTextField(
-                  cursorColor: forthBackColor,
-                  enabledBorderColor: forthBackColor,
-                  fieldWidth: 50.0,
-                  borderRadius: BorderRadius.circular(20),
-                  numberOfFields: 6,
-                  borderColor: forthBackColor,
-                  showFieldAsBox: true,
-                  onCodeChanged: (String code ){
+                    ListView(
+                      shrinkWrap: true,
+                     // scrollDirection: Axis.horizontal,
+                      children: [
+                        OtpTextField(
+                        cursorColor: forthBackColor,
+                        enabledBorderColor: forthBackColor,
+                        fieldWidth: 45.0,
+                        borderRadius: BorderRadius.circular(20),
+                        numberOfFields: 6,
+                        borderColor: forthBackColor,
+                        showFieldAsBox: true,
+                        onCodeChanged: (String code ){
 
-                  },
-                  onSubmit: (String verificationCode){
-                    controller.goTosuccessRegister(verificationCode);
-                  },
-                ),
+                        },
+                        onSubmit: (String verificationCode){
+                          controller.goTosuccessRegister(verificationCode);
+                        },
+                      ),],
+
+                    ),
+
+
               ],
             ),
           ),

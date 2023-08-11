@@ -18,7 +18,7 @@ class ListDiscountItemsHome extends GetView<HomeControllerImp> {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 200,
-      width: 100,
+      //width: 100,
       child: ListView.builder(
           itemCount: controller.discountProducts.length,
           scrollDirection: Axis.horizontal,
@@ -53,8 +53,8 @@ class Products extends GetView<HomeControllerImp> {
               tag: "${itemsModel.id!}",
               child: CachedNetworkImage(
                 imageUrl: AppLink.imageStatic + itemsModel.image!,
-                height: 90,
-                width: 90,
+                height: 150,
+                width: 150,
                 fit: BoxFit.cover,
               ),
             ),

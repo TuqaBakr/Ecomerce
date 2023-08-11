@@ -14,6 +14,7 @@ const Color sevenBackColor = Color(0xff524abd);
 const Color black = Color(0xff000000);
 const Color white = Color(0xffffffff);
 
+
 const BoxDecoration gradiantBackgroind = BoxDecoration(
     gradient: LinearGradient(
         begin: Alignment.topLeft,

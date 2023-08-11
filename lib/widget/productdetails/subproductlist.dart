@@ -8,10 +8,8 @@ import '../../constant.dart';
 
 class SubProduct extends GetView<ProductDetailsControllerImp>{
 
-  late String? mycolor  ;
-  late Color color ;
+   SubProduct( {Key? key  ,}) : super(key: key);
 
-   SubProduct( {Key? key ,required this.mycolor,}) : super(key: key);
 
 
 
@@ -20,33 +18,34 @@ class SubProduct extends GetView<ProductDetailsControllerImp>{
     return GetBuilder<ProductDetailsControllerImp>(
         builder: (controller) => HandlingDataView(
           statusRequest: controller.statusRequest,
-          widget: Row(
+          widget: Column(
             children: [
-              ...List.generate(controller.attribute.length, (index) => Row(
-                children:[
-                  //const Icon(Icons.color_lens_outlined,),
-                  const SizedBox(width: 15,),
-                  IconButton(
-                    onPressed: (){
-                      mycolor = "${controller.attribute[index]['color']}" ;
-                      color = Color(int.parse(mycolor!.replaceAll("#", ""), radix: 16));
-
-                    },
-                    icon: Icon(Icons.color_lens, color: color ,size: 30,),),
-
-                  //Text("${controller.attribute[index]['color']}" + "   " + "${controller.attribute[index]['size']}" + "   " + "${controller.attribute[index]['price']}" )
-                ],
-              ),),
-              ...List.generate(controller.attribute.length, (index) => Row(
+              Row(
                 children: [
-                  Container(
-                    child:const Text("Count: 11 piece", style: TextStyle(color:firstBackColor ), ),
-                    padding:const EdgeInsets.only(left: 15),
-                  ),
+                  ...List.generate(controller.attribute.length, (index) => Column(
+                    children:[
+                      //const Icon(Icons.color_lens_outlined,),
+                      IconButton(
+                          onPressed: (){
+                            //print("7777777777777777888888888888888888");
+                          },
+                          icon:  Icon(Icons.color_lens, color: secondBackColor ,size: 30, ),),
+
+                      const SizedBox(width: 20,),
+                      Container(
+                        child: Text(
+                          "${controller.attribute[index]["quaintity"]}",
+                          style: TextStyle(color:firstBackColor ), ),
+                          padding:const EdgeInsets.only(left: 15),
+                      ),
+                    ],
+                  ),),
                 ],
-              ),),
+              ),
+
             ],
-          ),
+          )
+
         ),
       );
 
