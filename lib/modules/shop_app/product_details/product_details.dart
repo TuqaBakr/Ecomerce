@@ -46,36 +46,6 @@ class ProductDetails extends StatelessWidget {
               children:
               [
                 const TopPageProductDetails(),
-                /*
-            Stack(
-                    clipBehavior: Clip.none,
-                    children: [
-                      Container(
-                        height: 200,
-                        decoration:const BoxDecoration(
-                          color: secondBackColor,
-                          borderRadius: BorderRadius.vertical(bottom: Radius.circular(30)),
-                        ),
-                      ),
-                      Positioned(
-                        child: Hero(
-                          tag:"${controller.itemsModel.id}",
-                          child: CachedNetworkImage(
-                            imageUrl: AppLink.imageStatic + "${controller.itemsModel.image}",
-                            height:  Get.width /1.5,
-                            width:  Get.width ,
-                            fit: BoxFit.cover,
-                            alignment: Alignment.center,
-                          ),
-                        ),
-                        top: Get.width /6,
-                        left: Get.width /5,
-                        right: Get.width /5,
-                      )
-                    ],
-
-                ),
-            */
                 const SizedBox(
                   height: 120,
                 ),
@@ -101,7 +71,7 @@ class ProductDetails extends StatelessWidget {
                           controller.remove();
                         },
                         count: "${controller.countitems}",
-                        price: "200",),
+                        price: "${controller.itemsModel.price}",),
                       const SizedBox(height: 20,),
                       Text(
                         "About Product:",
@@ -118,7 +88,45 @@ class ProductDetails extends StatelessWidget {
                         style:Theme.of(context).textTheme.headline6!.copyWith(color: firstBackColor),
                       ),
                       const SizedBox(width: 10,),
-                       SubProduct(mycolor: controller.color,),
+                      GetBuilder<ProductDetailsControllerImp>(
+                          builder: (controller) => HandlingDataView(
+                              statusRequest: controller.statusRequest,
+                              widget: Column(
+                                children: [
+                                  Row(
+                                    children: [
+                                      ...List.generate(controller.attribute.length, (index) => Column(
+                                        children:[
+                                          //const Icon(Icons.color_lens_outlined,),
+                                          IconButton(
+                                            onPressed: (){
+                                              controller.colorString = controller.attribute[index]['color'];
+                                              //controller.color = Color(int.parse(controller.colorString));
+                                              print("7777777777777777888888888888888888"+" ${controller.color}" +" controller.colorString");
+                                            },
+                                            icon:  Icon(
+                                              Icons.color_lens,
+                                              color:Color(int.parse(controller.attribute[index]['color'])) ,
+                                              size: 30, ),),
+
+                                          const SizedBox(width: 20,),
+                                          Container(
+                                            child: Text(
+                                              "${controller.attribute[index]["quaintity"]}",
+                                              style:const TextStyle(color:firstBackColor ), ),
+                                            padding:const EdgeInsets.only(left: 15),
+                                          ),
+                                        ],
+                                      ),),
+                                    ],
+                                  ),
+
+                                ],
+                              )
+
+                              ),
+                            ),
+                      //  SubProduct(),
                     ],
 
                   ),

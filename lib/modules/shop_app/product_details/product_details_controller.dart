@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:weam/class/statusrequest.dart';
 import 'package:weam/function/handingdatacontroller.dart';
@@ -23,8 +24,9 @@ class ProductDetailsControllerImp extends ProductDetailsController{
   late StatusReqest statusRequest ;
   late List product  = [] ;
   late List attribute  = [] ;
-  late String color = "blue" ;
- // late List color  = [] ;
+  late String colorString;
+  late Color color ;
+  //late String color = "0xFFF1F2F6" ;
 
   initialData()async{
     statusReqest =StatusReqest.loading;
@@ -32,11 +34,12 @@ class ProductDetailsControllerImp extends ProductDetailsController{
     itemsModel   = Get.arguments['ProductModel'] ;
     countitems   = await cartController.getCountItems(itemsModel.id!.toString());
     statusReqest = StatusReqest.success;
+    //color = Color(int.parse(mycolor.substring(2), radix: 16));
      update();
   }
 
   add(){
-    cartController.add(itemsModel.id!.toString(), countitems.toString(), color );
+    cartController.add(itemsModel.id!.toString(), countitems.toString(), "blue" );
     countitems++;
     update();
   }
@@ -69,6 +72,8 @@ class ProductDetailsControllerImp extends ProductDetailsController{
       if(response['status'] == "success"){
         product.addAll(response['product']) ;
         attribute.addAll(response['attribute']);
+        colorString = attribute[1]["color"];
+        color = Color(int.parse(colorString));
         print(response);
         print("22222222222222222222$product") ;
       }
