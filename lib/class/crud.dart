@@ -21,7 +21,7 @@ class Crud {
     print("tttttttttttttt");
     var responsebody = jsonDecode(response.body) ;
     print(responsebody);
-    print(response.body);
+    print("3434343434434$response.statusCode");
     if(response.statusCode==200 || response.statusCode==201)
     {
       return  Right(responsebody) ;

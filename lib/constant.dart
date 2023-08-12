@@ -14,7 +14,7 @@ const Color sevenBackColor = Color(0xff524abd);
 const Color black = Color(0xff000000);
 const Color white = Color(0xffffffff);
 
-
+ const String token  = "eyJlbWFpbCI6IndlYW1hbGtoYXRlZWIzNjBAZ21haWwuY29tIiwiaWQiOjMsInJ1bGUiOiJVc2VyIiwibmFtZSI6IndlYW1raGEifQ==";
 const BoxDecoration gradiantBackgroind = BoxDecoration(
     gradient: LinearGradient(
         begin: Alignment.topLeft,

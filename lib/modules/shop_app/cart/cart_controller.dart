@@ -7,6 +7,8 @@ import 'package:weam/modules/shop_app/cart/cart_data.dart';
 import 'package:weam/services/services.dart';
 import 'package:flutter/material.dart';
 
+import '../../../constant.dart';
+
 class CartController extends GetxController {
 
   CartData cartData = CartData(Get.find());
@@ -21,16 +23,17 @@ class CartController extends GetxController {
 
   int totalcount = 0;
 
-  add(String itemsid, String quaintity, String color) async {
+   add(String itemsid, String quaintity, String color) async {
     statusReqest = StatusReqest.loading;
       var response = await cartData.addCart(
-        myServices.sharedPreferances.getString("token")!,
+        token,
         itemsid,
         quaintity,
-        "black");
+        color);
     print("========controller $response");
     statusReqest = handlingData(response);
-    if (StatusReqest.success == "success") {
+    if (response['status'] == "success") {
+      print("asksakkkkkkkkdssds");
       Get.rawSnackbar(
         title: " اشعار",
         messageText: Text(" تم اضافة المنتج الى السلة"),
@@ -41,16 +44,16 @@ class CartController extends GetxController {
     }
   }
 
-  delete(String itemsid) async {
+  delete(String itemsid, String quaintity, String color) async {
     statusReqest = StatusReqest.loading;
-    var response = await cartData.deleteCart(
-        myServices.sharedPreferances.getString("token")!, itemsid);
-    print("========controller $response");
+    var response = await cartData.deleteCart(token, itemsid, quaintity, color);
+    print("========================================================controller $response");
     statusReqest = handlingData(response);
-    if (StatusReqest.success == "success") {
+    if (response['status'] == "success") {
+      print("asksakkkkkkkkdssds");
       Get.rawSnackbar(
+        messageText: Text(" تم حذف المنتج من السلة"),
         title: " اشعار",
-        messageText: Text(" تم ازالة المنتج من السلة"),
       );
     }
     else {
@@ -58,14 +61,16 @@ class CartController extends GetxController {
     }
   }
 
-  getCountItems(String itemsid) async {
+
+
+
+   getCountItems(int itemsid) async {
     statusReqest = StatusReqest.loading;
-    var response = await cartData.getCountCart(
-        myServices.sharedPreferances.getString("token")!, itemsid);
+    int countitems = 0;
+    var response = await cartData.getCountCart(itemsid);
     print("======tytytytytyty==controller $response");
     statusReqest = handlingData(response);
     if (response["status"] == "success") {
-      int countitems = 0;
       countitems = response["count"];
       print("gggggggggggggaaaaattttt$countitems");
       return countitems;
@@ -74,7 +79,7 @@ class CartController extends GetxController {
       statusReqest = StatusReqest.failure;
     }
   }
-
+/*
   resetVarCart(){
     totalcount=0;
     totalprice=0;
@@ -83,15 +88,15 @@ class CartController extends GetxController {
 
   refreshPage(){
     resetVarCart();
-    view();
+    //view();
   }
-
-
+*/
+/*
   view() async {
-    statusReqest = StatusReqest.loading;
     update();
-    var response = await cartData.viewCart(
-      myServices.sharedPreferances.getString("token")!,);
+    print("ouououououououo");
+    statusReqest = StatusReqest.loading;
+    var response = await cartData.viewCart(token);
     print("========controller $response");
     statusReqest = handlingData(response);
     if (response["status"] == "success") {
@@ -107,10 +112,10 @@ class CartController extends GetxController {
     update();
   }
 
-
+*/
   @override
   void onInit() {
-    view();
+    //view();
     super.onInit();
   }
 }

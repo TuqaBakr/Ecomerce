@@ -25,7 +25,7 @@ class ProductDetails extends StatelessWidget {
         height: 50,
         child: MaterialButton(
           onPressed: (){
-            Get.toNamed(AppRoute.cart);
+            controller.goToCart();
           },
           child:Padding(
             padding: const EdgeInsets.only(left: 90),
@@ -65,10 +65,12 @@ class ProductDetails extends StatelessWidget {
 
                       PriceAndCount(
                         onAdd: (){
-                          controller.add();
+                         // controller.countitems++ ;
+                          controller.Add();
                         },
                         onRemove: (){
-                          controller.remove();
+                          controller.Delete();
+                         // controller.countitems-- ;
                         },
                         count: "${controller.countitems}",
                         price: "${controller.itemsModel.price}",),
@@ -102,7 +104,10 @@ class ProductDetails extends StatelessWidget {
                                             onPressed: (){
                                               controller.colorString = controller.attribute[index]['color'];
                                               //controller.color = Color(int.parse(controller.colorString));
-                                              print("7777777777777777888888888888888888"+" ${controller.color}" +" controller.colorString");
+                                              print("7777777777777777888888888888888888"+"${controller.colorString}");
+                                            //  var myServices;
+                                              print(token);
+                                             // myServices.sharedPreferances.getString("token")!;
                                             },
                                             icon:  Icon(
                                               Icons.color_lens,

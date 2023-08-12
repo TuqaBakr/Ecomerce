@@ -83,18 +83,18 @@ class AppRoute {
 
 class AppLink{
   //=======================server=================== 192.168.241.203
-  static const String server = "http://192.168.1.111:8000/api" ;
+  static const String server = "http://192.168.154.203:8000/api" ;
   static const String test = "https://jsonplaceholder.typicode.com/posts" ;
 
   //=========================== home page ============
   // ignore: constant_identifier_names0
   static String getCategory = "$server/viewcatigory" ;
-  static String getCat = "http://192.168.1.111:8000/api/viewcatigory" ;
+  static String getCat = "http://192.168.154.203:8000/api/viewcatigory" ;
   static String homepage = "$server/homepage" ;
 
   //====================images============================
 
-  static const String imageStatic = "http://192.168.1.111:8000/" ;
+  static const String imageStatic = "http://192.168.154.203:8000/" ;
   static const String categoryImage = "C:/xampp/htdocs/shopping/public/photos" ;
   static const String subcategoryImage = "C:/xampp/htdocs/shopping/public/subcatigory" ;
   static const String productImage = "C:/xampp/htdocs/shopping/public/products " ;
@@ -127,9 +127,9 @@ static String subcategories = "$server/viewsubcatigory/" ;
 
 
 // ========================== cart =======================
-  static String cartview = "$server/cart " ;
+  static String cartview = "$server/cart" ;
   static String cartadd = "$server/add/cart" ;
-  static String cartdelete = "$server/remove/cart " ;
+  static String cartdelete = "$server/remove/cart" ;
   static String cartgetcountitems = "$server/count/product/" ;
 
 }

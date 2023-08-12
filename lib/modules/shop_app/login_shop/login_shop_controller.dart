@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:weam/auth/login.dart';
 import 'package:weam/class/statusrequest.dart';
+import 'package:weam/constant.dart';
 import 'package:weam/function/handingdatacontroller.dart';
 import 'package:weam/modules/shop_app/login_shop/login_shop.dart';
 import 'package:weam/routes.dart';
@@ -43,6 +44,7 @@ class loginShopControllerImp extends loginController {
       if(StatusReqest.success == statusReqest){
         if(response['status'] == 'success'){
           myServices.sharedPreferances.setString("token", response["token"]);
+          //token = response["token"];
           Get.offNamed(AppRoute.homePage);
         } else {
           Get.defaultDialog(

@@ -45,7 +45,7 @@ class Cart extends StatelessWidget {
                         )),
                         Expanded(child: Container(
                           alignment: Alignment.center,
-                          child: Text(
+                          child:const Text(
                             "My Cart",
                             style: TextStyle(fontSize: 25 , fontWeight: FontWeight.bold
                             ),),
@@ -64,12 +64,14 @@ class Cart extends StatelessWidget {
                                      cartController.add(cartController.data[index].id.toString(),
                                          cartController.data[index].quaintity.toString(),
                                          "blue",);
-                                     cartController.refreshPage();
+                                     //
+                                     // cartController.refreshPage();
                                    } ,
                                    onRemove: (){
                                      cartController.delete(cartController.data[index].id.toString(),
-                                     );
-                                     cartController.refreshPage();
+                                       cartController.data[index].quaintity.toString(),
+                                       "blue",);
+                                    // cartController.refreshPage();
                                    },
                                    name:"${cartController.data[index].name}",
                                    price:"${cartController.data[index].price}",

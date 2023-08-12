@@ -51,15 +51,6 @@ class ItemsControllerImp extends ItemsController{
   }
 
 
-
-
-
-
-
-
-
-
-
   @override
   intialData() {
     categories  = Get.arguments["categories"] ;
