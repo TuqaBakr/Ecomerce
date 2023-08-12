@@ -7,6 +7,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:weam/components/components.dart';
 import 'package:weam/modules/shop_app/login_shop/login_shop.dart';
 import 'package:weam/routes.dart';
+import 'package:weam/services/services.dart';
 
 import '../../../constant.dart';
 
@@ -32,6 +33,8 @@ class OnBoardingScreen extends StatefulWidget {
 
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
   var boardController = PageController();
+
+  MyServices myServices = Get.find();
 
   List<BoardingModel> boarding = [
     BoardingModel(
@@ -128,6 +131,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   {
                     if(isLast)
                     {
+                      myServices.sharedPreferances.setString("onboarding", "1");
                       Get.offAllNamed(AppRoute.loginShop);
                     }
                     else {

@@ -1,4 +1,6 @@
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:weam/modules/shop_app/home_screen/home_screen_controller.dart';
@@ -48,7 +50,19 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
         ),
-          body: controller.listPage.elementAt(controller.currentPage),
+          body:WillPopScope(
+            child: controller.listPage.elementAt(controller.currentPage),
+            onWillPop: () {
+              Get.defaultDialog(
+                title: "warning",
+                middleText: "Do you want to exit the app!!",
+                onConfirm: (){
+                  exit(0);
+                },
+                onCancel: (){},
+              );
+              return Future.value(false);
+            },),
     ) );
   }
 }
