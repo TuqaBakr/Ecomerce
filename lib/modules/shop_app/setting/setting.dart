@@ -7,9 +7,11 @@ import 'package:weam/modules/shop_app/setting/setting_controller.dart';
 import 'package:weam/routes.dart';
 
 import '../../../constant.dart';
+import '../../../main.dart';
 
 class Setting extends StatelessWidget {
-  const Setting({Key? key}) : super(key: key);
+   Setting({Key? key}) : super(key: key);
+  final ThemeController _themeController = Get.put(ThemeController());
 
   @override
   Widget build(BuildContext context) {
@@ -43,8 +45,12 @@ class Setting extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               ListTile(
-                trailing: Switch(onChanged: (val){}, value: true,),
-                title: Text("Dark mode"),
+
+          title: Text("Dark mode"),
+                trailing: IconButton(
+                    onPressed: _themeController.toggleTheme,
+                     icon: Icon(Icons.dark_mode),
+                    ),
               ),
               Divider(),
               ListTile(

@@ -61,12 +61,14 @@ class CustomListItems extends StatelessWidget {
                                       fontSize:10,
                                       fontWeight: FontWeight.bold
                                   ),),
-                                 const Icon(Icons.star_outlined, size: 20,color:forthBackColor ,),
+                                 const Icon(Icons.star_outlined,
+                                   size: 20,color:forthBackColor ,),
                                ],
                              ),
                             IconButton(
                                 onPressed:(){},
-                                icon: const Icon(Icons.favorite_border_outlined, color: secondBackColor,)
+                                icon: const Icon(Icons.favorite_border_outlined,
+                                  color: secondBackColor,)
                             ),
                           ],
                         ),

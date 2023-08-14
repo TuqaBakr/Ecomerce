@@ -12,6 +12,7 @@ import 'package:weam/modules/shop_app/register/successRegister.dart';
 import 'package:weam/modules/shop_app/resetPassword/successReset.dart';
 import 'Test/test_view.dart';
 import 'modules/shop_app/cart/cart.dart';
+import 'modules/shop_app/checkout/checkout.dart';
 import 'modules/shop_app/contact_as.dart';
 import 'modules/shop_app/items/items.dart';
 import 'modules/shop_app/on_boarding/on_boarding_screen.dart';
@@ -41,6 +42,7 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppRoute.aboutas, page: ()=>About_as()),
   GetPage(name: AppRoute.contactas, page: ()=>ContactUs()),
   GetPage(name: AppRoute.setting, page: ()=>Setting()),
+  GetPage(name: AppRoute.checkout, page: ()=>Checkout()),
 
 ];
 
@@ -80,6 +82,7 @@ class AppRoute {
   static const String aboutas = "/aboutas";
   static const String contactas = "/contactas";
   static const String setting = "/setting";
+  static const String checkout = "/checkout";
 }
 
 class AppLink{
@@ -141,4 +144,6 @@ class AppImageAsset{
   static const String offline="assets/lottie/offline.json";
   static const String serverFailure="assets/lottie/server_failure.json";
   static const String noData="assets/lottie/nodata.json";
+  static const String delivery="assets/images/delivery.jpg";
+  static const String shipping="assets/images/shipping.jpg";
 }
