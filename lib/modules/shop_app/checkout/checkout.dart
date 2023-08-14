@@ -7,8 +7,7 @@ import 'package:weam/class/handlingdataview.dart';
 import 'package:weam/modules/shop_app/checkout/checkout_controller.dart';
 import '../../../constant.dart';
 import '../../../routes.dart';
-import 'carddeliverytype.dart';
-import 'cardpaymentmethod.dart';
+
 
 class Checkout extends StatelessWidget {
   const Checkout({Key? key}) : super(key: key);
@@ -48,7 +47,7 @@ class Checkout extends StatelessWidget {
             const SizedBox(
               height: 12,),
             const Center(
-              child: const Text(
+              child:  Text(
                 'Checkout',
                 style: TextStyle(
                   fontFamily: 'DeliciousHandrawn',

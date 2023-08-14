@@ -31,9 +31,9 @@ class CardDeliveryType extends StatelessWidget {
             width: 100,
             color:active == true ? whiteBackColor : null,
           ),
-          SizedBox(height: 3,),
+          const SizedBox(height: 3,),
           Text(title,
-            style: TextStyle(
+            style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 color: firstBackColor),),
         ],
