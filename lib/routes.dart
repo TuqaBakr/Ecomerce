@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:weam/middleware/mymiddleware.dart';
 import 'package:weam/modules/shop_app/about_as.dart';
 import 'package:weam/modules/shop_app/changeLang/changeLang.dart';
 import 'package:weam/modules/shop_app/forgetpassword/forgetpassword.dart';
@@ -21,7 +22,7 @@ import 'modules/shop_app/setting/setting.dart';
 import 'modules/shop_app/verfiycode/verfiycode.dart';
 
 List<GetPage<dynamic>>? routes = [
-  GetPage(name: "/", page: ()=> OnBoardingScreen()),
+  GetPage(name: "/", page: ()=> const Language() ),//,middlewares: [MyMiddleware()]),
   GetPage(name: AppRoute.cart, page: ()=> const Cart()),
   GetPage(name: AppRoute.testView, page: ()=>const TestView()),
   GetPage(name: AppRoute.language, page: ()=> Language()),
@@ -104,6 +105,7 @@ class AppLink{
   static String register = "$server/regiser" ;
   static String verfiycoderegister = "$server/checkcode" ;
   static String login = "$server/login" ;
+  static String logout = "$server/logout" ;
 
 //=========================== ForgetPassword ============
 

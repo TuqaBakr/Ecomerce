@@ -44,7 +44,7 @@ class loginShopControllerImp extends loginController {
       if(StatusReqest.success == statusReqest){
         if(response['status'] == 'success'){
           myServices.sharedPreferances.setString("token", response["token"]);
-          //token = response["token"];
+         // token = response["token"];
           Get.offNamed(AppRoute.homePage);
         } else {
           Get.defaultDialog(
