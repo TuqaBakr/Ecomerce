@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
-import 'package:url_launcher/link.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 import '../../constant.dart';
 import '../../routes.dart';
 
@@ -41,7 +39,7 @@ class ContactUs extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             ListTile(
-              title: Text(
+              title: const Text(
                     'Call us at [+963950535593] to speak with a representative.',
                     style: TextStyle(fontSize: 16),
                   ),
