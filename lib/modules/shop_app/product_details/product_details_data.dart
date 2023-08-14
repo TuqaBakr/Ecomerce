@@ -25,9 +25,9 @@ class ProductData{
 
   }
 
-  getCountCart(int product_id)async{
+  getCountCart(String product_id)async{
     var response = await crud.gettData(
-        AppLink.cartgetcountitems+"${product_id}",token
+        AppLink.cartgetcountitems + product_id,token
     );
     return response.fold((l) => l, (r) => r);
   }

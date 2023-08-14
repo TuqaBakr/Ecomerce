@@ -18,8 +18,8 @@ class ProductDetailsControllerImp extends ProductDetailsController{
  //CartController cartController = Get.put(CartController());
   ProductData productData = ProductData(Get.find()) ;
 
- late StatusReqest statusReqest ;
-  late int countitems = 0;
+  late StatusReqest statusReqest ;
+  int countitems = 0;
   late ItemsModel itemsModel ;
   late int productId ;
   late StatusReqest statusRequest ;
@@ -27,14 +27,14 @@ class ProductDetailsControllerImp extends ProductDetailsController{
   late List attribute  = [] ;
   late String colorString;
   late Color color ;
-  //late String color = "0xFFF1F2F6" ;
+  int changeamont = 1;
 
-  initialData()async{
-    statusReqest =StatusReqest.loading;
+  initialData() async {
+    //statusReqest =StatusReqest.loading;
     productId    = Get.arguments['ProductID']  ;
     itemsModel   = Get.arguments['ProductModel'] ;
-//    countitems   = await cartController.getCountItems(itemsModel.id!);
-    statusReqest = StatusReqest.success;
+    countitems   = await getCountItems(itemsModel.id!);
+    //statusReqest = StatusReqest.success;
     //color = Color(int.parse(mycolor.substring(2), radix: 16));
      update();
   }
@@ -63,13 +63,12 @@ class ProductDetailsControllerImp extends ProductDetailsController{
 */
 
  Add() async {
-
-   countitems++;
    statusReqest = StatusReqest.loading;
-   var response = await productData.addCart(token, itemsModel.id!.toString(), countitems+1, colorString);
+   var response = await productData.addCart(token, itemsModel.id!.toString(), changeamont, colorString);
    print("========controller $response");
    statusReqest = handlingData(response);
-   if (response['status'] == "success") {
+   if (response["status"] == "success") {
+     //countitems = 0   ;
      print("asksakkkkkkkkdssds");
      Get.rawSnackbar(
        title: " اشعار",
@@ -82,14 +81,16 @@ class ProductDetailsControllerImp extends ProductDetailsController{
      statusReqest = StatusReqest.failure;
    }
  }
+ addcount(){
+   countitems++;
+   Add();
+   update;
+ }
 
  Delete() async {
    statusReqest = StatusReqest.loading;
-   if(countitems > 0) {
-     countitems--;
-     update();
      var response = await productData.deleteCart(
-         token, itemsModel.id!.toString(), countitems.toString(), colorString);
+         token, itemsModel.id!.toString(), changeamont.toString(), colorString);
      print(
          "========================================================controller $response");
      statusReqest = handlingData(response);
@@ -105,14 +106,41 @@ class ProductDetailsControllerImp extends ProductDetailsController{
      else {
        statusReqest = StatusReqest.failure;
      }
-   }
-   else{
-     Get.rawSnackbar(
-       messageText: Text(" تم حذف المنتج من السلة"),
-       title: " hbd",
-     );
-     print("wwwawaw23123");}
  }
+ removecount(){
+   if(countitems > 0)
+    {
+      Delete();
+      countitems--;
+      update;
+    }
+   else{
+
+     Get.rawSnackbar(
+       messageText: Text("OUT OF"),
+       title: " اشعار",
+     );
+   }
+  }
+
+ getCountItems(int productid) async {
+    statusReqest = StatusReqest.loading;
+    //int countitems = 0;
+    var response = await productData.getCountCart(productid.toString());
+    print("======tytytytytyty==controller $response");
+    statusReqest = handlingData(response);
+   // if(response.Sta)
+    int countitems = 0;
+    if (response["status"] == "success") {
+      countitems = int.parse(response["count".toString()]);
+      print("gggggggggggggaaaaattttt $countitems");
+      return countitems;
+    }
+    else {
+      statusReqest = StatusReqest.failure;
+      print(response + "yyyyybbb");
+    }
+  }
 
  /*
   add(){
@@ -156,7 +184,7 @@ class ProductDetailsControllerImp extends ProductDetailsController{
       if(response['status'] == "success"){
         product.addAll(response['product']) ;
         attribute.addAll(response['attribute']);
-        colorString = attribute[1]["color"];
+        colorString = attribute[0]["color"];
         color = Color(int.parse(colorString));
         print(response);
         print("22222222222222222222$product") ;

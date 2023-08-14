@@ -83,8 +83,8 @@ class Products extends GetView<HomeControllerImp> {
                 ,)),
 
           //if()
-          Positioned(
-              right:3,
+          if( itemsModel.discount.toString() != "0") Positioned(
+              right:1,
               top: 1,
               child: Image.asset("assets/images/sallle.png", width: 45,)),
         ],

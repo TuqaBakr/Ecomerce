@@ -49,7 +49,6 @@ class ProductDetails extends StatelessWidget {
                 const SizedBox(
                   height: 120,
                 ),
-
                 Container(
                   padding: const EdgeInsets.only(left: 20, right: 20),
                   child: Column(
@@ -66,10 +65,12 @@ class ProductDetails extends StatelessWidget {
                       PriceAndCount(
                         onAdd: (){
                          // controller.countitems++ ;
-                          controller.Add();
+                          print(controller.countitems);
+                          controller.addcount();
+                          print(controller.countitems);
                         },
                         onRemove: (){
-                          controller.Delete();
+                          controller.removecount();
                          // controller.countitems-- ;
                         },
                         count: "${controller.countitems}",
@@ -103,7 +104,6 @@ class ProductDetails extends StatelessWidget {
                                           IconButton(
                                             onPressed: (){
                                               controller.colorString = controller.attribute[index]['color'];
-                                              //controller.color = Color(int.parse(controller.colorString));
                                               print("7777777777777777888888888888888888"+"${controller.colorString}");
                                             //  var myServices;
                                               print(token);

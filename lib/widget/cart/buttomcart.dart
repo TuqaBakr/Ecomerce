@@ -17,11 +17,11 @@ class ButtomCart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal:30 ),
+      padding:const EdgeInsets.symmetric(horizontal:30 ),
       width: double.infinity,
       margin: const EdgeInsets.only(top: 5),
       child: MaterialButton(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         padding: const EdgeInsets.symmetric(vertical: 13),
         onPressed: onPressed ,
         child: Text(text),

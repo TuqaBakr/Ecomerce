@@ -79,8 +79,8 @@ class Products extends GetView<HomeControllerImp> {
                     fontWeight: FontWeight.bold)
                 ,)),
           Positioned(
-              right:3,
-              top: 3,
+              right:1,
+              top: 1,
               child: Image.asset("assets/images/sallle.png", width: 45,)),
         ],
 

@@ -15,6 +15,7 @@ class CartModel {
   int? productId;
   int? userId;
   int? quaintity;
+  String? color;
   int? total;
   int? order;
 
@@ -35,6 +36,7 @@ class CartModel {
         this.productId,
         this.userId,
         this.quaintity,
+        this.color,
         this.total,
         this.order});
 
@@ -55,6 +57,7 @@ class CartModel {
     productId = json['product_id'];
     userId = json['user_id'];
     quaintity = json['quaintity'];
+    color = json['color'];
     total = json['total'];
     order = json['order'];
   }
@@ -77,6 +80,7 @@ class CartModel {
     data['product_id'] = this.productId;
     data['user_id'] = this.userId;
     data['quaintity'] = this.quaintity;
+    data['color'] = this.color;
     data['total'] = this.total;
     data['order'] = this.order;
     return data;

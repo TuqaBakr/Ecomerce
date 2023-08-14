@@ -20,7 +20,7 @@ class PriceAndCount extends StatelessWidget {
             Container(
                 padding:const EdgeInsets.only(left: 8, top: 4),
                 height: 37,
-                width: 47,
+                width: 40,
                 decoration: const BoxDecoration(color: thirdBackColor),
                 child:Text(
                   "$count",
