@@ -33,6 +33,12 @@ void main() async {
   runApp( MyApp());
 }
 
+final ThemeData lightTheme = ThemeData.light().copyWith(
+);
+
+final ThemeData darkTheme = ThemeData.dark().copyWith(
+);
+
 class MyApp extends StatelessWidget
 {
   late File image;
@@ -43,6 +49,8 @@ class MyApp extends StatelessWidget
 
   }
 
+
+
   @override
   Widget build(BuildContext context)
   {
@@ -52,7 +60,10 @@ class MyApp extends StatelessWidget
       translations: MyTranslation() ,
       debugShowCheckedModeBanner: false,
       locale: controller.language,
-      initialRoute:'/homePage',
+      theme: lightTheme,
+      darkTheme: darkTheme,
+      themeMode: ThemeMode.light,
+      initialRoute:'/checkout',
       initialBinding: InitialBindings(),
        getPages: routes,
     );
@@ -63,7 +74,16 @@ class MyApp extends StatelessWidget
 
 
 
+class ThemeController extends GetxController {
+  final RxBool _isDarkMode = false.obs;
 
+  bool get isDarkMode => _isDarkMode.value;
+
+  void toggleTheme() {
+    _isDarkMode.value = !_isDarkMode.value;
+    Get.changeTheme(_isDarkMode.value ? darkTheme : lightTheme);
+  }
+}
 
 
 

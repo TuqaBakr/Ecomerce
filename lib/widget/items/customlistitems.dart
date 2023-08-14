@@ -26,7 +26,7 @@ class CustomListItems extends StatelessWidget {
                     padding: const EdgeInsets.all(10.0),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      //crossAxisAlignment: CrossAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Hero(
                           tag: "${itemsModel.id!}",
@@ -37,60 +37,48 @@ class CustomListItems extends StatelessWidget {
                             fit: BoxFit.cover,
                           ),
                         ),
-                        Text(
+                        //Image.asset('assets/images/onboarding1.jpg'),
+                         Text(
                           itemsModel.name!,
                           style: const TextStyle(
                               color: firstBackColor,
-                              fontSize: 20,
+                              fontSize: 15,
                               fontWeight: FontWeight.bold),
                         ),
-
+                         Text(
+                          "${itemsModel.description}",
+                          textAlign: TextAlign.center,
+                          style:const TextStyle(color: secondBackColor, fontSize: 10),
+                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.only(top: 3),
-                              child: Text(
-                                "${itemsModel.price}" + "SP",
-                                //  textAlign: TextAlign.left,
-                                style:const TextStyle(color: forthBackColor, fontSize: 14),
-                              ),
-                            ),
+                             Row(
+                               children: [
+                                 Text(
+                                   "Rating:${itemsModel.rating!.toString()}",
+                                  style: const TextStyle(
+                                      color: thirdBackColor,
+                                      fontSize:10,
+                                      fontWeight: FontWeight.bold
+                                  ),),
+                                 const Icon(Icons.star_outlined, size: 20,color:forthBackColor ,),
+                               ],
+                             ),
                             IconButton(
                                 onPressed:(){},
-                                icon: const Icon(Icons.favorite_border_outlined, color: forthBackColor,)
+                                icon: const Icon(Icons.favorite_border_outlined, color: secondBackColor,)
                             ),
                           ],
                         ),
-                        Row(
-                          children: [
-                            const Text(
-                              "Rating:    ",
-                              style: TextStyle(
-                                  color: sevenBackColor,
-                                  fontSize:10,
-                                  fontWeight: FontWeight.bold
-                              ),),
-                            Center(
-                              child: StarRating(
-                                starCount: 5, // Specify the total number of stars
-                                rating: itemsModel.rating!, // Specify the rating value
-                                iconSize: 15, // Customize the size of the stars
-                                color: sevenBackColor // Customize the color of the stars
-                              ),
-                            ),
 
-
-                          ],
-                        ),
                       ],
                     ),
                   ),
-               if( itemsModel.discount.toString() != "0")Positioned(
-                      left: 1,
+                  Positioned(
+                      right:1,
                       top: 1,
-                      child: Image.asset(
-                        "assets/images/sallle.png", width: 45,))
+                      child: Image.asset("assets/images/sallle.png", width: 45,)),
 
                 ],
               ),
@@ -99,31 +87,4 @@ class CustomListItems extends StatelessWidget {
           );
         }
   }
-
-class StarRating extends StatelessWidget {
-  final int starCount;
-  final int rating;
-  final double iconSize;
-  final Color color;
-
-   StarRating({
-    required this.starCount,
-    required this.rating,
-    this.iconSize = 24.0,
-    this.color = Colors.yellow,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: List.generate(starCount, (index) {
-        return Icon(
-          index < rating.floor() ? Icons.star_rate_rounded : Icons.star_border,
-          size: iconSize,
-          color: color,
-        );
-      }),
-    );
-  }
-}
 

@@ -27,7 +27,7 @@ class HomeScreenControllerImp extends HomeScreenController{
         Center(child: Text("Favorite"))
       ],
     ),
-    const Setting()
+     Setting()
 
   ];
 
