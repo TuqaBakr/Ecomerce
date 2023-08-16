@@ -8,6 +8,7 @@ import 'package:weam/services/services.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constant.dart';
+import '../../../routes.dart';
 
 class CartController extends GetxController {
 
@@ -83,7 +84,7 @@ class CartController extends GetxController {
 
   view() async {
     statusRequest = StatusReqest.loading;
-    update() ;
+       // update() ;
     var response = await cartData.viewCart();
     print("======tytytytytyty== $response");
     statusRequest = handlingData(response);
@@ -101,11 +102,11 @@ class CartController extends GetxController {
         //return countitems;
       }
       else{
-        Get.rawSnackbar(
-          title: " Opss",
-          messageText: const Text("Don't have any data here"),
-
-        );
+       // data.clear();
+       // totalcount = 0 ;
+       // totalprice = 0 ;
+        update();
+        Get.snackbar( " Opss", "Don't have any data here");
       }
     }
       else {
@@ -119,45 +120,33 @@ class CartController extends GetxController {
     totalcount = 0;
     totalprice = 0;
     data.clear();
+    update();
   }
 
   refreshPage(){
-    resetVarCart();
     view();
+    update();
+    resetVarCart();
   }
 
+ goToPageCheckout(){
+    if(data.isEmpty) return Get.snackbar("Warning..", "Empty cart") ;
+      Get.toNamed(AppRoute.checkout, arguments: {
+     "price_order": totalprice,
+
+   });
+ }
 
 
-/*
 
-
-
-*/
-/*
-  view() async {
-    update();
-    print("ouououououououo");
-    statusReqest = StatusReqest.loading;
-    var response = await cartData.viewCart(token);
-    print("========controller $response");
-    statusReqest = handlingData(response);
-    if (response["status"] == "success") {
-      List dataresponse = response["Cart"];
-      data.clear();
-      data.addAll(dataresponse.map((e) => CartModel.fromJson(e)));
-      totalcount = response["counts"];
-      totalprice = int.parse(response["totalprice"]);
-    }
-    else {
-      statusReqest = StatusReqest.failure;
-    }
-    update();
-  }
-
-*/
   @override
   void onInit() {
     view();
+    //refreshPage();
+    update();
     super.onInit();
+    //data.clear();
+    //
+
   }
 }

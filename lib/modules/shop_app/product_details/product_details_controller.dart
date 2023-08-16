@@ -40,27 +40,9 @@ class ProductDetailsControllerImp extends ProductDetailsController{
   }
 
   goToCart(){
-   // cartController.view();
     Get.toNamed(AppRoute.cart);
   }
 
-/*
- getCountItems() async {
-   statusReqest = StatusReqest.loading;
-   int countitems = 0;
-   var response = await productData.getCountCart(itemsModel.id!);
-   print("======tytytytytyty==controller $response");
-   statusReqest = handlingData(response);
-   if (response["status"] == "success") {
-     countitems = response["count"];
-     print("gggggggggggggaaaaattttt$countitems");
-     return countitems;
-   }
-   else {
-     statusReqest = StatusReqest.failure;
-   }
- }
-*/
 
  Add() async {
    statusReqest = StatusReqest.loading;
@@ -104,6 +86,10 @@ class ProductDetailsControllerImp extends ProductDetailsController{
        );
      }
      else {
+       Get.rawSnackbar(
+         messageText: Text(" لا يمكت حذف المنتج من السلة"),
+         title: " اشعار",
+       );
        statusReqest = StatusReqest.failure;
      }
  }
@@ -125,14 +111,14 @@ class ProductDetailsControllerImp extends ProductDetailsController{
 
  getCountItems(int productid) async {
     statusReqest = StatusReqest.loading;
-    //int countitems = 0;
+    //countitems = 0;
     var response = await productData.getCountCart(productid.toString());
     print("======tytytytytyty==controller $response");
     statusReqest = handlingData(response);
    // if(response.Sta)
     int countitems = 0;
     if (response["status"] == "success") {
-      countitems = int.parse(response["count".toString()]);
+      countitems = response["count"];
       print("gggggggggggggaaaaattttt $countitems");
       return countitems;
     }
@@ -142,29 +128,10 @@ class ProductDetailsControllerImp extends ProductDetailsController{
     }
   }
 
- /*
-  add(){
-    cartController.add(itemsModel.id!.toString(), countitems.toString(), colorString );
-    countitems++;
-    update();
-  }
 
-  remove(){
-    print( "11kjkjkjkjkjkjkjk $countitems");
-    if(countitems > 0){
-      print( "22kjkjkjkjkjkjkjk $countitems");
-     print(countitems );
-   // cartController.delete(itemsModel.id.toString());
-      cartController.delete(itemsModel.id!.toString(), countitems.toString(), colorString );
-      print( "33kjkjkjkjkjkjkjk $countitems");
-    countitems--;
-      print( "55kjkjkjkjkjkjkjk $countitems");
-    update();
-  }}
-*/
   @override
   void onInit() {
-
+    //countitems = 0;
     initialData();
     getData();
     super.onInit();
@@ -172,8 +139,6 @@ class ProductDetailsControllerImp extends ProductDetailsController{
 
   @override
   getData() async {
-    product.clear();
-    attribute.clear();
      statusRequest = StatusReqest.loading;
     //var response = await itemData.getData(selectedCat) ;
     var response = await productData.getData("${AppLink.productsDetails}""${productId}") ;

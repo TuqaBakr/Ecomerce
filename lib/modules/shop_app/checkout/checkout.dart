@@ -4,7 +4,12 @@ import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:weam/class/handlingdataview.dart';
+import 'package:weam/components/components.dart';
+import 'package:weam/function/validinput.dart';
+import 'package:weam/modules/shop_app/cart/cart_controller.dart';
 import 'package:weam/modules/shop_app/checkout/checkout_controller.dart';
+import 'package:weam/widget/checkout/carddeliverytype.dart';
+import 'package:weam/widget/checkout/cardpaymentmethod.dart';
 import '../../../constant.dart';
 import '../../../routes.dart';
 
@@ -15,12 +20,17 @@ class Checkout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     CheckoutController controller = Get.put(CheckoutController());
+    CartController cartcontroller = Get.put(CartController());
     return Scaffold(
       bottomNavigationBar: Container(
         margin:const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
         height: 50,
         child: MaterialButton(
           onPressed: (){
+            print(controller.address);
+            controller.checkout();
+            cartcontroller.refreshPage();
+
           },
           child:Padding(
             padding: const EdgeInsets.only(left: 130),
@@ -107,7 +117,7 @@ class Checkout extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: (){
-                    controller.chosseDeliveryType("delivery");
+                    controller.chooseDeliveryType("delivery", "0");
                   },
                     child:  CardDeliveryType(
                       imagename: AppImageAsset.delivery,
@@ -120,9 +130,10 @@ class Checkout extends StatelessWidget {
                   width: 40,),
                 InkWell(
                   onTap: (){
-                    controller.chosseDeliveryType("shipping");
+                    controller.chooseDeliveryType("shipping", "1");
+                    Get.snackbar("Note..", "Add 10\$ to total price ") ;
                   },
-                  child:  CardDeliveryType(
+                  child: CardDeliveryType(
                     imagename: AppImageAsset.shipping,
                     title: 'Shipping',
                     active: controller.deliveryType == "shipping"?true : false,
@@ -142,6 +153,16 @@ class Checkout extends StatelessWidget {
             ),
             const SizedBox(
               height: 20,),
+            FormFeild(
+              valid: (val){
+                return validInput(val!, 5 , 100 , "your address");
+              },
+              labeltext: "Address",
+              iconData: Icons.location_on,
+              mycontroller:controller.address ,
+              hinttext: "Enter your Address",
+              isNumber: false,
+            ),
           ],
         ),
       ),

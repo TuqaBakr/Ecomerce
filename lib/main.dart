@@ -63,9 +63,9 @@ class MyApp extends StatelessWidget
       theme: lightTheme,
       darkTheme: darkTheme,
       themeMode: ThemeMode.light,
-      initialRoute:'/checkout',
+      //initialRoute:'/homepage',
       initialBinding: InitialBindings(),
-       getPages: routes,
+      getPages: routes,
     );
   }
 

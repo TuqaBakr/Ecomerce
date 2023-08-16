@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:weam/modules/shop_app/cart/cart_controller.dart';
 import 'package:weam/widget/cart/buttomcart.dart';
 import '../../../constant.dart';
+import '../../routes.dart';
 
 
-class CustomBottomNavigationBarCart extends StatelessWidget {
+class CustomBottomNavigationBarCart extends GetView<CartController> {
   final String totalprice ;
   final String totalcount ;
-  const CustomBottomNavigationBarCart({Key? key,  required this.totalprice,required this.totalcount}) : super(key: key);
+  const CustomBottomNavigationBarCart({Key? key, required this.totalprice,required this.totalcount}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -100,7 +103,10 @@ class CustomBottomNavigationBarCart extends StatelessWidget {
         ButtomCart(
           text: 'Place Order',
           color: secondBackColor,
-          onPressed: (){},
+          onPressed: (){
+           controller.goToPageCheckout();
+         //  controller.refreshPage();
+          },
 
         )
       ],

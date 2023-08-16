@@ -19,6 +19,7 @@ class ProductDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ProductDetailsControllerImp controller = Get.put(ProductDetailsControllerImp()) ;
+//    ProductDetailsControllerImp controller = Get.put(ProductDetailsControllerImp()) ;
     return Scaffold(
       bottomNavigationBar: Container(
         margin:const EdgeInsets.symmetric(horizontal: 15, vertical: 15),

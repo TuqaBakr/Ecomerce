@@ -10,6 +10,7 @@ import 'package:weam/widget/items/listsubcategoriesitems.dart';
 
 import '../../../constant.dart';
 import '../../../routes.dart';
+import 'favorite_controller.dart';
 import 'items_controller.dart';
 
 class Items extends StatelessWidget {
@@ -18,6 +19,7 @@ class Items extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
      Get.put(ItemsControllerImp());
+     FavoriteController favcontroller = Get.put(FavoriteController());
     return Scaffold(
       body: GetBuilder<ItemsControllerImp>(
         builder: (controller) => HandlingDataView(
@@ -39,17 +41,23 @@ class Items extends StatelessWidget {
               ),
               !controller.isSearch
                   ? Column(children: [
-                const SizedBox(height: 20,) ,
-                const ListSubCategoriesItems() ,
-                HandlingDataView(
-                  statusRequest: controller.statusRequestItems,
-                  widget:GridView.builder(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: controller.products.length,
-                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, childAspectRatio:0.7, ),
-                      itemBuilder: (BuildContext context, index) {
-                        return CustomListItems(itemsModel: ItemsModel.fromJson(controller.products[index]),);
+                    const SizedBox(height: 20,) ,
+                    const ListSubCategoriesItems() ,
+                    HandlingDataView(
+                      statusRequest: controller.statusRequestItems,
+                      widget:GridView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: controller.products.length,
+                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, childAspectRatio:0.7, ),
+                          itemBuilder: (BuildContext context, index) {
+                            if(favcontroller.isfavorite[controller.products[index]['id']] == null) {
+                             // favcontroller.isfavorite[controller.products[index]['id']] = false;
+                              favcontroller.setFavorite(controller.products[index]['id'], false) ;
+                            }else{
+                              print(favcontroller.isfavorite[controller.products[index]['id']]);
+                            }
+                          return CustomListItems(itemsModel: ItemsModel.fromJson(controller.products[index]), active: favcontroller.isfavorite[controller.products[index]['id']],);
                       }),
                 ),
               ],)

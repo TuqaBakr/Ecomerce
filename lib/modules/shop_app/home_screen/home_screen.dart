@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:weam/modules/shop_app/cart/cart_controller.dart';
 import 'package:weam/modules/shop_app/home_screen/home_screen_controller.dart';
 import 'package:weam/widget/custombuttomappbar.dart';
 import '../../../constant.dart';
@@ -16,13 +17,16 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.put(HomeScreenControllerImp()) ;
+    CartController cartcontroller = Get.put(CartController()) ;
 
     return GetBuilder<HomeScreenControllerImp>(builder: (controller) =>
         Scaffold(
           backgroundColor: whiteBackColor,
           floatingActionButton: FloatingActionButton(backgroundColor: secondBackColor ,
             onPressed: (){
+              cartcontroller.refreshPage();
              Get.toNamed(AppRoute.cart);
+           //  controller.view();
             },
              child:const Icon(Icons.shopping_basket_outlined),),
           floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

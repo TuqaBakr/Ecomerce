@@ -29,6 +29,7 @@ class ItemsControllerImp extends ItemsController{
   TextEditingController? Search ;
   bool isSearch = false ;
   List<ItemsModel> listdata = [];
+  bool active = false ;
 
   ItemData itemData = ItemData(Get.find()) ;
 

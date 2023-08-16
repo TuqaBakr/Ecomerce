@@ -23,9 +23,9 @@ class ContactUs extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children:  [
             const Text(
-              'We value your feedback, inquiries, and concerns. Our dedicated customer support team is here to assist you. There are several ways you can reach us:',
+              'We value your feedback, inquiries, and concerns. \nOur dedicated customer support team is here to assist you.\n\nThere are several ways you can reach us:',
               style: TextStyle(
-                fontSize: 18,
+                fontSize: 15,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -46,7 +46,7 @@ class ContactUs extends StatelessWidget {
               onTap: (){
                 launchUrl(Uri.parse("tel:+963950535593"));
               },
-              trailing: Icon(Icons.phone_callback_outlined,color:forthBackColor,size: 40,),
+              trailing:const Icon(Icons.phone_callback_outlined,color:forthBackColor,size: 40,),
             ),
             const SizedBox(height: 16),
             const Text(
@@ -73,7 +73,7 @@ class ContactUs extends StatelessWidget {
             const Text(
               '- Facebook:',
               style: TextStyle(
-                fontSize: 18,
+                fontSize: 15,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -86,7 +86,7 @@ class ContactUs extends StatelessWidget {
             const Text(
               '- Instagram:',
               style: TextStyle(
-                fontSize: 18,
+                fontSize: 15,
                 fontWeight: FontWeight.bold,
               ),
             ),

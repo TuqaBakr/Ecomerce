@@ -38,7 +38,7 @@ class _registerShopState extends State<registerShop> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text(
+                    const Text(
                       'Register',
                       style: TextStyle(
                         fontFamily: 'DeliciousHandrawn',
@@ -47,7 +47,7 @@ class _registerShopState extends State<registerShop> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 100.0,
                     ),
                     FormFeild(
@@ -60,7 +60,7 @@ class _registerShopState extends State<registerShop> {
                       hinttext: "Enter your Username",
                       isNumber: false,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 40.0,
                     ),
                     FormFeild(
@@ -73,7 +73,7 @@ class _registerShopState extends State<registerShop> {
                       hinttext: "Enter your Email",
                       isNumber: false,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 30.0,
                     ),
                     FormFeild(
@@ -86,7 +86,7 @@ class _registerShopState extends State<registerShop> {
                       hinttext: "Enter your Phone",
                       isNumber: true,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 30.0,
                     ),
                     GetBuilder<registerShopControllerImp>(

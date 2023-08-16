@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:weam/middleware/mymiddleware.dart';
@@ -7,6 +8,7 @@ import 'package:weam/modules/shop_app/forgetpassword/forgetpassword.dart';
 import 'package:weam/modules/shop_app/home_page/home_page.dart';
 import 'package:weam/modules/shop_app/home_screen/home_screen.dart';
 import 'package:weam/modules/shop_app/login_shop/login_shop.dart';
+import 'package:weam/modules/shop_app/orders/oreder.dart';
 import 'package:weam/modules/shop_app/product_details/product_details.dart';
 import 'package:weam/modules/shop_app/register/successRegister.dart';
 import 'package:weam/modules/shop_app/resetPassword/successReset.dart';
@@ -23,7 +25,7 @@ import 'modules/shop_app/setting/setting.dart';
 import 'modules/shop_app/verfiycode/verfiycode.dart';
 
 List<GetPage<dynamic>>? routes = [
-  GetPage(name: "/", page: ()=> const Language() ),//,middlewares: [MyMiddleware()]),
+  GetPage(name: "/", page: ()=> HomeScreen() ,middlewares: [MyMiddleware()]),
   GetPage(name: AppRoute.cart, page: ()=> const Cart()),
   GetPage(name: AppRoute.testView, page: ()=>const TestView()),
   GetPage(name: AppRoute.language, page: ()=> Language()),
@@ -42,7 +44,8 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppRoute.aboutas, page: ()=>About_as()),
   GetPage(name: AppRoute.contactas, page: ()=>ContactUs()),
   GetPage(name: AppRoute.setting, page: ()=>Setting()),
-  GetPage(name: AppRoute.checkout, page: ()=>Checkout()),
+  GetPage(name: AppRoute.checkout, page: ()=>const Checkout()),
+  GetPage(name: AppRoute.order, page: ()=>const Orders()),
 
 ];
 
@@ -83,6 +86,7 @@ class AppRoute {
   static const String contactas = "/contactas";
   static const String setting = "/setting";
   static const String checkout = "/checkout";
+  static const String order = "/order";
 }
 
 class AppLink{
@@ -111,7 +115,6 @@ class AppLink{
   static String logout = "$server/logout" ;
 
 //=========================== ForgetPassword ============
-
   static String forgetpassword = "$server/user/password/email" ;
   static String checkcode = "$server/user/password/code/check" ;
   static String resetpassword = "$server/user/password/reset" ;
@@ -126,16 +129,23 @@ static String subcategories = "$server/viewsubcatigory/" ;
   static String productsDetails = "$server/productinfo/" ;
   static String searchItems = "$server/searchbyname/" ;
 
-
-
-//=================== Search =======================
-
-
 // ========================== cart =======================
   static String cartview = "$server/cart" ;
   static String cartadd = "$server/add/cart" ;
   static String cartdelete = "$server/remove/cart" ;
   static String cartgetcountitems = "$server/count/product/" ;
+
+
+//=================== checkout =======================
+  static String checkout = "$server/add/order" ;
+  static String vieworder = "$server/view/order" ;
+
+  //=================== Favorite =======================
+  static String addfav = "$server/addfavorite" ;
+  static String deletefav = "$server/removefavorite" ;
+  static String showfav = "$server/viewfavorite" ;
+
+
 
 }
 
