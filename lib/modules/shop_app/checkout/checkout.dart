@@ -3,6 +3,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:weam/class/handlingdataview.dart';
 import 'package:weam/components/components.dart';
 import 'package:weam/function/validinput.dart';
@@ -34,11 +35,11 @@ class Checkout extends StatelessWidget {
           },
           child:Padding(
             padding: const EdgeInsets.only(left: 130),
-            child: Row(children: const[
-              Text('Checkout', style: TextStyle(
+            child: Row(children:[
+              Text('Checkout'.tr, style: const TextStyle(
                   fontWeight: FontWeight.bold, color: whiteBackColor),),
-              SizedBox(width: 5,),
-              Icon(Icons.check_circle_outline_outlined, color: whiteBackColor),
+              const SizedBox(width: 5,),
+              const Icon(Icons.check_circle_outline_outlined, color: whiteBackColor),
             ],),
           ),
 
@@ -56,10 +57,10 @@ class Checkout extends StatelessWidget {
           children: [
             const SizedBox(
               height: 12,),
-            const Center(
+             Center(
               child:  Text(
-                'Checkout',
-                style: TextStyle(
+                'Checkout'.tr,
+                style: const TextStyle(
                   fontFamily: 'DeliciousHandrawn',
                   color: firstBackColor,
                   fontSize: 40.0,
@@ -69,9 +70,9 @@ class Checkout extends StatelessWidget {
             ),
             const SizedBox(
               height: 40,),
-            const Text(
-              "Choose Payment Method :",
-              style: TextStyle(
+             Text(
+              "Choose Payment Method :".tr,
+              style:const TextStyle(
                 color: firstBackColor,
                 //fontWeight: FontWeight.bold,
                 fontSize: 18,
@@ -84,7 +85,7 @@ class Checkout extends StatelessWidget {
                 controller.choosePaymentMethod("cash");
               },
               child: CardPaymentMethod(
-                title: 'Cash ',
+                title: 'Cash '.tr,
                 isActive: controller.paymentMethod == "cash"? true : false,
 
               ),
@@ -96,16 +97,16 @@ class Checkout extends StatelessWidget {
                 controller.choosePaymentMethod("card");
               },
               child:  CardPaymentMethod(
-                title: 'Payment Card',
+                title: 'Payment Card'.tr,
                 isActive: controller.paymentMethod == "card"? true : false,
 
               ),
             ),
             const SizedBox(
               height: 40,),
-            const Text(
-              "Choose Delivery Type :",
-              style: TextStyle(
+             Text(
+              "Choose Delivery Type :".tr,
+              style:const TextStyle(
                 color: firstBackColor,
                 fontSize: 18,
               ),
@@ -121,7 +122,7 @@ class Checkout extends StatelessWidget {
                   },
                     child:  CardDeliveryType(
                       imagename: AppImageAsset.delivery,
-                      title: 'Delivery',
+                      title: 'Delivery'.tr,
                       active: controller.deliveryType == "delivery"?true : false,
 
                     ),
@@ -135,7 +136,7 @@ class Checkout extends StatelessWidget {
                   },
                   child: CardDeliveryType(
                     imagename: AppImageAsset.shipping,
-                    title: 'Shipping',
+                    title: 'Shipping'.tr,
                     active: controller.deliveryType == "shipping"?true : false,
 
                   ),
@@ -144,9 +145,9 @@ class Checkout extends StatelessWidget {
             ),
             const SizedBox(
               height: 30,),
-            const Text(
-              "Choose Address :",
-              style: TextStyle(
+             Text(
+              "Choose Address :".tr,
+              style:const TextStyle(
                 color: firstBackColor,
                 fontSize: 18,
               ),
@@ -157,10 +158,10 @@ class Checkout extends StatelessWidget {
               valid: (val){
                 return validInput(val!, 5 , 100 , "your address");
               },
-              labeltext: "Address",
+              labeltext: "Address".tr,
               iconData: Icons.location_on,
               mycontroller:controller.address ,
-              hinttext: "Enter your Address",
+              hinttext: "Enter your Address".tr,
               isNumber: false,
             ),
           ],

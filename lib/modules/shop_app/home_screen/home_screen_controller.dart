@@ -6,6 +6,7 @@ import 'package:weam/class/statusrequest.dart';
 import 'package:weam/function/handingdatacontroller.dart';
 import 'package:weam/models/cartmodel.dart';
 import 'package:weam/modules/shop_app/cart/cart_data.dart';
+import 'package:weam/modules/shop_app/favorite/favorite.dart';
 import 'package:weam/modules/shop_app/home_page/home_page.dart';
 import 'package:weam/modules/shop_app/orders/Oreder.dart';
 import 'package:weam/modules/shop_app/setting/setting.dart';
@@ -27,21 +28,16 @@ class HomeScreenControllerImp extends HomeScreenController{
   List<Widget> listPage =[
     const HomePage(),
     const Orders(),
-    Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children:const [
-        Center(child: Text("Favorite"))
-      ],
-    ),
-     Setting()
+    const Favorite(),
+    Setting()
 
   ];
 
   List bottomappbar = [
-    {"title" : "Home" , "icon":Icons.home},
-    {"title" : "Order" , "icon":Icons.point_of_sale_sharp},
-    {"title" : "Favorite" , "icon":Icons.favorite},
-    {"title" : "Setting" , "icon":Icons.settings},
+    {"title" : "Home".tr , "icon":Icons.home},
+    {"title" : "Order".tr , "icon":Icons.point_of_sale_sharp},
+    {"title" : "Favorite".tr , "icon":Icons.favorite},
+    {"title" : "Setting".tr , "icon":Icons.settings},
   ];
 
 
@@ -72,7 +68,7 @@ class HomeScreenControllerImp extends HomeScreenController{
           //return countitems;
         }
         else{
-          Get.snackbar( " Opss", "Don't have any data here");
+         // Get.snackbar( " Opss", "Don't have any data here");
         }
       }
       else {

@@ -22,8 +22,8 @@ import 'dart:io';
 import 'modules/shop_app/register/register_shop.dart';
 import 'modules/shop_app/register/successRegister.dart';
 import 'modules/shop_app/register/verfiycoderegister.dart';
-import 'modules/shop_app/resetPassword/resetPassword.dart';
-import 'modules/shop_app/resetPassword/successReset.dart';
+import 'modules/shop_app/resetPassword/reset_password.dart';
+import 'modules/shop_app/resetPassword/success_reset.dart';
 import 'modules/shop_app/verfiycode/verfiycode.dart';
 
 void main() async {
@@ -33,11 +33,9 @@ void main() async {
   runApp( MyApp());
 }
 
-final ThemeData lightTheme = ThemeData.light().copyWith(
-);
+final ThemeData lightTheme = ThemeData.light().copyWith();
 
-final ThemeData darkTheme = ThemeData.dark().copyWith(
-);
+final ThemeData darkTheme = ThemeData.dark().copyWith();
 
 class MyApp extends StatelessWidget
 {
@@ -48,7 +46,6 @@ class MyApp extends StatelessWidget
     var pickedImage = await imagepicker.getImage(source: ImageSource.camera);
 
   }
-
 
 
   @override
@@ -75,6 +72,8 @@ class MyApp extends StatelessWidget
 
 
 class ThemeController extends GetxController {
+  MyServices myServices = Get.find();
+  ThemeData? themeData;
   final RxBool _isDarkMode = false.obs;
 
   bool get isDarkMode => _isDarkMode.value;
@@ -82,6 +81,8 @@ class ThemeController extends GetxController {
   void toggleTheme() {
     _isDarkMode.value = !_isDarkMode.value;
     Get.changeTheme(_isDarkMode.value ? darkTheme : lightTheme);
+
+
   }
 }
 

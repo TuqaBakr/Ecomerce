@@ -28,6 +28,7 @@ class ProductDetailsControllerImp extends ProductDetailsController{
   late String colorString;
   late Color color ;
   int changeamont = 1;
+  List<ItemsModel> data = [];
 
   initialData() async {
     //statusReqest =StatusReqest.loading;
@@ -128,6 +129,70 @@ class ProductDetailsControllerImp extends ProductDetailsController{
     }
   }
 
+
+  //rating
+  @override
+  submitRating(int product_id,double rating)async{
+    data.clear();
+    statusReqest = StatusReqest.loading;
+    update();
+    var response = await productData.rating(product_id.toString(),rating.toString());
+    print("======tytytytytyty==controller $response");
+    statusReqest = handlingData(response);
+    if(StatusReqest.success == statusReqest){
+      if (response["status"] == "success") {
+        print("666665556565 ");
+        getData();
+        update() ;
+      }
+    }
+    else {
+      statusReqest = StatusReqest.failure;
+      print("faluieerlwjlsjdflsjf");
+    }
+  }
+
+  /*
+//addtofavorite
+  addfav(String itemsid) async {
+    statusRequest = StatusReqest.loading;
+    update();
+    var response = await productData.favorite(itemsid, AppLink.addfav);
+    print("========controller $response");
+    statusRequest = handlingData(response);
+    if (response['status'] == "success") {
+      print("asksakkkkkkkkdssds");
+      Get.rawSnackbar(
+        title: " اشعار",
+        messageText: Text(" تم اضافة المنتج الى السلة"),
+      );
+    }
+    else {
+      statusRequest = StatusReqest.failure;
+    }
+    update();
+  }
+
+ //delete favorit
+  deletefav(String itemsid) async {
+    statusRequest = StatusReqest.loading;
+    update();
+    var response = await productData.favorite(itemsid, AppLink.deletefav);
+    print("========controller $response");
+    statusRequest = handlingData(response);
+    if (response['status'] == "success") {
+      print("asksakkkkkkkkdssds");
+      Get.rawSnackbar(
+        title: " اشعار",
+        messageText: Text(" تم حذف المنتج الى السلة"),
+      );
+    }
+    else {
+      statusRequest = StatusReqest.failure;
+    }
+    update();
+  }
+*/
 
   @override
   void onInit() {

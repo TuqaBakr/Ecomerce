@@ -42,9 +42,9 @@ class Cart extends StatelessWidget {
                 )),
                 Expanded(child: Container(
                   alignment: Alignment.center,
-                  child:const Text(
-                    "My Cart",
-                    style: TextStyle(fontSize: 30 , fontWeight: FontWeight.bold, color: sevenBackColor, fontFamily: 'DeliciousHandrawn',
+                  child: Text(
+                    "My Cart".tr,
+                    style:const TextStyle(fontSize: 30 , fontWeight: FontWeight.bold, color: sevenBackColor, fontFamily: 'DeliciousHandrawn',
                     ),),
                 )),
                 Spacer(),
@@ -52,7 +52,7 @@ class Cart extends StatelessWidget {
           const SizedBox(height: 10,),
           Container(
             color: whiteBackColor,
-            padding: EdgeInsets.all(8),
+            padding:const EdgeInsets.all(8),
             child: Column(
               children: [
                 ...List.generate(

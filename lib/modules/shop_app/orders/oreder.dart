@@ -34,9 +34,9 @@ class Orders extends StatelessWidget {
                 )),
                 Expanded(child: Container(
                   alignment: Alignment.center,
-                  child:const Text(
-                    "My Order",
-                    style: TextStyle(fontSize: 30 , fontWeight: FontWeight.bold, color: sevenBackColor, fontFamily: 'DeliciousHandrawn',
+                  child: Text(
+                    "My Order".tr,
+                    style:const TextStyle(fontSize: 30 , fontWeight: FontWeight.bold, color: sevenBackColor, fontFamily: 'DeliciousHandrawn',
                     ),),
                 )),
                 const Spacer(),
@@ -63,7 +63,7 @@ class CardOrderList extends GetView<OrderController> {
           children: [
              Row(
                children: [
-                 const Text("Order Number : ", style: TextStyle(
+                  Text("Order Number : ".tr, style:const TextStyle(
                   fontSize: 15,
             ),),
                  Text("${listdata.id}", style:const TextStyle(

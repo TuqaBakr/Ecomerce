@@ -4,7 +4,7 @@ import 'package:weam/auth/forgetpassword/resetpassowrd.dart';
 import 'package:weam/class/statusrequest.dart';
 import 'package:weam/function/handingdatacontroller.dart';
 import 'package:weam/modules/shop_app/login_shop/login_shop.dart';
-import 'package:weam/modules/shop_app/resetPassword/resetPassword.dart';
+import 'package:weam/modules/shop_app/resetPassword/reset_password.dart';
 import 'package:weam/routes.dart';
 
 abstract class resetPasswordController extends GetxController{

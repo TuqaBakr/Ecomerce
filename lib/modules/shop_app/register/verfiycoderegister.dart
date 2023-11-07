@@ -37,10 +37,10 @@ class _verfiycoderegisterState extends State<verfiycoderegister> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const Text(
-                  'Verification Code ',
+                 Text(
+                  'Verification Code '.tr,
                   textAlign: TextAlign.center,
-                  style: TextStyle(
+                  style:const TextStyle(
                     fontFamily: 'DeliciousHandrawn',
                     color: firstBackColor,
                     fontSize: 60.0,
@@ -50,9 +50,9 @@ class _verfiycoderegisterState extends State<verfiycoderegister> {
                 const SizedBox(
                   height: 50.0,
                 ),
-               const  Text(
-                  'Please enter the Verification code of your email !',
-                  style: TextStyle(color: secondBackColor,
+                 Text(
+                  'Please enter the Verification code of your email !'.tr,
+                  style:const TextStyle(color: secondBackColor,
                   ),
                 ),
                const  SizedBox(

@@ -1,7 +1,9 @@
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:weam/components/components.dart';
 import 'package:weam/function/validinput.dart';
+import 'package:weam/routes.dart';
 
 class CustomAppBar extends StatelessWidget {
   final String titleappbar ;
@@ -60,8 +62,10 @@ class CustomAppBar extends StatelessWidget {
                 Radius.circular(17.0),),
             ),
             child: IconButton(
-              onPressed: onPressedIconSearch,
-              icon: const Icon(Icons.notifications_active_outlined),
+              onPressed: (){
+                Get.toNamed(AppRoute.favorite);
+              },
+              icon: const Icon(Icons.favorite_outline_outlined),
               color: Colors.grey,
             ),
           ),

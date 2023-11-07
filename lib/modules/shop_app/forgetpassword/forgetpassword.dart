@@ -37,33 +37,33 @@ class _forgetPasswordState extends State<forgetPassword> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    'Forget Password !! ',
+                    'Forget Password !! '.tr,
                     textAlign: TextAlign.center,
-                    style: TextStyle(
+                    style:const TextStyle(
                       fontFamily: 'DeliciousHandrawn',
                       color: firstBackColor,
                       fontSize: 60.0,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 100.0,
                   ),
                   FormFeild(
                     valid: (val){
-                      return validInput(val!, 5 , 100 , "email");
+                      return validInput(val!, 5 , 100 , "email".tr);
                     },
                     labeltext: "Email",
                     iconData: Icons.email,
                     mycontroller:controller.email ,
-                    hinttext: "Enter your Email",
+                    hinttext: "Enter your Email".tr,
                     isNumber: false,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 80.0,
                   ),
-                  defaultButtom(
-                    text: 'Check',
+                  DefaultButton(
+                    text: 'Check'.tr,
                     color: forthBackColor,
                     onPressed: () {
                       controller.checkemail();

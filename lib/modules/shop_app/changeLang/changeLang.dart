@@ -29,7 +29,7 @@ class Language extends GetView<LocaleController> {
                 fontWeight: FontWeight.bold,
               ),),
               const SizedBox(height: 25,),
-              defaultButtom(
+              DefaultButton(
                 text: '2'.tr,
                 color: secondBackColor,
                 onPressed: () {
@@ -38,7 +38,7 @@ class Language extends GetView<LocaleController> {
                 },
               ),
               const SizedBox(height: 10,),
-              defaultButtom(
+              DefaultButton(
                 text: '3'.tr,
                 color: secondBackColor,
                 onPressed: () {

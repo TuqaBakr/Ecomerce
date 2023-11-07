@@ -38,9 +38,9 @@ class _registerShopState extends State<registerShop> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const Text(
-                      'Register',
-                      style: TextStyle(
+                     Text(
+                      'Register'.tr,
+                      style:const TextStyle(
                         fontFamily: 'DeliciousHandrawn',
                         color: firstBackColor,
                         fontSize: 60.0,
@@ -57,7 +57,7 @@ class _registerShopState extends State<registerShop> {
                       labeltext: "Username",
                       iconData: Icons.person_outline,
                       mycontroller:controller.username ,
-                      hinttext: "Enter your Username",
+                      hinttext: "Enter your Username".tr,
                       isNumber: false,
                     ),
                     const SizedBox(
@@ -67,10 +67,10 @@ class _registerShopState extends State<registerShop> {
                       valid: (val){
                         return validInput(val!, 5 , 100 , "email");
                       },
-                      labeltext: "Email",
+                      labeltext: "Email".tr,
                       iconData: Icons.email,
                       mycontroller:controller.email ,
-                      hinttext: "Enter your Email",
+                      hinttext: "Enter your Email".tr,
                       isNumber: false,
                     ),
                     const SizedBox(
@@ -80,10 +80,10 @@ class _registerShopState extends State<registerShop> {
                       valid: (val){
                         return validInput(val!, 8 , 20 , "phone");
                       },
-                      labeltext: "Phone",
+                      labeltext: "Phone".tr,
                       iconData: Icons.phone,
                       mycontroller:controller.phone ,
-                      hinttext: "Enter your Phone",
+                      hinttext: "Enter your Phone".tr,
                       isNumber: true,
                     ),
                     const SizedBox(
@@ -98,21 +98,21 @@ class _registerShopState extends State<registerShop> {
                         valid: (val){
                           return validInput(val!, 6 , 30 , "password");
                         },
-                        labeltext: "password",
+                        labeltext: "password".tr,
                         iconData: Icons.remove_red_eye_outlined,
                         mycontroller:controller.password ,
-                        hinttext: "Enter your password",
+                        hinttext: "Enter your password".tr,
                         isNumber: false,
                       ),
                     ),
-                    SizedBox(
+                    const  SizedBox(
                       height: 60.0,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20.0,
                     ),
-                    defaultButtom(
-                      text: 'ReGister',
+                    DefaultButton(
+                      text: 'ReGister'.tr,
                       color: secondBackColor,
                       onPressed: () {
                         controller.registerShop();
@@ -124,13 +124,13 @@ class _registerShopState extends State<registerShop> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(" have an account ? ") ,
+                        Text(" have an account ? ".tr) ,
                         InkWell(
                           onTap: (){
                             controller.goTologinShop();
                           },
-                          child: Text (" Login ",
-                            style: TextStyle(
+                          child: Text ('Login'.tr,
+                            style:const TextStyle(
                               color: forthBackColor,
                               fontWeight: FontWeight.bold,
                             ),

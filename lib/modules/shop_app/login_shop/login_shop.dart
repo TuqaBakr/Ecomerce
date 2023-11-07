@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -14,122 +13,129 @@ import '../../../constant.dart';
 import 'login_shop_controller.dart';
 
 
-class loginShop extends StatefulWidget {
-  const loginShop({Key? key}) : super(key: key);
+class LoginShop extends StatefulWidget {
+  const LoginShop({Key? key}) : super(key: key);
   @override
   _loginShopState createState() => _loginShopState();
 }
 
-class _loginShopState extends State<loginShop> {
+class _loginShopState extends State<LoginShop> {
   @override
   Widget build(BuildContext context) {
-    //loginShopControllerImp controller =
-    Get.put(loginShopControllerImp());
+    Get.put(LoginShopControllerImp());
     return Scaffold(
       backgroundColor: thirdBackColor,
-      body:GetBuilder<loginShopControllerImp>(
+      body:GetBuilder<LoginShopControllerImp>(
           builder: (controller) =>
               HandlingDataRequest( statusRequest:controller.statusReqest,
-              widget: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: WillPopScope(
-              onWillPop: alertExitApp,
-              child: Center(
-                child: Form(
-                  key: controller.fromstate,
-                  child: SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        logo(),
-                        const SizedBox(
-                          height: 40.0,
-                        ),
-                        const Text(
-                          'Login',
-                          style: TextStyle(
-                            fontFamily: 'DeliciousHandrawn',
-                            color: firstBackColor,
-                            fontSize: 60.0,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 50.0,
-                        ),
-                        FormFeild(
-                          valid: (val){
-                            return validInput(val!, 5 , 100 , "email");
-                          },
-                          labeltext: "Email",
-                          iconData: Icons.email,
-                          mycontroller:controller.email ,
-                          hinttext: "Enter your Email",
-                          isNumber: false,
-                        ),
-                        const SizedBox(
-                          height: 30.0,
-                        ),
-                        GetBuilder<loginShopControllerImp>(
-                          builder:(controller) => FormFeild(
-                            obscureText: controller.isshowpassword,
-                            onTapIcon: (){
-                              controller.showPassword();
-                            },
-                            valid: (val){
-                              return validInput(val!, 5 , 30 , "password");
-                            },
-                            labeltext: "password",
-                            iconData: Icons.remove_red_eye_outlined,
-                            mycontroller:controller.password,
-                            hinttext: "Enter your password",
-                            isNumber: false,
-                          ),),
-                        const SizedBox(
-                          height: 100.0,
-                        ),
-                        InkWell(
-                          child:Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children:const [
-                            Text(
-                                'Forget Password ?',
-                                textAlign: TextAlign.end,
+                widget: Padding(
+                   padding: const EdgeInsets.all(20.0),
+                   child: WillPopScope(
+                    onWillPop: alertExitApp,
+                    child: Center(
+                      child: Form(
+                        key: controller.fromstate,
+                        child: SingleChildScrollView(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                height: MediaQuery.of(context).size.height/30,// 40.0,
+                              ),
+                              const Logo(),
+                              SizedBox(
+                                height: MediaQuery.of(context).size.height/30,// 40.0,
+                              ),
+                              Text(
+                                'Login'.tr,
+                                style:TextStyle(
+                                  fontFamily: 'DeliciousHandrawn',
+                                  color: firstBackColor,
+                                  fontSize: MediaQuery.of(context).size.width/6, //60.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              SizedBox(
+                                height: MediaQuery.of(context).size.height/15,
+                              ),
+                              FormFeild(
+                                valid: (val){
+                                  return validInput(val!, 5 , 100 , "email");
+                                },
+                                labeltext: "Email".tr,
+                                iconData: Icons.email,
+                                mycontroller:controller.email ,
+                                hinttext: "Enter your Email".tr,
+                                isNumber: false,
+                              ),
+                               SizedBox(
+                                height: MediaQuery.of(context).size.height/30,
+                              ),
+                              GetBuilder<LoginShopControllerImp>(
+                                builder:(controller) => FormFeild(
+                                  obscureText: controller.isshowpassword,
+                                  onTapIcon: (){
+                                    controller.showPassword();
+                                               },
+                                  valid: (val){
+                                    return validInput(val!, 5 , 30 , "password");
+                                              },
+                                  labeltext: "password".tr,
+                                  iconData: Icons.remove_red_eye_outlined,
+                                  mycontroller:controller.password,
+                                  hinttext: "Enter your password".tr,
+                                  isNumber: false,
+                                ),
+                              ),
+                              SizedBox(
+                                height:MediaQuery.of(context).size.height/15,
+                              ),
+                              InkWell(
+                                child:Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                  Text(
+                                      'Forget Password ?'.tr,
+                                      textAlign: TextAlign.end,
+                                  style:TextStyle(
+                                    fontSize: MediaQuery.of(context).size.width/30,
+                                  )
+
+                                    ),
+                                  ],
+                                ),
+                                onTap: ()
+                                {
+                                  controller.goToForgetPassword();
+                                },
+
+                              ),
+                               SizedBox(
+                                height:MediaQuery.of(context).size.height/80,
+                              ),
+                              DefaultButton(
+                                text: 'Login'.tr,
+                                color: secondBackColor,
+                                onPressed: () {
+                                  controller.loginShop();
+                                },
+                              ),
+                              SizedBox(
+                                height:MediaQuery.of(context).size.height/50,
+                              ),
+                              DefaultButton(
+                                text: 'ReGister'.tr,
+                                color: forthBackColor,
+                                onPressed: () {
+                                  controller.goToRegisterShop();
+                                },
                               ),
                             ],
                           ),
-                          onTap: ()
-                          {
-                            controller.goToforgetPassword();
-                          },
-
                         ),
-                        const SizedBox(
-                          height: 15.0,
-                        ),
-                        defaultButtom(
-                          text: 'Login',
-                          color: secondBackColor,
-                          onPressed: () {
-                            controller.loginShop();
-                          },
-                        ),
-                        const SizedBox(
-                          height: 20.0,
-                        ),
-                        defaultButtom(
-                          text: 'ReGister',
-                          color: forthBackColor,
-                          onPressed: () {
-                            controller.goToregisterShop();
-                          },
-                        ),
-                      ],
+                      ),
                     ),
                   ),
-                ),
-              ),
-            ),
           ),))
 
     );

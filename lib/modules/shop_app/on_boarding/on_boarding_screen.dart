@@ -5,27 +5,14 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:weam/components/components.dart';
+import 'package:weam/models/boardingmodel.dart';
 import 'package:weam/modules/shop_app/login_shop/login_shop.dart';
 import 'package:weam/routes.dart';
 import 'package:weam/services/services.dart';
 
 import '../../../constant.dart';
-
-class BoardingModel
-{
-  final String image;
-  final String title;
-  final String body;
-
-  BoardingModel({
-    required this.title,
-    required this.image,
-    required this.body,
-  });
-}
-
 class OnBoardingScreen extends StatefulWidget {
-  OnBoardingScreen({Key? key}) : super(key: key);
+  const OnBoardingScreen({Key? key}) : super(key: key);
 
   @override
   State<OnBoardingScreen> createState() => _OnBoardingScreenState();
@@ -38,19 +25,19 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   List<BoardingModel> boarding = [
     BoardingModel(
-      title: 'Welcome to [STUPIFY]!',
+      title: 'Welcome to'.tr+ 'STUPIFY',
       image: 'assets/images/onboarding1.jpg',
-      body: 'We\'re thrilled to have you join our online Stupify shop.',
+      body: 'We\'re thrilled to have you join our online Stupify shop.'.tr,
     ),
     BoardingModel(
-      title: 'Explore Our Product Categories',
+      title: 'Explore Our Product Categories'.tr,
       image: 'assets/images/onboarding2.jpg',
-      body: 'Browse through our intuitive product categories and find the perfect tech companion for your lifestyle, Discover a vast range of electronics tailored to your needs',
+      body: '11'.tr,
     ),
     BoardingModel(
-      title: 'Let\'s Get Started!',
+      title: 'Let\'s Get Started!'.tr,
       image: 'assets/images/onboarding3.jpg',
-      body: 'Now that you know what to expect, it\'s time to embark on your shopping adventure. Dive into a world of innovation, convenience, and unbeatable prices. Enjoy a seamless online shopping experience at [Shop Name]. Happy shopping!',
+      body: '12'.tr + 'Stupify.'+'Happy shopping!'.tr,
     ),
   ];
 
@@ -68,8 +55,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             Get.offAllNamed(AppRoute.loginShop);
           },
             child: Text(
-              'SKIP',
-              style: TextStyle(
+              'SKIP'.tr,
+              style:const TextStyle(
                 color: whiteBackColor,
                 fontSize: 15,
 
@@ -83,13 +70,13 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           children: [
             Expanded(
               child: PageView.builder(
-                physics: BouncingScrollPhysics(),
+                physics:const BouncingScrollPhysics(),
                 controller: boardController,
                 onPageChanged: (int index)
                 {
                   if(index == boarding.length - 1)
                   {
-                    print('last');
+                    //print('last');
                     setState(()
                     {
                       isLast = true;
@@ -97,26 +84,28 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   }
                   else
                   {
-                    print('not last');
+                   // print('not last');
                     setState(()
                     {
                       isLast = false;
                     });
                   }
                 },
-                itemBuilder: (context, index) =>
-                    buildBoardingItem(boarding[index]),
+                itemBuilder: (context, index) => buildBoardingItem(boarding[index]),
                 itemCount: boarding.length,
               ),
+
+
+
             ),
-            SizedBox(
+            const SizedBox(
               height: 80.0,
             ),
             Row(
               children: [
                 SmoothPageIndicator(
                   controller: boardController,
-                  effect: ExpandingDotsEffect(
+                  effect:const ExpandingDotsEffect(
                     dotColor: Colors.grey,
                     dotHeight: 10,
                     expansionFactor: 4,
@@ -125,7 +114,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   ),
                   count: boarding.length,
                 ),
-                Spacer(),
+                const Spacer(),
                 FloatingActionButton(
                   onPressed: ()
                   {
@@ -136,14 +125,14 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     }
                     else {
                       boardController.nextPage(
-                        duration: Duration(
+                        duration:const Duration(
                           milliseconds: 750,
                         ),
                         curve: Curves.fastLinearToSlowEaseIn,
                       );
                     }
                   },
-                  child: Icon(
+                  child:const Icon(
                     Icons.arrow_forward_ios,
                     color: firstBackColor,
                   ),)
@@ -160,25 +149,25 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     children: [
       Expanded(
         child: Image(
-          image:  AssetImage('${model.image}'),
+          image: AssetImage(model.image),
 
         ),
       ),
-      SizedBox(
+      const SizedBox(
         height: 20.0,
       ),
       Text(
-        '${model.title}',
-        style: TextStyle(
+        model.title,
+        style:const TextStyle(
           fontSize: 25.0,
         ),
       ),
-      SizedBox(
+      const SizedBox(
         height: 30.0,
       ),
       Text(
-        '${model.body}',
-        style: TextStyle(
+        model.body,
+        style:const TextStyle(
           fontSize: 15.0,
         ),
       ),

@@ -30,22 +30,29 @@ class FormFeild extends StatelessWidget {
     return TextFormField(
       obscureText: obscureText==null || obscureText==false ? false : true,
       keyboardType: isNumber
-          ? TextInputType.numberWithOptions(decimal: true)
+          ? const TextInputType.numberWithOptions(decimal: true)
           : TextInputType.text,
+        autovalidateMode: AutovalidateMode.always,
         validator: valid ,
         controller: mycontroller,
         decoration: InputDecoration(
         hintText: hinttext,
-        hintStyle: const TextStyle(fontSize: 12),
+        hintStyle: TextStyle(fontSize: MediaQuery.of(context).size.width/30),
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        contentPadding: const EdgeInsets.symmetric(vertical: 5,horizontal: 25),
-        label: Container(
-          margin: const EdgeInsets.symmetric(horizontal: 9),
-          child: Text(labeltext),),
+        contentPadding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height/100,horizontal:MediaQuery.of(context).size.width/15),
+        label: Text(labeltext),
         suffixIcon: InkWell(child: Icon(iconData),onTap:onTapIcon ,),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(30),
         ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(30),
+            borderSide:const BorderSide(
+              color: secondBackColor,
+              width: 2,
+
+            )
+          )
       ),
     );
   }
@@ -55,12 +62,12 @@ class FormFeild extends StatelessWidget {
 
 /////////////////////////////////////////////////////////////////////////////////
 
-class defaultButtom extends StatelessWidget {
+class DefaultButton extends StatelessWidget {
   final String text;
   final void Function()? onPressed;
   final Color color;
 
-  const defaultButtom({Key? key,
+  const DefaultButton({Key? key,
     required this.text,
     this.onPressed,
     required this.color})
@@ -75,7 +82,7 @@ class defaultButtom extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         padding: const EdgeInsets.symmetric(vertical: 13),
         onPressed: onPressed ,
-        child: Text(text),
+        child: Text(text, style: TextStyle(fontSize: MediaQuery.of(context).size.height/50),),
         color: color,
         textColor: white,
       ),
@@ -83,8 +90,3 @@ class defaultButtom extends StatelessWidget {
   }
 }
 
-
-
-
-
-//////////////////////////////////////////////////////////////////////////////////

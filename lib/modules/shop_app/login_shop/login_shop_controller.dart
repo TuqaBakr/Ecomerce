@@ -8,13 +8,13 @@ import 'package:weam/modules/shop_app/login_shop/login_shop.dart';
 import 'package:weam/routes.dart';
 import 'package:weam/services/services.dart';
 
-abstract class loginController extends GetxController{
+abstract class LoginController extends GetxController{
   loginShop();
-  goToregisterShop();
-  goToforgetPassword();
+  goToRegisterShop();
+  goToForgetPassword();
 }
 
-class loginShopControllerImp extends loginController {
+class LoginShopControllerImp extends LoginController {
 
   loginData logindata =loginData(Get.find());
 
@@ -43,7 +43,10 @@ class loginShopControllerImp extends loginController {
       statusReqest = handlingData(response) ;
       if(StatusReqest.success == statusReqest){
         if(response['status'] == 'success'){
-          myServices.sharedPreferances.setString("token", response["token"]);
+          String responseToken = response["token"] ;
+          myServices.sharedPreferances.remove("tokem") ;
+          myServices.sharedPreferances.setString("token",responseToken );
+          print(myServices.sharedPreferances.getString("token"));
          // token = response["token"];
           Get.offNamed(AppRoute.homePage);
         } else {
@@ -59,12 +62,12 @@ class loginShopControllerImp extends loginController {
   }
 
   @override
-  goToregisterShop() {
+  goToRegisterShop() {
     Get.offNamed(AppRoute.registerShop);
   }
 
   @override
-  goToforgetPassword() {
+  goToForgetPassword() {
     Get.offNamed(AppRoute.forgetPassword);
   }
 

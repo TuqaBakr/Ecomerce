@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:weam/class/crud.dart';
 import 'package:weam/class/statusrequest.dart';
@@ -13,6 +14,13 @@ class SettingController extends GetxController{
   SettingData settingData = SettingData(Get.find());
 
   late StatusReqest statusReqest;
+  ThemeData? themeData;
+
+  void changeTheme(ThemeData theme){
+    ThemeData themeData = theme;
+    myServices.sharedPreferances.setString("theme", theme.toString());
+    Get.changeTheme(themeData) ;
+  }
 
   logout() async {
     statusReqest = StatusReqest.loading;
@@ -24,6 +32,25 @@ class SettingController extends GetxController{
     else {
       statusReqest = StatusReqest.failure;
     }
+  }
+
+
+  @override
+  void onInit(){
+    String? sharedPrefTheme = myServices.sharedPreferances.getString("theme") ;
+    print(sharedPrefTheme) ;
+
+   /* if(sharedPrefLang == ""){
+      language = const Locale("ar") ;
+    }
+    else if(sharedPrefLang == "en"){
+      language = const Locale("en") ;
+    }
+    else{
+      language = Locale(Get.deviceLocale!.languageCode) ;
+    }
+
+    */
   }
 
 }

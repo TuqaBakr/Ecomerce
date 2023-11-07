@@ -63,21 +63,18 @@ class CustomListItems extends StatelessWidget {
                             GetBuilder<FavoriteController>(builder: (controller) => IconButton(
                                 onPressed:(){
                                   if(controller.isfavorite[itemsModel.id] == true) {
-                                    //controller.isfavorite[itemsModel.id] = false ;
                                     controller.setFavorite(itemsModel.id, false) ;
+                                    controller.deletefav(itemsModel.id.toString());
                                   } else if(controller.isfavorite[itemsModel.id] == false) {
-                                   // controller.isfavorite[itemsModel.id] = true ;
                                     controller.setFavorite(itemsModel.id, true) ;
+                                    controller.addfav(itemsModel.id.toString());
                                   }
                                   print(controller.isfavorite[itemsModel.id]) ;
-                                  // controller.isfavorite[itemsModel.id] = true ? controller.setFavorite(itemsModel.id, false) :controller.setFavorite(itemsModel.id, true) ;
                                 },
                                 icon: Icon(
                                   controller.isfavorite[itemsModel.id] ? Icons.favorite_outlined : Icons.favorite_border_rounded,
-                                  //size: iconSize,
                                   color: forthBackColor,
-
-                                //Icon(controller.isfavorite[itemsModel.id] == true ? Icons.favorite_outlined : Icons.favorite_border_rounded,
+                                  
                             ), ))
                           ],
                         ),

@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:weam/middleware/mymiddleware.dart';
 import 'package:weam/modules/shop_app/about_as.dart';
 import 'package:weam/modules/shop_app/changeLang/changeLang.dart';
+import 'package:weam/modules/shop_app/favorite/favorite.dart';
 import 'package:weam/modules/shop_app/forgetpassword/forgetpassword.dart';
 import 'package:weam/modules/shop_app/home_page/home_page.dart';
 import 'package:weam/modules/shop_app/home_screen/home_screen.dart';
@@ -11,7 +12,7 @@ import 'package:weam/modules/shop_app/login_shop/login_shop.dart';
 import 'package:weam/modules/shop_app/orders/oreder.dart';
 import 'package:weam/modules/shop_app/product_details/product_details.dart';
 import 'package:weam/modules/shop_app/register/successRegister.dart';
-import 'package:weam/modules/shop_app/resetPassword/successReset.dart';
+import 'package:weam/modules/shop_app/resetPassword/success_reset.dart';
 import 'Test/test_view.dart';
 import 'modules/shop_app/cart/cart.dart';
 import 'modules/shop_app/checkout/checkout.dart';
@@ -20,32 +21,33 @@ import 'modules/shop_app/items/items.dart';
 import 'modules/shop_app/on_boarding/on_boarding_screen.dart';
 import 'modules/shop_app/register/register_shop.dart';
 import 'modules/shop_app/register/verfiycoderegister.dart';
-import 'modules/shop_app/resetPassword/resetPassword.dart';
+import 'modules/shop_app/resetPassword/reset_password.dart';
 import 'modules/shop_app/setting/setting.dart';
 import 'modules/shop_app/verfiycode/verfiycode.dart';
 
 List<GetPage<dynamic>>? routes = [
-  GetPage(name: "/", page: ()=> HomeScreen() ,middlewares: [MyMiddleware()]),
+  GetPage(name: "/", page: ()=> LoginShop() ,middlewares: [MyMiddleware()]),
   GetPage(name: AppRoute.cart, page: ()=> const Cart()),
   GetPage(name: AppRoute.testView, page: ()=>const TestView()),
-  GetPage(name: AppRoute.language, page: ()=> Language()),
-  GetPage(name: AppRoute.onBoardingScreen, page: ()=> OnBoardingScreen()),
-  GetPage(name: AppRoute.loginShop, page: ()=>const loginShop()),
+  GetPage(name: AppRoute.language, page: ()=>const Language()),
+  GetPage(name: AppRoute.onBoardingScreen, page: ()=> const OnBoardingScreen()),
+  GetPage(name: AppRoute.loginShop, page: ()=>const LoginShop()),
   GetPage(name: AppRoute.registerShop, page: ()=>const registerShop()),
   GetPage(name: AppRoute.forgetPassword, page: ()=> const forgetPassword()),
   GetPage(name: AppRoute.verfiycode, page: ()=>const verfiycode()),
   GetPage(name: AppRoute.resetPassword, page: ()=>  const resetPassword()),
-  GetPage(name: AppRoute.successReset, page: ()=>const successReset()),
+  GetPage(name: AppRoute.successReset, page: ()=>const SuccessReset()),
   GetPage(name: AppRoute.successRegister, page: ()=>  const successRgister()),
   GetPage(name: AppRoute.verficoderegister, page: ()=>const verfiycoderegister()),
   GetPage(name: AppRoute.homePage, page: ()=> HomeScreen()),
-  GetPage(name: AppRoute.items, page: ()=> Items()),
+  GetPage(name: AppRoute.items, page: ()=>const Items()),
   GetPage(name: AppRoute.productDetails, page: ()=>const ProductDetails()),
   GetPage(name: AppRoute.aboutas, page: ()=>About_as()),
   GetPage(name: AppRoute.contactas, page: ()=>ContactUs()),
   GetPage(name: AppRoute.setting, page: ()=>Setting()),
   GetPage(name: AppRoute.checkout, page: ()=>const Checkout()),
   GetPage(name: AppRoute.order, page: ()=>const Orders()),
+  GetPage(name: AppRoute.favorite, page: ()=>const Favorite()),
 
 ];
 
@@ -87,22 +89,23 @@ class AppRoute {
   static const String setting = "/setting";
   static const String checkout = "/checkout";
   static const String order = "/order";
+  static const String favorite = "/favorite";
 }
 
 class AppLink{
   //=======================server=================== 192.168.241.203
-  static const String server = "http://192.168.1.111:8000/api" ;
+  static const String server = "http://192.168.1.103:8000/api" ;
   static const String test = "https://jsonplaceholder.typicode.com/posts" ;
 
   //=========================== home page ============
   // ignore: constant_identifier_names0
   static String getCategory = "$server/viewcatigory" ;
-  static String getCat = "http://192.168.1.111:8000/api/viewcatigory" ;
+  static String getCat = "http://192.168.1.103:8000/api/viewcatigory" ;
   static String homepage = "$server/homepage" ;
 
   //====================images============================
 
-  static const String imageStatic = "http://192.168.1.111:8000/" ;
+  static const String imageStatic = "http://192.168.1.103:8000/" ;
   static const String categoryImage = "C:/xampp/htdocs/shopping/public/photos" ;
   static const String subcategoryImage = "C:/xampp/htdocs/shopping/public/subcatigory" ;
   static const String productImage = "C:/xampp/htdocs/shopping/public/products " ;
@@ -143,7 +146,10 @@ static String subcategories = "$server/viewsubcatigory/" ;
   //=================== Favorite =======================
   static String addfav = "$server/addfavorite" ;
   static String deletefav = "$server/removefavorite" ;
-  static String showfav = "$server/viewfavorite" ;
+  static String viewfav = "$server/viewfavorite" ;
+
+  // ========================== rating =======================
+  static String rating = "$server/addrating/" ;
 
 
 

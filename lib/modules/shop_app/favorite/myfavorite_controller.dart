@@ -6,7 +6,9 @@ import 'package:weam/function/handingdatacontroller.dart';
 import 'package:weam/models/myfavorite.dart';
 import 'package:weam/modules/shop_app/items/favorite_data.dart';
 
-class FavoriteController extends GetxController{
+import 'my_favorite_data.dart';
+
+class MyFavoriteController extends GetxController{
 
   late StatusReqest statusRequest ;
 
@@ -15,7 +17,7 @@ class FavoriteController extends GetxController{
 
   List<MyFavoriteModel> data = [];
 
-  FavoriteData favoriteData = FavoriteData(Get.find()) ;
+  MyFavoriteData favoriteData = MyFavoriteData(Get.find()) ;
   Map isfavorite ={
 
   };
@@ -26,20 +28,19 @@ class FavoriteController extends GetxController{
   }
 
   //addtofavorite
+  /*
   addfav(String itemsid) async {
     statusRequest = StatusReqest.loading;
     update();
     var response = await favoriteData.addfavorite(itemsid);
     print("========controller $response");
     statusRequest = handlingData(response);
-    if(StatusReqest.success == statusRequest){
-      if (response['status'] == "success") {
+    if (response['status'] == "success") {
       print("asksakkkkkkkkdssds");
       Get.rawSnackbar(
         title: " اشعار",
         messageText:const Text(" تم اضافة المنتج الى السلة"),
       );
-    }
     }
     else {
       statusRequest = StatusReqest.failure;
@@ -63,9 +64,34 @@ class FavoriteController extends GetxController{
     else {
       statusRequest = StatusReqest.failure;
     }
+  }
+*/
+  viewfavorite() async {
+
+    statusRequest = StatusReqest.loading;
+    var response = await favoriteData.viewfavorite() ;
+    print("rererere========================== $response");
+    statusRequest = handlingData(response) ;
+    if(StatusReqest.success == statusRequest){
+      data.clear();
+      if(response['status'] == "success"){
+        List listData = response['favorites'];
+        data.addAll(listData.map((e) => MyFavoriteModel.fromJson(e))) ;
+        print(response);
+      }
+      else {
+        statusRequest = StatusReqest.failure;
+      }
+    }
     update();
   }
 
+  @override
+  void onInit() {
+
+    viewfavorite();
+    super.onInit();
+  }
 
 
 }

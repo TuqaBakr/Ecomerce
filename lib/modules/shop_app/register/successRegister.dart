@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:weam/components/components.dart';
 import 'package:weam/modules/shop_app/register/successRegister_controller.dart';
 
@@ -22,7 +23,7 @@ class successRgister extends StatelessWidget {
                     height: 80.0,
                   ),
                   Text(
-                    'Success ',
+                    'Success '.tr,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontFamily: 'DeliciousHandrawn',
@@ -45,7 +46,7 @@ class successRgister extends StatelessWidget {
                     height: 40.0,
                   ),
                   Text(
-                    'Register Completed Successfully',
+                    'Register Completed Successfully'.tr,
                     style: TextStyle(
                       fontSize: 18.0,
                       color: firstBackColor,
@@ -55,9 +56,9 @@ class successRgister extends StatelessWidget {
 
                   ),
                   Spacer(),
-                  defaultButtom(
+                  DefaultButton(
                      color: forthBackColor,
-                     text: ' Go To Login',
+                     text: ' Go To Login'.tr,
                      onPressed: (){
                        controller.goToPageLogin();
                      },

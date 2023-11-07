@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
+import 'package:weam/lucatization/changelocal.dart';
 import 'package:weam/modules/shop_app/logo/logo.dart';
 import 'package:weam/modules/shop_app/setting/setting_controller.dart';
 import 'package:weam/routes.dart';
@@ -16,6 +18,7 @@ class Setting extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SettingController controller = Get.put(SettingController());
+    LocaleController langcontroller = Get.find() ;
     return Container(
       color: whiteBackColor,
       child: ListView(
@@ -29,7 +32,7 @@ class Setting extends StatelessWidget {
               color: secondBackColor,
             ),
             Positioned (top: Get.width/3.5 , child:  Container(
-              padding: EdgeInsets.all(4),
+              padding:const EdgeInsets.all(4),
                 decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(100)),
                 child: CircleAvatar(
                   radius: 50,
@@ -38,26 +41,41 @@ class Setting extends StatelessWidget {
                 )
             ),),
           ],),
-        SizedBox(height: 100,),
+        const SizedBox(height: 100,),
         Container(
-          padding: EdgeInsets.symmetric(horizontal: 15),
+          padding:const EdgeInsets.symmetric(horizontal: 15),
           child: Card(child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               ListTile(
 
-          title: Text("Dark mode"),
-                trailing: IconButton(
-                    onPressed: _themeController.toggleTheme,
-                     icon: Icon(Icons.dark_mode),
+                  title: Text("Dark mode".tr),
+                        trailing: IconButton(
+                            onPressed:
+                              _themeController.toggleTheme,
+                             icon: Icon(Icons.dark_mode),
                     ),
+              ),
+              Divider(),
+              ListTile(
+
+                title: Text("Language".tr),
+                trailing: IconButton(
+                  onPressed: (){
+                    if(langcontroller.myServices.sharedPreferances.getString("lang") == "ar")
+                    {langcontroller.changeLang("en");}
+                    else if(langcontroller.myServices.sharedPreferances.getString("lang") == "en")
+                    {langcontroller.changeLang("ar");}
+                      } ,
+                  icon:const Icon(Icons.translate),
+                ),
               ),
               Divider(),
               ListTile(
                 onTap: (){
                         Get.offNamed(AppRoute.aboutas);
                 },
-                title: Text("About us"),
+                title: Text("About us".tr),
                 trailing: Icon(Icons.help_center_outlined),
               ),
               Divider(),
@@ -65,7 +83,7 @@ class Setting extends StatelessWidget {
                 onTap: (){
                   Get.offNamed(AppRoute.contactas);
                 },
-                title: Text("Contact us"),
+                title: Text("Contact us".tr),
                 trailing: Icon(Icons.phone),
               ),
               Divider(),
@@ -73,7 +91,7 @@ class Setting extends StatelessWidget {
                 onTap: (){
                    controller.logout();
                 },
-                title: Text("Logout"),
+                title: Text("Logout".tr),
                 trailing: Icon(Icons.exit_to_app),
               ),
             ],),),

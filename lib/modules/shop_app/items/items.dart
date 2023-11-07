@@ -29,8 +29,7 @@ class Items extends StatelessWidget {
           child: ListView(
             children: [
               CustomAppBar(
-                titleappbar: "Find Product",
-                //onPressedIcon: (){},
+                titleappbar: "Find Product".tr,
                 onPressedIconSearch: (){
                   controller.onSearchItems();
                 },
@@ -52,7 +51,6 @@ class Items extends StatelessWidget {
                           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, childAspectRatio:0.7, ),
                           itemBuilder: (BuildContext context, index) {
                             if(favcontroller.isfavorite[controller.products[index]['id']] == null) {
-                             // favcontroller.isfavorite[controller.products[index]['id']] = false;
                               favcontroller.setFavorite(controller.products[index]['id'], false) ;
                             }else{
                               print(favcontroller.isfavorite[controller.products[index]['id']]);

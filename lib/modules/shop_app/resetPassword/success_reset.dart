@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:weam/components/components.dart';
 import 'package:weam/modules/shop_app/resetPassword/successReset_controller.dart';
 
 import '../../../constant.dart';
 
-class successReset extends StatelessWidget {
-  const successReset({Key? key}) : super(key: key);
+class SuccessReset extends StatelessWidget {
+  const SuccessReset({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,38 +18,38 @@ class successReset extends StatelessWidget {
       body: Form(
         key: controller.fromstate,
         child: Container(
-          padding: EdgeInsets.all(15),
+          padding:const EdgeInsets.all(15),
           child: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 80.0,
               ),
               Text(
-                'Success ',
+                'Success '.tr,
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style:const TextStyle(
                   fontFamily: 'DeliciousHandrawn',
                   color: firstBackColor,
                   fontSize: 60.0,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 80.0,
               ),
-              Center(
+              const Center(
                 child: Icon(
                   Icons.check_circle_outline,
                   size: 200,
                   color: forthBackColor,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 40.0,
               ),
               Text(
-                'Register Completed Successfully',
-                style: TextStyle(
+                'Register Completed Successfully'.tr,
+                style:const TextStyle(
                   fontSize: 18.0,
                   color: firstBackColor,
                   fontWeight: FontWeight.bold,
@@ -56,10 +57,10 @@ class successReset extends StatelessWidget {
                 ),
 
               ),
-              Spacer(),
-              defaultButtom(
+              const Spacer(),
+              DefaultButton(
                 color: forthBackColor,
-                text: ' Go To Login',
+                text: ' Go To Login'.tr,
                 onPressed: (){
                   controller.goToPageLogin();
                 },

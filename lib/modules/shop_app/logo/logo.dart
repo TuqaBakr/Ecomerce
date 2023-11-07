@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class logo extends StatelessWidget {
-  const logo({Key? key}) : super(key: key);
+class Logo extends StatelessWidget {
+  const Logo({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return CircleAvatar(
+    return const CircleAvatar(
       radius: 80,
       backgroundImage: AssetImage("assets/images/logo.jpg"),
     );

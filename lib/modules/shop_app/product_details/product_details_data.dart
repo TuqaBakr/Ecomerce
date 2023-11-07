@@ -57,4 +57,35 @@ class ProductData{
     print("23212777777as$response");
     return response.fold((l) => l, (r) => r);
   }
+
+  rating(String product_id, String rating)async{
+    var response = await crud.postData(
+        AppLink.rating+product_id,
+        {
+          // "product_id":product_id ,
+          "rating"     :rating  ,
+        });
+    return response.fold((l) => l, (r) => r);
+  }
+
+  //favorit
+  addfavorite(String product_id)async{
+    var response = await crud.postData(
+      AppLink.addfav,
+        {
+           "token"      : token ,
+           "product_id" : product_id  ,
+        });
+    return response.fold((l) => l, (r) => r);
+  }
+  deletefavorite(String product_id)async{
+    var response = await crud.postData(
+        AppLink.deletefav,
+        {
+          "token"      : token ,
+          "product_id" : product_id  ,
+        });
+    return response.fold((l) => l, (r) => r);
+  }
+
 }

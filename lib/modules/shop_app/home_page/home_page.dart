@@ -29,12 +29,11 @@ class HomePage extends StatelessWidget {
             child:ListView(
               children: [
                 CustomAppBar(
-                  titleappbar: "Find Product",
-                  //onPressedIcon: (){},
+                  titleappbar: "Find Product".tr,
                   onPressedIconSearch: (){
                     controller.onSearchItems();
                   },
-                  mycontroller: controller.Search!,
+                    mycontroller: controller.Search!,
                   onChanged: (val){
                     controller.checkSearch(val) ;
                   },
@@ -52,11 +51,11 @@ class HomePage extends StatelessWidget {
                     Container(
                       alignment: Alignment.center,
                       child:  ListTile(
-                        title: Text("A summer surprice",
+                        title: Text( "A huge surprise".tr,
                             style: TextStyle(color: fifthBackColor.withOpacity(0.7), fontSize:25, fontFamily: 'DeliciousHandrawn',)
                         ),
                         subtitle: Text(
-                            "Cast back 20%",
+                            " Discounts up to 40%".tr,
                             style: TextStyle(
                               color: fifthBackColor.withOpacity(0.5),
                               fontSize:20,
@@ -86,9 +85,9 @@ class HomePage extends StatelessWidget {
                 ),
                 Container(
                   margin:const EdgeInsets.symmetric(vertical: 20),
-                  child: const Text(
-                    "Categories:",
-                    style: TextStyle(
+                  child:  Text(
+                    "Categories:".tr,
+                    style: const TextStyle(
                       color: firstBackColor,
                       fontSize: 20.0,
                       fontWeight: FontWeight.bold ,
@@ -98,9 +97,9 @@ class HomePage extends StatelessWidget {
                 const ListCategoriesHome() ,
                 Container(
                   margin:const EdgeInsets.symmetric(vertical: 15),
-                  child: const Text(
-                    "Discount Products:",
-                    style: TextStyle(
+                  child:  Text(
+                    "Discount Products:".tr,
+                    style:const TextStyle(
                       color: firstBackColor,
                       fontSize: 20.0,
                       fontWeight: FontWeight.bold,
@@ -110,9 +109,9 @@ class HomePage extends StatelessWidget {
                 const ListDiscountItemsHome(),
                 Container(
                   margin:const EdgeInsets.symmetric(vertical: 15),
-                  child: const Text(
-                    "High Rating Product:",
-                    style: TextStyle(
+                  child:  Text(
+                    "High Rating Product:".tr,
+                    style:const TextStyle(
                       color: firstBackColor,
                       fontSize: 20.0,
                       fontWeight: FontWeight.bold,

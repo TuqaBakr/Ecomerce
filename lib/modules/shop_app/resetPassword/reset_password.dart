@@ -6,7 +6,7 @@ import 'package:weam/components/components.dart';
 import 'package:weam/function/validinput.dart';
 import 'package:weam/modules/shop_app/login_shop/login_shop.dart';
 import 'package:weam/modules/shop_app/register/register_shop_controller.dart';
-import 'package:weam/modules/shop_app/resetPassword/resetPassword_controller.dart';
+import 'package:weam/modules/shop_app/resetPassword/reset_password_controller.dart';
 import '../../../constant.dart';
 
 class resetPassword extends StatefulWidget {
@@ -32,7 +32,7 @@ class _resetPasswordState extends State<resetPassword> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    ' New Password ',
+                    ' New Password '.tr,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontFamily: 'DeliciousHandrawn',
@@ -45,7 +45,7 @@ class _resetPasswordState extends State<resetPassword> {
                     height: 30.0,
                   ),
                   Text(
-                     'Please enter the new password',
+                     'Please enter the new password'.tr,
                    style: TextStyle(
                      color: secondBackColor,
                    ),
@@ -91,7 +91,7 @@ class _resetPasswordState extends State<resetPassword> {
                   SizedBox(
                     height: 80.0,
                   ),
-                  defaultButtom(
+                  DefaultButton(
                     text: 'Save',
                     color: forthBackColor,
                     onPressed: () {
